@@ -1,0 +1,99 @@
+.sec1 {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/sec1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.sec1-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.sec1-p {
+    background: linear-gradient(115deg, #1f73b4, #57c5cd);
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-size: larger;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+/*------text anim---------*/
+
+svg {
+    font-family: 'Russo One', sans-serif;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+svg text {
+    text-transform: uppercase;
+    animation: stroke 5s infinite alternate;
+    stroke-width: 2;
+    stroke: #365fa0;
+    font-size: 140px;
+}
+
+@keyframes stroke {
+    0% {
+        fill: rgba(72, 138, 20, 0);
+        stroke: rgba(54, 95, 160, 1);
+        stroke-dashoffset: 25%;
+        stroke-dasharray: 0 50%;
+        stroke-width: 2;
+    }
+    70% {
+        fill: rgba(72, 138, 20, 0);
+        stroke: rgba(54, 95, 160, 1);
+    }
+    80% {
+        fill: rgba(72, 138, 20, 0);
+        stroke: rgba(54, 95, 160, 1);
+        stroke-width: 3;
+    }
+    100% {
+        fill: rgba(72, 138, 204, 1);
+        stroke: rgba(54, 95, 160, 0);
+        stroke-dashoffset: -25%;
+        stroke-dasharray: 50% 0;
+        stroke-width: 0;
+    }
+}
+
+
+/*-----------------sec2--------------------*/
+
+.sec2 {
+    width: 100%;
+    height: 70vh;
+    background-color: #ede9e5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 20px;
+    line-height: 2;
+    text-align: center;
+}
+
+.sec2 img {
+    width: 400px;
+}
+
+.sec2 button {
+    padding: 10px 20px;
+    background-color: green;
+    border: none;
+    border-radius: 10px;
+    color: white;
+}

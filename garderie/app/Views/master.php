@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?= base_url(); ?>/css/header.css" rel="stylesheet">
     <link href="<?= base_url(); ?>/css/footer.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>/css/accueil.css" rel="stylesheet">
 
 
     <title>Baby Garde</title>
@@ -14,10 +15,12 @@
 
 <body>
 
-    <?= include_once('template/header.php')  ?>
+    <?= include_once('template/header.php') ?>
 
-    <h1>THis my page</h1>
-    <?= include_once('template/footer.php')  ?>
+    <?= include_once('pages/accueil.php') ?>
+
+    <?= include_once('template/footer.php') ?>
+
 </body>
 
 </html>

@@ -8,7 +8,7 @@
 
     <ul class="links">
 
-        <li><a href=""><img src="<?= base_url()  ?>/img/create.png" alt="">Créer une annonces</a></li>
+        <li><a href=""><img src="<?= base_url()  ?>/img/create.png" alt="">Créer une annonce</a></li>
         <li><a href=""><img src="<?= base_url()  ?>/img/profile.png" alt="">Profile</a></li>
         <li><a href="<?= base_url(); ?>/connexion">Connexion</a></li>
         <li><a href="<?= base_url(); ?>/inscription">Inscription</a></li>
