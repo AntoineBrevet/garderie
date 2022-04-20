@@ -20,14 +20,14 @@ class Utilisateurs extends BaseController
         $this->professionnels = model(ProfessionnelsModel::class);
         $this->reservation = model(ReservationModel::class);
     }
-    
+
     public function index()
     {
         return view('utilisateurs/index');
     }
-    public function connection()
+    public function connexion()
     {
-        return view('utilisateurs/connection');
+        return view('utilisateurs/connexion');
     }
     public function inscription()
     {

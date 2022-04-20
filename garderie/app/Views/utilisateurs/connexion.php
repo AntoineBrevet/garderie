@@ -25,16 +25,6 @@
             <div class="col l12 m12 s12" id="rectangle">
                 <form method="GET">
 
-                    <div class="input-field col s6">
-                        <label for="prenom" class="active" style="color: black;">Prénom</label>
-                        <input class="validate invalid" name="prenom" type="text" value="" id="prenom" placeholder="François" required="">
-                    </div>
-
-                    <div class="input-field col s6">
-                        <label for="nom" class="active" style="color: black;">Nom de famille</label>
-                        <input class="validate invalid" type="text" value="" name="nom" id="nom" placeholder="Pignon" required="" text-capitalize="">
-                    </div>
-
                     <div class="input-field col s12">
                         <label for="email" class="active" style="color: black;">Email</label>
                         <input class="validate" type="email" value="" name="email" placeholder="ex: Dupond1990@gmail.com" required="">
