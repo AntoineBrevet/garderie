@@ -14,7 +14,7 @@ class Reservation extends Migration
             'unsigned'       => true,
             'auto_increment' => true,   
         ],
-        'id_enfants'          => [
+        'id_enfant'          => [
             'type'           => 'INT',
             'constraint'     => 11,
             'unsigned'       => true,
@@ -33,13 +33,12 @@ class Reservation extends Migration
         'updated_at datetime default null on update current_timestamp'
     ]);
     $this->forge->addKey('id', true);
-    $this->forge->addForeignKey('id_enfants', 'enfants', 'id');
+    $this->forge->addForeignKey('id_enfant', 'enfants', 'id');
     $this->forge->addForeignKey('id_creneau', 'creneau', 'id');
     $this->forge->createTable('reservation');
     }
     public function down()
     {
-        $this->forge->dropTable('reservation');    
-        
+        $this->forge->dropTable('reservation'); 
     }
 }

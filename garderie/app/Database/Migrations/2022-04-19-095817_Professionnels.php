@@ -18,6 +18,18 @@ class Professionnels extends Migration
             'nom'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
+            ],  
+            'mail'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+            ],
+            'mdp'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+            ],
+            'tel'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
             ],
             'adresse'       => [
                 'type'       => 'VARCHAR',
@@ -35,6 +47,8 @@ class Professionnels extends Migration
                 'type'=> 'DATETIME',
                 'null' => true,
             ],
+          
+
 
             'created_at datetime default current_timestamp',
             'updated_at datetime default null on update current_timestamp'

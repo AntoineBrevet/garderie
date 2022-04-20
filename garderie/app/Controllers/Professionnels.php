@@ -30,4 +30,16 @@ class Professionnels extends BaseController
     {
         return view('professionnels/index');
     }
+
+    public function splitByHour($data) 
+    // prends le tableau entier et le slit par heure
+    {
+        $debut = $data['debut_session'];
+        $fin = $data['fin_session'];
+        for ($i = $debut; $i < $fin; $i++){
+            $data['debut'] = $i; 
+            $data['fin'] = $i + 1;
+            $this->db->table('creneau')->insert($data);
+        }
+    }
 }
