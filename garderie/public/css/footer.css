@@ -4,7 +4,7 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: #275d9b;
+    background: linear-gradient(115deg, #1f73b4, #57c5cd);
     width: 100%;
     height: auto;
     color: white;
