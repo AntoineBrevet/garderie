@@ -25,4 +25,12 @@ class Utilisateurs extends BaseController
     {
         return view('utilisateurs/index');
     }
+    public function connection()
+    {
+        return view('utilisateurs/connection');
+    }
+    public function inscription()
+    {
+        return view('utilisateurs/inscription');
+    }
 }

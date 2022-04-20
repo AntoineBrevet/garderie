@@ -35,6 +35,11 @@ $routes->get('/', 'Home::index');
 $routes->get('utilisateurs', 'Utilisateurs::index');
 $routes->get('professionnels', 'Professionnels::index');
 
+// Routes Model
+$routes->match(['get', 'post'], 'inscription', 'Utilisateurs::inscription');
+$routes->match(['get', 'post'], 'connexion', 'Utilisateurs::connexion');
+$routes->get('deconnexion', 'Utilisateurs::deconnexion');
+
 
 /*
  * --------------------------------------------------------------------
