@@ -33,7 +33,7 @@ class Reservation extends Migration
         'updated_at datetime default null on update current_timestamp'
     ]);
     $this->forge->addKey('id', true);
-    $this->forge->addForeignKey('id_enfants', 'enfants', 'id');
+    $this->forge->addForeignKey('id_enfant', 'enfants', 'id');
     $this->forge->addForeignKey('id_creneau', 'creneau', 'id');
     $this->forge->createTable('reservation');
     }
