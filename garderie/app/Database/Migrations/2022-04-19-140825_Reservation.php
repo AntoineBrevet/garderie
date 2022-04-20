@@ -14,7 +14,7 @@ class Reservation extends Migration
             'unsigned'       => true,
             'auto_increment' => true,   
         ],
-        'id_enfants'          => [
+        'id_enfant'          => [
             'type'           => 'INT',
             'constraint'     => 11,
             'unsigned'       => true,
@@ -39,7 +39,6 @@ class Reservation extends Migration
     }
     public function down()
     {
-        $this->forge->dropTable('reservation');    
-        
+        $this->forge->dropTable('reservation'); 
     }
 }
