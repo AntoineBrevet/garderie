@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+use App\Controllers\BaseController;
+
+class Utilisateurs extends BaseController
 {
     private $creneau;
     private $enfants;
@@ -21,6 +23,6 @@ class Home extends BaseController
     
     public function index()
     {
-        return view('pages/index');
+        return view('utilisateurs/index');
     }
 }

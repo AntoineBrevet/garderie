@@ -2,7 +2,14 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+use App\Controllers\BaseController;
+use App\Models\CreneauModel;
+use App\Models\EnfantsModel;
+use App\Models\ParentsModel;
+use App\Models\ProfessionnelsModel;
+use App\Models\ReservationModel;
+
+class Professionnels extends BaseController
 {
     private $creneau;
     private $enfants;
@@ -21,6 +28,6 @@ class Home extends BaseController
     
     public function index()
     {
-        return view('pages/index');
+        return view('professionnels/index');
     }
 }
