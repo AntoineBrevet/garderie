@@ -24,11 +24,11 @@ class Recupere extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
-            'nom'          => [
+            'nomRecup'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '225',
             ],
-            'prenom'          => [
+            'prenomRecup'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '225',
             ],

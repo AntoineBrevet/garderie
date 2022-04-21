@@ -28,10 +28,6 @@ class Enfants extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'recup_name'          => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
-            ],
             'age'          => [
                 'type'       => 'INT',
                 'constraint' => 11,

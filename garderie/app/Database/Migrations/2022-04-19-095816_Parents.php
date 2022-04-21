@@ -20,11 +20,11 @@ class Parents extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
-            'nom'          => [
+            'nomParents'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],
-            'prenom'       => [
+            'prenomParents'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],

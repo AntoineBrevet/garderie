@@ -29,7 +29,7 @@ class Professionnels extends BaseController
     public function index()
     {
         $data = [
-            "test" => $this->reservation->test()
+            "infos" => $this->reservation->call_reservation_infos()
         ];
 
         return view('professionnels/index', $data);

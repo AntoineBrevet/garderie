@@ -9,7 +9,7 @@ class Professionnels extends Seeder
     public function run()
     {
         $data = [
-            'nom'    => 'Lacrecherie',
+            'nomPro'    => 'Lacrecherie',
             'adresse' => '32 rue José Baptisa',
             'siret' => '60212915471833',
             'mdp' => 'root',

@@ -15,7 +15,7 @@ class Professionnels extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,   
             ],
-            'nom'          => [
+            'nomPro'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],  
