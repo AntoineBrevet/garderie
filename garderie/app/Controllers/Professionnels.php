@@ -28,7 +28,11 @@ class Professionnels extends BaseController
     
     public function index()
     {
-        return view('professionnels/index');
+        $data = [
+            "test" => $this->reservation->test()
+        ];
+
+        return view('professionnels/index', $data);
     }
 
     public function splitByHour($data) 

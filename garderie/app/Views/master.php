@@ -15,11 +15,11 @@
 
 <body>
 
-    <?= include_once('template/header.php') ?>
+    <?php include_once('template/header.php') ?>
 
-    <?= include_once('pages/accueil.php') ?>
+    <?php include_once('pages/accueil.php') ?>
 
-    <?= include_once('template/footer.php') ?>
+    <?php include_once('template/footer.php') ?>
 
 </body>
 
