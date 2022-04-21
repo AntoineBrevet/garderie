@@ -21,6 +21,6 @@ class Home extends BaseController
 
     public function index()
     {
-        return view('master');
+        return view('pages/accueil');
     }
 }

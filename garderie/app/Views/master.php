@@ -7,19 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?= base_url(); ?>/css/header.css" rel="stylesheet">
     <link href="<?= base_url(); ?>/css/footer.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>/css/accueil.css" rel="stylesheet">
-
-
+    <?= $this->renderSection('css') ?>
     <title>Baby Garde</title>
 </head>
 
 <body>
 
     <?php include_once('template/header.php') ?>
-
-    <?php include_once('pages/accueil.php') ?>
+    <div class="container-fluid text-center contenu">
+        <?= $this->renderSection('content') ?>
+    </div>
 
     <?php include_once('template/footer.php') ?>
+
+    <?= $this->renderSection('js') ?>
 
 </body>
 

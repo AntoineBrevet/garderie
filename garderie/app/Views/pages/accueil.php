@@ -1,3 +1,11 @@
+
+<?= $this->extend('master') ?>
+
+<?= $this->section('css') ?>
+<link href="<?= base_url(); ?>/css/accueil.css" rel="stylesheet">
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
 <section class="sec1">
     <div class="sec1-container">
 
@@ -28,3 +36,8 @@
         <button>Contactez Nous</button>
     </div>
 </section>
+<?= $this->endSection() ?>
+
+<?= $this->section('js') ?>
+
+<?= $this->endSection() ?>
