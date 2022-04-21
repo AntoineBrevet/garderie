@@ -10,8 +10,8 @@ class Parents extends Seeder
     {
         $data = [
             'nbr_enfants' => 2,
-            'nom'    => 'Lepremier',
-            'prenom' => 'Phillipe',
+            'nomParents'    => 'Lepremier',
+            'prenomParents' => 'Phillipe',
             'adresse' => '16 rue de la porte 76000 Rouen',
             'mdp' => 'root',
             'mail' => 'phillipe@test.fr',

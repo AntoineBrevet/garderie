@@ -10,15 +10,15 @@ class Recupere extends Seeder
     {
         $datas = [[
             'id_enfant' => 1,
-            'nom' => 'M.',
-            'prenom' => 'One',
+            'nomRecup' => 'M.',
+            'prenomRecup' => 'One',
             'tel' => 123456789
         ],
         [
             'id_enfant' => 2,
-            'nom' => 'Mm.',
+            'nomRecup' => 'Mm.',
             'tel' => 123456789,
-            'prenom' => 'Two',
+            'prenomRecup' => 'Two',
         ]];
 
         foreach($datas as $data){ 
