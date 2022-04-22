@@ -17,9 +17,8 @@
 <body>
 
     <?php include_once('template/header.php') ?>
-    <div>
-        <?= $this->renderSection('content') ?>
-    </div>
+    
+    <?= $this->renderSection('content') ?>
 
     <?php include_once('template/footer.php') ?>
 
