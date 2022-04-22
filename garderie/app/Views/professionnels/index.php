@@ -1,3 +1,10 @@
+<?= $this->extend('master') ?>
+
+<?= $this->section('css') ?>
+<!-- Mettre le CSS avec une balise link -->
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
 <h1>Page Professionnel</h1>
 
 <?php
@@ -7,3 +14,9 @@
      echo $value["nom"] . ' ' . $value["prenom"] . ' - ' .$value["age"] . ' ans - ' . $value["sexe"] . '<br>';
      echo '<hr>';
  }
+ ?>
+ <?= $this->endSection() ?>
+
+<?= $this->section('js') ?>
+<!-- Mettre le JS avec une balise script -->
+<?= $this->endSection() ?>
