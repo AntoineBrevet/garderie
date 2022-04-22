@@ -14,7 +14,7 @@ class ParentsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nbr_enfants','nomParents','prenomParents','adresse','mdp','mail','tel'];
+    protected $allowedFields    = ['nbr_enfants', 'nomParents', 'prenomParents', 'adresse', 'mdp', 'mail', 'tel'];
 
     // Dates
     protected $useTimestamps = false;
@@ -39,4 +39,9 @@ class ParentsModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function findByEmail(string $mail)
+    {
+        return $this->where(['mail' => $mail])->first();
+    }
 }

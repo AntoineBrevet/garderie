@@ -23,16 +23,16 @@
     </div>
     <div class="row" id="blanc">
       <div class="col l12 m12 s12" id="rectangle">
-        <form method="GET">
+        <form method="post">
 
           <div class="input-field col s6">
             <label for="prenom" class="active" style="color: black;">Prénom</label>
-            <input class="validate invalid" name="prenom" type="text" value="" id="prenom" placeholder="François" required="">
+            <input class="validate invalid" name="prenomParents" type="text" value="" id="prenomParents" placeholder="François" required="">
           </div>
 
           <div class="input-field col s6">
             <label for="nom" class="active" style="color: black;">Nom de famille</label>
-            <input class="validate invalid" type="text" value="" name="nom" id="nom" placeholder="Pignon" required="" text-capitalize="">
+            <input class="validate invalid" type="text" value="" name="nomParents" id="nomParents" placeholder="Pignon" required="" text-capitalize="">
           </div>
 
           <div class="input-field col s6">
@@ -47,16 +47,16 @@
 
           <div class="input-field col s12">
             <label for="naissance" class="active" style="color: black;">Date de naissance</label>
-            <input type="text" class="datepicker" name="naissance" placeholder="10/02/1980" required="">
+            <input type="text" class="datepicker" name="dateNaissanceParents" placeholder="10/02/1980" required="">
           </div>
           <div class="input-field col s12">
             <label for="email" class="active" style="color: black;">Email</label>
-            <input class="validate" type="email" value="" name="email" placeholder="ex: Dupond1990@gmail.com" required="">
+            <input class="validate" type="email" value="" name="mail" placeholder="ex: Dupond1990@gmail.com" required="">
           </div>
 
           <div class="input-field col s12">
             <label for="Password" class="active" style="color: black;">Password</label>
-            <input class="validate" type="Password" value="" name="Password" id="p1" placeholder="Mot de Passe" required="">
+            <input class="validate" type="Password" value="" name="mdp" id="p1" placeholder="Mot de Passe" required="">
             <input class="validate" type="Password" placeholder="Mot de Passe" onfocus="validatePassword(document.getElementById('p1'), this);" oninput="validatePassword(document.getElementById('p1'), this);" required="">
           </div>
 

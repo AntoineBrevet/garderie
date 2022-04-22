@@ -23,16 +23,16 @@
         </div>
         <div class="row" id="blanc">
             <div class="col l12 m12 s12" id="rectangle">
-                <form method="GET">
+                <form method="post">
 
                     <div class="input-field col s12">
                         <label for="email" class="active" style="color: black;">Email</label>
-                        <input class="validate" type="email" value="" name="email" placeholder="ex: Dupond1990@gmail.com" required="">
+                        <input class="validate" type="email" value="" name="mail" placeholder="ex: Dupond1990@gmail.com" required="">
                     </div>
 
                     <div class="input-field col s12">
                         <label for="Password" class="active" style="color: black;">Password</label>
-                        <input class="validate" type="Password" value="" name="Password" id="p1" placeholder="Mot de Passe" required="">
+                        <input class="validate" type="Password" value="" name="mdp" id="p1" placeholder="Mot de Passe" required="">
                         <input class="validate" type="Password" placeholder="Mot de Passe" onfocus="validatePassword(document.getElementById('p1'), this);" oninput="validatePassword(document.getElementById('p1'), this);" required="">
                     </div>
 
