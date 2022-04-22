@@ -13,7 +13,7 @@
 
 <body>
 
-  <div class="container" style="background: linear-gradient(115deg, #1f73b4, #57c5cd);">
+  <div class="container">
     <div class="row">
       <div class="col s12 m12 l12" style="text-align:center; color:white;">
         <i class="large material-icons">add_circle</i>

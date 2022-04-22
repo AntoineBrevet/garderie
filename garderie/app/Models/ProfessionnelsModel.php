@@ -14,7 +14,7 @@ class ProfessionnelsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom','adresse','siret','description'];
+    protected $allowedFields    = ['nom', 'adresse', 'siret', 'description'];
 
     // Dates
     protected $useTimestamps = false;
@@ -40,5 +40,8 @@ class ProfessionnelsModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    
+    public function findByEmail(string $mail)
+    {
+        return $this->where(['mail' => $mail])->first();
+    }
 }

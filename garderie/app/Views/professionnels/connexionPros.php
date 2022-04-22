@@ -7,7 +7,7 @@
     <title>Connexion</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="<?= base_url(); ?>/css/style.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>/css/stylePros.css" rel="stylesheet">
     <script type="text/javascript" src="<?= base_url(); ?>/js/main.js"></script>
 </head>
 

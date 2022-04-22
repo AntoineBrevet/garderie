@@ -13,12 +13,19 @@ class Professionnels extends Migration
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
-                'auto_increment' => true,   
+                'auto_increment' => true,
             ],
-            'nomPro'          => [
+            'nomPros'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
-            ],  
+            ],
+            'prenomPros'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+            ],
+            'dateNaissancePros' => [
+                'type' => 'DATE',
+            ],
             'mail'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
@@ -39,15 +46,15 @@ class Professionnels extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255'
             ],
-          'description'       => [
+            'description'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255'
             ],
-            'deleted_at'=> [
-                'type'=> 'DATETIME',
+            'deleted_at' => [
+                'type' => 'DATETIME',
                 'null' => true,
             ],
-          
+
 
 
             'created_at datetime default current_timestamp',
@@ -59,6 +66,6 @@ class Professionnels extends Migration
 
     public function down()
     {
-        $this->forge->dropTable('professionnels');   
+        $this->forge->dropTable('professionnels');
     }
 }
