@@ -36,6 +36,7 @@ $routes->get('utilisateurs', 'Utilisateurs::index');
 $routes->get('professionnels', 'Professionnels::index');
 $routes->get('payment-stripe', 'StripeController::index');
 
+
 // Routes Model
 $routes->match(['get', 'post'], 'inscription', 'Utilisateurs::inscription');
 $routes->match(['get', 'post'], 'connexion', 'Utilisateurs::connexion');
