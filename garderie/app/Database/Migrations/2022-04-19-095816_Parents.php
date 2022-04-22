@@ -15,6 +15,9 @@ class Parents extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,   
             ],
+            'dateNaissanceParents' => [
+                'type' => 'DATE',
+            ],
             'nbr_enfants'          => [
                 'type'           => 'INT',
                 'constraint'     => 11,

@@ -28,6 +28,9 @@ class Enfants extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'dateNaissance' => [
+                'type' => 'DATE',
+            ],
             'age'          => [
                 'type'       => 'INT',
                 'constraint' => 11,
