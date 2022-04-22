@@ -17,7 +17,7 @@
 <body>
 
     <?php include_once('template/header.php') ?>
-    <div class="container-fluid text-center contenu">
+    <div>
         <?= $this->renderSection('content') ?>
     </div>
 
