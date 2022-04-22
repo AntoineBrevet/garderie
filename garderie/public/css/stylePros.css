@@ -6,7 +6,7 @@ html{
 }
 
 body{
-    background: linear-gradient(115deg, #717272, #282d2d);
+  background: linear-gradient(115deg, #047206, #7bd97d);
 }
 
 #nom{
@@ -14,10 +14,10 @@ body{
 }
 
 .btn{
-  background-color: #2b2b2c;
+  background-color: rgb(4, 114, 6, .5);
 }
 .btn:hover{
-  background-color: #2b2b2c;
+  background-color: rgb(4, 114, 6, .5);
 }
 
 header{
