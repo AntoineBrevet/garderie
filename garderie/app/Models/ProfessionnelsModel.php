@@ -14,7 +14,7 @@ class ProfessionnelsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom', 'adresse', 'siret', 'description'];
+    protected $allowedFields    = ['nomPros', 'prenomPros', 'adresse', 'siret', 'tel', 'description', 'mdp', 'mail'];
 
     // Dates
     protected $useTimestamps = false;

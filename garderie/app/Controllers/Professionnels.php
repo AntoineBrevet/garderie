@@ -61,10 +61,10 @@ class Professionnels extends BaseController
                 if (password_verify($passwordPost, $professionnels["mdp"])) {
                     session()->set([
                         "mail" => $professionnels["mail"],
-                        "prenomParents" => $professionnels["prenomParents"],
+                        "prenomPros" => $professionnels["prenomPros"],
                         "id" => $professionnels["id"]
                     ]);
-                    return redirect()->to('/');
+                    return redirect()->to('/professionnels');
                 } else {
                     echo 'Le mot de passe est invalide.';
                 }
@@ -81,26 +81,29 @@ class Professionnels extends BaseController
         if ($this->request->getMethod() === 'post' && $this->validate([
             'nomPros' => 'required|min_length[3]|max_length[255]',
             'prenomPros' => 'required|min_length[3]|max_length[255]',
-            'mail' => 'required|valid_email|is_unique[parents.mail]',
+            'mail' => 'required|valid_email|is_unique[professionnels.mail]',
             'dateNaissancePros' => 'required',
             'mdp' => 'required|min_length[6]|max_length[255]',
             'adresse' => 'required',
             'tel' => 'required',
+            'siret' => 'required',
 
         ])) {
             $professionnels = [
-                "nomPros" => $this->request->getPost("nomParents"),
-                "prenomPros" => $this->request->getPost("prenomParents"),
+                "nomPros" => $this->request->getPost("nomPros"),
+                "prenomPros" => $this->request->getPost("prenomPros"),
                 "mail" => $this->request->getPost("mail"),
-                "dateNaissancePros" => $this->request->getPost("dateNaissanceParents"),
+                "dateNaissancePros" => $this->request->getPost("dateNaissancePros"),
                 "mdp" => password_hash($this->request->getPost("mdp"), PASSWORD_DEFAULT),
                 "adresse" => $this->request->getPost("adresse"),
                 "tel" => $this->request->getPost("tel"),
+                "siret" => $this->request->getPost("siret"),
+
 
             ];
 
             $this->professionnels->insert($professionnels);
-            return redirect()->to('/');
+            return redirect()->to('/professionnels');
         } else {
             echo view("professionnels/inscriptionPros", [
                 'validation' => $this->validator

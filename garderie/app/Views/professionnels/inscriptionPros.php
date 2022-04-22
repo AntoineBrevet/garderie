@@ -27,12 +27,12 @@
 
                     <div class="input-field col s6">
                         <label for="prenom" class="active" style="color: black;">Prénom</label>
-                        <input class="validate invalid" name="prenomParents" type="text" value="" id="prenomParents" placeholder="François" required="">
+                        <input class="validate invalid" name="prenomPros" type="text" value="" id="prenomPros" placeholder="François" required="">
                     </div>
 
                     <div class="input-field col s6">
                         <label for="nom" class="active" style="color: black;">Nom de famille</label>
-                        <input class="validate invalid" type="text" value="" name="nomParents" id="nomParents" placeholder="Pignon" required="" text-capitalize="">
+                        <input class="validate invalid" type="text" value="" name="nomPros" id="nomPros" placeholder="Pignon" required="" text-capitalize="">
                     </div>
 
                     <div class="input-field col s6">
@@ -52,7 +52,7 @@
 
                     <div class="input-field col s12">
                         <label for="siret" class="active" style="color: black;">Numero de Siret</label>
-                        <input class="validate" type="number" value="" name="siret" id="siret" placeholder="Numero de Siret" required="">
+                        <input class="validate" type="text" value="" name="siret" id="siret" placeholder="Numero de Siret" required="">
                     </div>
 
                     <div class="input-field col s12">
