@@ -97,3 +97,61 @@ svg text {
     border-radius: 10px;
     color: white;
 }
+
+.sec2 button:hover {
+    background-color: #075b07;
+}
+
+
+/*-------------sec3----------------*/
+
+.sec3 {
+    margin: 50px auto;
+}
+
+.sec3 .container #myCarousel {
+    background: linear-gradient(115deg, #57c5cd, #1f73b4);
+}
+
+.carousel-inner>.item>img,
+.carousel-inner>.item>a>img {
+    width: 70%;
+    margin: auto;
+    height: 600px;
+}
+
+.carousel-caption h3,
+.carousel-caption p {
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+@media (max-width:1000px) {
+    svg text {
+        font-size: 90px;
+    }
+}
+
+@media (max-width:700px) {
+    svg text {
+        font-size: 70px;
+    }
+    .sec1-p {
+        margin-top: 70px;
+        width: 90%;
+        padding: 20px;
+        text-align: justify;
+    }
+    .sec2 {
+        flex-direction: column;
+        height: auto;
+        padding: 20px 5px;
+    }
+    .carousel-inner>.item>img,
+    .carousel-inner>.item>a>img {
+        width: 70%;
+        margin: auto;
+        height: 400px;
+    }
+}
