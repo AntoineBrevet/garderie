@@ -24,7 +24,7 @@ class Utilisateurs extends BaseController
     public function index()
     {
         $data = [
-            "data" => $this->enfants->call_enfant_infos()
+            "data" => $this->enfants->getEnfantsBySessionId()
         ];
         return view('utilisateurs/index',$data);
     }
