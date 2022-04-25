@@ -38,6 +38,7 @@ nav {
     background: linear-gradient(115deg, #047206, #7bd97d);
     display: flex;
     justify-content: space-between;
+    z-index: 1000;
 }
 
 nav ul {

@@ -1,0 +1,161 @@
+.slideshow {
+    list-style: none;
+    z-index: 1;
+}
+
+.slideshow li span {
+    width: 40%;
+    height: 50%;
+    position: absolute;
+    top: 200px;
+    right: 70px;
+    color: transparent;
+    background-size: 400px;
+    /*border: 5px solid black;*/
+    border-radius: 50%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-animation: imageAnimation 10s linear infinite 0s;
+    -moz-animation: imageAnimation 10s linear infinite 0s;
+    animation: imageAnimation 10s linear infinite 0s;
+}
+
+.slideshow li:nth-child(1) span {
+    background-image: url(../img/job-interview.svg);
+}
+
+.slideshow li:nth-child(2) span {
+    background-image: url(../img/womenjob.png);
+    -webkit-animation-delay: 3s;
+    -moz-animation-delay: 3s;
+    animation-delay: 3s;
+    background-color: aliceblue;
+    width: 25%;
+}
+
+.slideshow li:nth-child(3) span {
+    background-image: url(../img/R.png);
+    -webkit-animation-delay: 6s;
+    -moz-animation-delay: 6s;
+    animation-delay: 6s;
+}
+
+@-webkit-keyframes imageAnimation {
+    0% {
+        opacity: 0;
+        -webkit-animation-timing-function: ease-in;
+    }
+    12.5% {
+        opacity: 1;
+        -webkit-animation-timing-function: ease-out;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes imageAnimation {
+    0% {
+        opacity: 0;
+        -moz-animation-timing-function: ease-in;
+    }
+    12.5% {
+        opacity: 1;
+        -moz-animation-timing-function: ease-out;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes imageAnimation {
+    0% {
+        opacity: 0;
+        -webkit-animation-timing-function: ease-in;
+        -moz-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+    12.5% {
+        opacity: 1;
+        -webkit-animation-timing-function: ease-out;
+        -moz-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/*----------responsive-------*/
+
+@media (max-width:1000px) {
+    .sec1 {
+        height: auto;
+    }
+    .sec2 {
+        height: auto;
+    }
+    .slideshow li:nth-child(2) span {
+        width: 250px;
+        height: 250px;
+        top: 110px;
+        right: 100px;
+    }
+}
+
+@media (max-width:700px) {
+    .sec1 {
+        height: auto;
+    }
+    .sec1-container {
+        width: 90%;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .slideshow li span {
+        width: 100%;
+        height: 50%;
+        text-align: center;
+        top: 70px;
+        right: 0px;
+        color: transparent;
+        background-size: 300px;
+        /*border: 5px solid black;*/
+        border-radius: 50%;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        opacity: 0;
+        z-index: 0;
+    }
+    .slideshow li:nth-child(2) span {
+        width: 250px;
+        height: 250px;
+        top: 110px;
+        right: 100px;
+    }
+}

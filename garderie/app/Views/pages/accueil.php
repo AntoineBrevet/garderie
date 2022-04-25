@@ -2,6 +2,8 @@
 
 <?= $this->section('css') ?>
 <link href="<?= base_url(); ?>/css/accueil.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -27,16 +29,16 @@
 </section>
 <section class="sec2">
     <title></title>
-    <div>
+    <div data-aos="fade-up-right" data-aos-duration="2000">
         <img src="<?= base_url()  ?>/img/sec2.png" alt='sec2'>
     </div>
-    <div>
+    <div data-aos="fade-up-left" data-aos-duration="2000">
         <p>Découvrez notre site et nos services. <br>Une équipe à votre disposition 7/7</p>
         <button>Contactez Nous</button>
     </div>
 </section>
 
-<section class="sec3">
+<section class="sec3" data-aos="zoom-in-up" data-aos-duration="2000">
     <div class="container">
         <br>
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -102,5 +104,8 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('js') ?>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 <?= $this->endSection() ?>

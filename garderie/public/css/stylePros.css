@@ -1,34 +1,46 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,700");
-
-
-html{
-  min-height: 100%;
+html {
+    min-height: 100%;
 }
 
+<<<<<<< Updated upstream
 body{
   background: linear-gradient(115deg, #047206, #7bd97d);
+=======
+body {
+    background: linear-gradient(115deg, #047206, #7bd97d);
+>>>>>>> Stashed changes
 }
 
-#nom{
-  text-transform: uppercase;
+#nom {
+    text-transform: uppercase;
 }
 
+<<<<<<< Updated upstream
 .btn{
   background-color: rgb(4, 114, 6, .5);
 }
 .btn:hover{
   background-color: rgb(4, 114, 6, .5);
+=======
+.btn {
+    background-color: #7bd97d;
+>>>>>>> Stashed changes
 }
 
-header{
-  padding: 7em 5em 4em 5em;
+.btn:hover {
+    background-color: #047206;
 }
 
-h1{
-  font-family: 'Source Sans Pro', Arial, sans-serif;
-
+header {
+    padding: 7em 5em 4em 5em;
 }
-#blanc{
-  max-width: 50%;
-  min-width: 50%;
+
+h1 {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+}
+
+#blanc {
+    max-width: 50%;
+    min-width: 50%;
 }
