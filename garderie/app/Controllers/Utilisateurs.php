@@ -25,6 +25,10 @@ class Utilisateurs extends BaseController
     {
         return view('utilisateurs/index');
     }
+    public function utilisateursIndex()
+    {
+        return view('utilisateurs/utilisateursIndex');
+    }
     public function connexion()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
@@ -43,7 +47,7 @@ class Utilisateurs extends BaseController
                         "prenomParents" => $parents["prenomParents"],
                         "id" => $parents["id"]
                     ]);
-                    return redirect()->to('/');
+                    return redirect()->to('utilisateurs/utilisateursIndex');
                 } else {
                     echo 'Le mot de passe est invalide.';
                 }
@@ -79,7 +83,7 @@ class Utilisateurs extends BaseController
             ];
 
             $this->parents->insert($parents);
-            return redirect()->to('/');
+            return redirect()->to('utilisateurs/utilisateursIndex');
         } else {
             echo view("utilisateurs/inscription", [
                 'validation' => $this->validator

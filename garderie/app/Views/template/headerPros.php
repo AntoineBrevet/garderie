@@ -9,7 +9,7 @@
     <ul class="links">
 
         <li><a href="<?= base_url(); ?>/">Mode utilisateurs</a></li>
-        <li><a href=""><img src="<?= base_url()  ?>/img/create.png" alt="">Créer une annonce</a></li>
+        <li><a href=""><img src="<?= base_url()  ?>/create" alt="">Créer une annonce</a></li>
         <li><a href=""><img src="<?= base_url()  ?>/img/profile.png" alt="">Profile</a></li>
         <li><a href="<?= base_url(); ?>/connexionPros">Connexion</a></li>
         <li><a href="<?= base_url(); ?>/inscriptionPros">Inscription</a></li>

@@ -34,6 +34,24 @@ class Professionnels extends BaseController
 
         return view('professionnels/index', $data);
     }
+    public function prosIndex()
+    {
+        return view('professionnels/prosIndex');
+    }
+    private function generateNewsDataFromPost()
+    {
+        return [
+            "titre" => $this->request->getPost('titre'),
+            "date" => $this->request->getPost('date'),
+            "debut" => $this->request->getPost('debut'),
+            "fin" => $this->request->getPost('fin'),
+            "nbr_place" => $this->request->getPost('title'),
+            "debut_session" => $this->request->getPost('debut_session'),
+            "fin_session" => $this->request->getPost('fin_session'),
+            "creche_id" => $this->request->getPost('creche_id'),
+
+        ];
+    }
 
     public function splitByHour($data)
     // prends le tableau entier et le slit par heure
@@ -64,7 +82,7 @@ class Professionnels extends BaseController
                         "prenomPros" => $professionnels["prenomPros"],
                         "id" => $professionnels["id"]
                     ]);
-                    return redirect()->to('/professionnels');
+                    return redirect()->to('prosIndex');
                 } else {
                     echo 'Le mot de passe est invalide.';
                 }
@@ -103,7 +121,7 @@ class Professionnels extends BaseController
             ];
 
             $this->professionnels->insert($professionnels);
-            return redirect()->to('/professionnels');
+            return redirect()->to('prosIndex');
         } else {
             echo view("professionnels/inscriptionPros", [
                 'validation' => $this->validator
@@ -114,5 +132,18 @@ class Professionnels extends BaseController
     {
         session()->destroy();
         return redirect()->to('/');
+    }
+
+    function create()
+    {
+        if ($this->request->getMethod() === 'post') {
+
+
+            if (!empty($this->request->getPost('debut')) && !empty($this->request->getPost('fin')) && !empty($this->request->getPost('titre'))) {
+                $professionnels = $this->generateNewsDataFromPost();
+                $this->ProfessionnelsModel->insert($professionnels);
+            }
+            return view('professionnels/prosIndex');
+        }
     }
 }

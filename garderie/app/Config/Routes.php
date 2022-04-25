@@ -35,6 +35,8 @@ $routes->get('/', 'Home::index');
 $routes->get('utilisateurs', 'Utilisateurs::index');
 $routes->get('professionnels', 'Professionnels::index');
 $routes->get('payment-stripe', 'StripeController::index');
+$routes->get('prosIndex', 'Professionnels::prosIndex');
+$routes->get('utilisateursIndex', 'Utilisateurs::utilisateursIndex');
 
 
 // Routes Model
@@ -42,7 +44,9 @@ $routes->match(['get', 'post'], 'inscription', 'Utilisateurs::inscription');
 $routes->match(['get', 'post'], 'connexion', 'Utilisateurs::connexion');
 $routes->match(['get', 'post'], 'inscriptionPros', 'Professionnels::inscriptionPros');
 $routes->match(['get', 'post'], 'connexionPros', 'Professionnels::connexionPros');
+$routes->match(['get', 'post'], 'create', 'Professionnels::create');
 $routes->get('deconnexion', 'Utilisateurs::deconnexion');
+
 
 
 /*
