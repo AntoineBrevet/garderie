@@ -33,7 +33,6 @@
                     <div class="input-field col s12">
                         <label for="Password" class="active" style="color: black;">Password</label>
                         <input class="validate" type="Password" value="" name="mdp" id="p1" placeholder="Mot de Passe" required="">
-                        <input class="validate" type="Password" placeholder="Mot de Passe" onfocus="validatePassword(document.getElementById('p1'), this);" oninput="validatePassword(document.getElementById('p1'), this);" required="">
                     </div>
 
                     <div class="input-field col s12">
