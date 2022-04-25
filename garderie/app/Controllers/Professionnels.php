@@ -143,7 +143,9 @@ class Professionnels extends BaseController
                 $professionnels = $this->generateNewsDataFromPost();
                 $this->ProfessionnelsModel->insert($professionnels);
             }
-            return view('professionnels/create');
+            return redirect()->to('/');
+        } else {
+            echo view("professionnels/create");
         }
     }
     function profil()
