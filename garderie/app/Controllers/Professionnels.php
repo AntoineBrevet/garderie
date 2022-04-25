@@ -143,7 +143,11 @@ class Professionnels extends BaseController
                 $professionnels = $this->generateNewsDataFromPost();
                 $this->ProfessionnelsModel->insert($professionnels);
             }
-            return view('professionnels/prosIndex');
+            return view('professionnels/create');
         }
+    }
+    function profil()
+    {
+        return view('professionnels/profil');
     }
 }
