@@ -44,4 +44,6 @@ class ParentsModel extends Model
     {
         return $this->where(['mail' => $mail])->first();
     }
+
+    
 }

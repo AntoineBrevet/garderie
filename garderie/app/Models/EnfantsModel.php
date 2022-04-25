@@ -39,4 +39,11 @@ class EnfantsModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getEnfantsBySessionId() {
+        return $this->select("*")
+            ->join('parents', 'enfants.parents_id = parents.id')
+            // ->where(['parents_id' => session("id")])
+            ->findAll();
+    }
 }

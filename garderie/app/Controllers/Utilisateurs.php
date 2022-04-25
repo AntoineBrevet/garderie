@@ -23,7 +23,10 @@ class Utilisateurs extends BaseController
 
     public function index()
     {
-        return view('utilisateurs/index');
+        $data = [
+            "data" => $this->enfants->call_enfant_infos()
+        ];
+        return view('utilisateurs/index',$data);
     }
     public function utilisateursIndex()
     {

@@ -5,6 +5,10 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+<?php
+var_dump($data);
+?>
+
 <h1>Page Utilisateur</h1>
 <?= $this->endSection() ?>
 
