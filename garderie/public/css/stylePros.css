@@ -3,29 +3,19 @@ html {
     min-height: 100%;
 }
 
-<<<<<<< Updated upstream
 body{
   background: linear-gradient(115deg, #047206, #7bd97d);
-=======
-body {
-    background: linear-gradient(115deg, #047206, #7bd97d);
->>>>>>> Stashed changes
 }
 
 #nom {
     text-transform: uppercase;
 }
 
-<<<<<<< Updated upstream
 .btn{
   background-color: rgb(4, 114, 6, .5);
 }
 .btn:hover{
   background-color: rgb(4, 114, 6, .5);
-=======
-.btn {
-    background-color: #7bd97d;
->>>>>>> Stashed changes
 }
 
 .btn:hover {
