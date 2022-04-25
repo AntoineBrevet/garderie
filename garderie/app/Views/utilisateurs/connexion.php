@@ -15,8 +15,8 @@
 
     <div class="container">
         <div class="row">
-            <div class="col s12 m12 l12" style="text-align:center; color:white;">
-                <i class="large material-icons">add_circle</i>
+            <div class="col s12 m12 l12" style="text-align:center; color:white;"><a href="<?= base_url(); ?>/">
+                    <img src="<?= base_url();  ?>/img/garderie.png" width="250px" alt=""></a>
                 <h1>connexion</h1>
                 <p>Bienvenue sur la page de Connexion, Connecte toi des maintenant!</p>
             </div>
@@ -32,8 +32,7 @@
 
                     <div class="input-field col s12">
                         <label for="Password" class="active" style="color: black;">Password</label>
-                        <input class="validate" type="Password" value="" name="mdp" id="p1" placeholder="Mot de Passe" required="">
-                        <input class="validate" type="Password" placeholder="Mot de Passe" onfocus="validatePassword(document.getElementById('p1'), this);" oninput="validatePassword(document.getElementById('p1'), this);" required="">
+                        <input class="validate" type="Password" value="" name="mdp" placeholder="Mot de Passe" required="">
                     </div>
 
                     <div class="input-field col s12">

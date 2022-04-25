@@ -15,8 +15,8 @@
 
     <div class="container">
         <div class="row">
-            <div class="col s12 m12 l12" style="text-align:center; color:white;">
-                <i class="large material-icons">add_circle</i>
+            <div class="col s12 m12 l12" style="text-align:center; color:white;"><a href="<?= base_url(); ?>/professionnels">
+                    <img src="<?= base_url();  ?>/img/garderie.png" width="250px" alt=""></a>
                 <h1>connexion</h1>
                 <p>Bienvenue sur la page de Connexion, Connecte toi des maintenant!</p>
             </div>
