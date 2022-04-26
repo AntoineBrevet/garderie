@@ -41,12 +41,13 @@ class ReservationModel extends Model
     protected $afterDelete    = [];
 
     public function call_reservation_infos() {
-        return $this->select("age, sexe, date, debut, fin, debut_session, fin_session, enfants.nom, enfants.prenom, recupere.nomRecup, recupere.prenomRecup, allergies, medicaments, parents.prenomParents, parents.nomParents, parents.tel, recupere.tel")
+        return $this->select("*")
             ->join('creneau', 'reservation.id_creneau = creneau.id')
             ->join('professionnels', 'creneau.creche_id = professionnels.id')
             ->join('enfants', 'reservation.id_enfant = enfants.id')
             ->join('recupere', 'enfants.id = recupere.id_enfant')
             ->join('parents', 'enfants.parents_id = parents.id')
+            ->where(['professionnels.id' => ' '])
             ->findAll();
     }
 }

@@ -9,7 +9,7 @@ class Enfants extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
+            'idEnfants'          => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
@@ -20,23 +20,23 @@ class Enfants extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
-            'nom'          => [
+            'nomEnfants'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],
-            'prenom'       => [
+            'prenomEnfants'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'dateNaissance' => [
+            'dateNaissanceEnfants' => [
                 'type' => 'DATE',
             ],
-            'age'          => [
+            'ageEnfants'          => [
                 'type'       => 'INT',
                 'constraint' => 11,
                 'unsigned'       => true,
             ],
-            'sexe'       => [
+            'sexeEnfants'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
@@ -55,8 +55,8 @@ class Enfants extends Migration
             'created_at datetime default current_timestamp',
             'updated_at datetime default null on update current_timestamp'
         ]);
-        $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('parents_id', 'parents', 'id');
+        $this->forge->addKey('idEnfants', true);
+        $this->forge->addForeignKey('parents_id', 'parents', 'idParents');
         $this->forge->createTable('enfants');
     }
 

@@ -9,7 +9,7 @@ class Professionnels extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
+            'idPros'          => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
@@ -26,19 +26,19 @@ class Professionnels extends Migration
             'dateNaissancePros' => [
                 'type' => 'DATE',
             ],
-            'mail'          => [
+            'mailPros'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],
-            'mdp'          => [
+            'mdpPros'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],
-            'tel'          => [
+            'telPros'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],
-            'adresse'       => [
+            'adressePros'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255'
             ],
@@ -46,7 +46,7 @@ class Professionnels extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255'
             ],
-            'description'       => [
+            'descriptionPros'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255'
             ],
@@ -60,7 +60,7 @@ class Professionnels extends Migration
             'created_at datetime default current_timestamp',
             'updated_at datetime default null on update current_timestamp'
         ]);
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('idPros', true);
         $this->forge->createTable('professionnels');
     }
 

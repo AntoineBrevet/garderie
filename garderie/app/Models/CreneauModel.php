@@ -39,4 +39,11 @@ class CreneauModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function call_creneau_by_pro($idpro){
+           return $this->select("*") 
+            ->join('professionnels', 'creneau.creche_id = professionnels.id')
+            ->where(['professionnels.id' => $idpro]) 
+            ->findAll();
+    }
 }

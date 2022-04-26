@@ -44,4 +44,10 @@ class ProfessionnelsModel extends Model
     {
         return $this->where(['mail' => $mail])->first();
     }
+
+    public function call_pro_infos(){
+        return $this->select("*")
+        ->join('creneau', 'creneau.creche_id = professionnels.id')
+        ->findAll();
+    }
 }

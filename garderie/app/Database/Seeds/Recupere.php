@@ -12,12 +12,12 @@ class Recupere extends Seeder
             'id_enfant' => 1,
             'nomRecup' => 'M.',
             'prenomRecup' => 'One',
-            'tel' => 123456789
+            'telRecup' => 123456789
         ],
         [
             'id_enfant' => 2,
             'nomRecup' => 'Mm.',
-            'tel' => 123456789,
+            'telRecup' => 123456789,
             'prenomRecup' => 'Two',
         ]];
 

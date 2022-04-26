@@ -9,7 +9,7 @@ class Parents extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
+            'idParents'          => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
@@ -31,19 +31,19 @@ class Parents extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'adresse'       => [
+            'adresseParents'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255'
             ],
-            'mdp'          => [
+            'mdpParents'          => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'mail'          => [
+            'mailParents'          => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'tel'          => [
+            'telParents'          => [
                 'type'       => 'INT',
                 'constraint' => 11,
                 'unsigned'       => true,
@@ -56,7 +56,7 @@ class Parents extends Migration
             'created_at datetime default current_timestamp',
             'updated_at datetime default null on update current_timestamp'
         ]);
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('idParents', true);
         $this->forge->createTable('parents');
     }
 

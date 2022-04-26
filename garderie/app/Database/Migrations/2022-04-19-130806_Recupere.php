@@ -8,7 +8,7 @@ class Recupere extends Migration
 {
     public function up(){
         $this->forge->addField([
-            'id'          => [
+            'idRecup'          => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
@@ -19,7 +19,7 @@ class Recupere extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
-            'tel'          => [
+            'telRecup'          => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
@@ -39,8 +39,8 @@ class Recupere extends Migration
             'created_at datetime default current_timestamp',
             'updated_at datetime default null on update current_timestamp'
         ]);
-        $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('id_enfant', 'enfants', 'id');
+        $this->forge->addKey('idRecup', true);
+        $this->forge->addForeignKey('id_enfant', 'enfants', 'idEnfants');
         $this->forge->createTable('recupere');
         }
         public function down()

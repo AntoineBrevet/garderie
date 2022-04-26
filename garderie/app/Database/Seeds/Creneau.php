@@ -37,6 +37,15 @@ class Creneau extends Seeder
             'debut_session' => 8,
             'fin_session' =>11,
             'nbr_place_restant' => 24,
+        ], [
+            'date' =>  date('d-m-y'),
+            'debut' => 10,
+            'fin' => 11,
+            'creche_id' => 2,
+            'nbr_place' => 25,
+            'debut_session' => 8,
+            'fin_session' =>12,
+            'nbr_place_restant' => 24,
         ]];
 
         foreach($datas as $data){

@@ -12,6 +12,26 @@
 <div class=" sec1">
 
 
+
+<?php $i = 1;
+
+foreach($infos_reserv as $info_reserv){
+    echo 'Creneau ' . $i .' : Infos<br>';
+    echo $info_reserv['nom'] . ' ' . $info_reserv['prenom'] .'<br>';
+    echo $info_reserv['nomParents'] . ' ' . $info_reserv['prenomParents']. '-' . $info_reserv['tel'] .'<br>';
+    echo $info_reserv['nomRecup'] . ' ' . $info_reserv['prenomRecup']. '-' . $info_reserv['telRecup'].'<br>';
+    echo '<hr>';
+    $i++;
+};
+
+foreach($infos_pro as $info_pro){
+    echo 'Pro Infos <br>';
+    // var_dump($info_pro);
+    echo $info_pro['nomPros'] . '<br>'; 
+    echo $info_pro['debut'].'-'.$info_pro['fin'].'<br>'; 
+}
+?>
+<section class="sec1">
     <div class="sec1-container">
 
         <div class="sec1-p">
@@ -138,14 +158,6 @@
 
 </section>
 
-<?php
-
-foreach ($infos as $value) {
-    echo 'le ' . $value["date"] . ' de ' . $value["debut"] . 'h - ' . $value["fin"] . 'h || Session de ' . $value["debut_session"] . ' a ' . $value["fin_session"] . '<br>';
-    echo $value["nom"] . ' ' . $value["prenom"] . ' - ' . $value["age"] . ' ans - ' . $value["sexe"] . '<br>';
-    echo '<hr>';
-}
-?>
 <?= $this->endSection() ?>
 
 
