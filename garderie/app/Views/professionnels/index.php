@@ -17,8 +17,8 @@
 
 foreach($infos_reserv as $info_reserv){
     echo 'Creneau ' . $i .' : Infos<br>';
-    echo $info_reserv['nom'] . ' ' . $info_reserv['prenom'] .'<br>';
-    echo $info_reserv['nomParents'] . ' ' . $info_reserv['prenomParents']. '-' . $info_reserv['tel'] .'<br>';
+    echo $info_reserv['nomEnfants'] . ' ' . $info_reserv['prenomEnfants'] .'<br>';
+    echo $info_reserv['nomParents'] . ' ' . $info_reserv['prenomParents']. '-' . $info_reserv['telParents'] .'<br>';
     echo $info_reserv['nomRecup'] . ' ' . $info_reserv['prenomRecup']. '-' . $info_reserv['telRecup'].'<br>';
     echo '<hr>';
     $i++;
