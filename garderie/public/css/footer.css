@@ -78,7 +78,7 @@ footer .container-F {
     color: black;
 }
 
-a:hover {
+footer a, footer a:hover {
     color: white;
     text-decoration: none;
 }

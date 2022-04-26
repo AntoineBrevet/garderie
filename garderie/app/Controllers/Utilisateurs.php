@@ -23,10 +23,7 @@ class Utilisateurs extends BaseController
 
     public function index()
     {
-        $data = [
-            "data" => $this->enfants->getEnfantsBySessionId()
-        ];
-        return view('utilisateurs/index', $data);
+        return view('utilisateurs/index');
     }
     public function utilisateursIndex()
     {
@@ -97,5 +94,71 @@ class Utilisateurs extends BaseController
     {
         session()->destroy();
         return redirect()->to('/');
+    }
+
+    public function showEnfants()
+    {
+        $data = [
+            "data" => $this->enfants->getEnfantsBySessionId()
+        ];
+        echo view("utilisateurs/showEnfants", $data);
+    }
+    public function createEnfants()
+    {
+        if ($this->request->getMethod() === 'post' && $this->validate([
+            'nomEnfants' => 'required',
+            'prenomEnfants' => 'required',
+            'sexeEnfants' => 'required',
+            'dateNaissanceEnfants' => 'required',
+            'allergies' => 'required',
+            'medicaments' => 'required'
+        ])) {
+            
+            $enfants = [
+                "nomEnfants" => $this->request->getPost("nomEnfants"),
+                "prenomEnfants" => $this->request->getPost("prenomEnfants"),
+                "sexeEnfants" => $this->request->getPost("sexeEnfants"),
+                "dateNaissanceEnfants" => $this->request->getPost("dateNaissanceEnfants"),
+                "allergies" => $this->request->getPost("allergies"),
+                "medicaments" => $this->request->getPost("medicaments"),
+                "parents_id" => session("id")
+            ];
+            $this->enfants->insert($enfants);
+            return redirect()->to('showEnfants');
+        } else {
+            echo view("utilisateurs/createEnfants");
+        }
+    }
+    public function updateEnfants($id)
+    {
+        if ($this->request->getMethod() === 'post' && $this->validate([
+            'nomEnfants' => 'required',
+            'prenomEnfants' => 'required',
+            'sexeEnfants' => 'required',
+            'dateNaissanceEnfants' => 'required',
+            'allergies' => 'required',
+            'medicaments' => 'required'
+        ])) {            
+            $enfants = [
+                "nomEnfants" => $this->request->getPost("nomEnfants"),
+                "prenomEnfants" => $this->request->getPost("prenomEnfants"),
+                "sexeEnfants" => $this->request->getPost("sexeEnfants"),
+                "dateNaissanceEnfants" => $this->request->getPost("dateNaissanceEnfants"),
+                "allergies" => $this->request->getPost("allergies"),
+                "medicaments" => $this->request->getPost("medicaments")
+            ];
+            $this->enfants->update(['id' => $id], $enfants);
+            return redirect()->to('showEnfants');
+        } else {
+            $data = [
+                "data" => $this->enfants->find($id)
+            ];
+            echo view("utilisateurs/updateEnfants", $data);
+        }
+    }
+    public function deleteEnfants($id)
+    {
+        $this->enfants->delete($id);
+        return redirect()->to('showEnfants');
     }
 }
