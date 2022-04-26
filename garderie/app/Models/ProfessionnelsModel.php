@@ -8,7 +8,7 @@ class ProfessionnelsModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'professionnels';
-    protected $primaryKey       = 'idPros';
+    protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
