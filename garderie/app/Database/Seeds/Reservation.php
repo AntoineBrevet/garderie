@@ -19,6 +19,9 @@ class Reservation extends Seeder
         [
             'id_enfant' => 2,
             'id_creneau' => 4,
+        ],[
+            'id_enfant' => 3,
+            'id_creneau' => 4,
         ]];
 
         foreach($datas as $data){ 

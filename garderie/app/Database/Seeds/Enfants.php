@@ -10,22 +10,31 @@ class Enfants extends Seeder
     {
         $datas =[ [
             'parents_id' => 1,
-            'nom'    => 'Lepremier',
-            'prenom' => 'Lucas',
-            'age' => 4,
-            'sexe' => 'masculin',
+            'nomEnfants'    => 'Lepremier',
+            'prenomEnfants' => 'Lucas',
+            'ageEnfants' => 4,
+            'sexeEnfants' => 'masculin',
             'allergies' => 'aucune',
             'medicaments' => 'aucun',
         ]
         ,
         [
             'parents_id' => 1,
-            'nom'    => 'Lepremier',
-            'prenom' => 'Jade',
-            'age' => 5,
-            'sexe' => 'feminin',
+            'nomEnfants'    => 'Lepremier',
+            'prenomEnfants' => 'Jade',
+            'ageEnfants' => 5,
+            'sexeEnfants' => 'feminin',
             'allergies' => 'pollen',
             'medicaments' => 'cetirizine matin/soir'
+        ],      
+        [
+            'parents_id' => 2,
+            'nomEnfants'    => 'Ledeuxieme',
+            'prenomEnfants' => 'Axelle',
+            'ageEnfants' => 7,
+            'sexeEnfants' => 'feminin',
+            'allergies' => 'lait',
+            'medicaments' => '//'
         ]];
 
         foreach($datas as $data){
