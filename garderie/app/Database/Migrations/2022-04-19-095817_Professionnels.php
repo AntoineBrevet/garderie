@@ -9,7 +9,7 @@ class Professionnels extends Migration
     public function up()
     {
         $this->forge->addField([
-            'idPros'          => [
+            'id'          => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
@@ -60,7 +60,7 @@ class Professionnels extends Migration
             'created_at datetime default current_timestamp',
             'updated_at datetime default null on update current_timestamp'
         ]);
-        $this->forge->addKey('idPros', true);
+        $this->forge->addKey('id', true);
         $this->forge->createTable('professionnels');
     }
 

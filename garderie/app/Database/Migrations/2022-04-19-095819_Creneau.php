@@ -35,7 +35,7 @@ class Creneau extends Migration
                 'constraint' => 11,
                 'unsigned'       => true,
             ],
-            'idCreneau'=> [
+            'id'=> [
                 'type'=> 'INT',
                 'constraint' => 11,
                 'unsigned'       => true,
@@ -59,8 +59,8 @@ class Creneau extends Migration
             'created_at datetime default current_timestamp',
             'updated_at datetime default null on update current_timestamp'
         ]);
-        $this->forge->addKey('idCreneau', true);
-        $this->forge->addForeignKey('creche_id', 'professionnels', 'idPros');
+        $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('creche_id', 'professionnels', 'id');
         $this->forge->createTable('creneau');
     }
 

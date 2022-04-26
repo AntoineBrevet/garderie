@@ -8,7 +8,7 @@ class Reservation extends Migration
 {
     public function up(){
     $this->forge->addField([
-        'idReserv'          => [
+        'id'          => [
             'type'           => 'INT',
             'constraint'     => 11,
             'unsigned'       => true,
@@ -32,9 +32,9 @@ class Reservation extends Migration
         'created_at datetime default current_timestamp',
         'updated_at datetime default null on update current_timestamp'
     ]);
-    $this->forge->addKey('idReserv', true);
-    $this->forge->addForeignKey('id_enfant', 'enfants', 'idEnfants');
-    $this->forge->addForeignKey('id_creneau', 'creneau', 'idCreneau');
+    $this->forge->addKey('id', true);
+    $this->forge->addForeignKey('id_enfant', 'enfants', 'id');
+    $this->forge->addForeignKey('id_creneau', 'creneau', 'id');
     $this->forge->createTable('reservation');
     }
     public function down()

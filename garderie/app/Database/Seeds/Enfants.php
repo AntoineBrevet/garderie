@@ -12,7 +12,6 @@ class Enfants extends Seeder
             'parents_id' => 1,
             'nomEnfants'    => 'Lepremier',
             'prenomEnfants' => 'Lucas',
-            'ageEnfants' => 4,
             'sexeEnfants' => 'masculin',
             'allergies' => 'aucune',
             'medicaments' => 'aucun',
@@ -22,7 +21,6 @@ class Enfants extends Seeder
             'parents_id' => 1,
             'nomEnfants'    => 'Lepremier',
             'prenomEnfants' => 'Jade',
-            'ageEnfants' => 5,
             'sexeEnfants' => 'feminin',
             'allergies' => 'pollen',
             'medicaments' => 'cetirizine matin/soir'
@@ -31,7 +29,6 @@ class Enfants extends Seeder
             'parents_id' => 2,
             'nomEnfants'    => 'Ledeuxieme',
             'prenomEnfants' => 'Axelle',
-            'ageEnfants' => 7,
             'sexeEnfants' => 'feminin',
             'allergies' => 'lait',
             'medicaments' => '//'

@@ -9,7 +9,7 @@ class Parents extends Migration
     public function up()
     {
         $this->forge->addField([
-            'idParents'          => [
+            'id'          => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
@@ -56,7 +56,7 @@ class Parents extends Migration
             'created_at datetime default current_timestamp',
             'updated_at datetime default null on update current_timestamp'
         ]);
-        $this->forge->addKey('idParents', true);
+        $this->forge->addKey('id', true);
         $this->forge->createTable('parents');
     }
 
