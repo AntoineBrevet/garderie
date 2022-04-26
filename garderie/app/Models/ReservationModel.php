@@ -47,7 +47,7 @@ class ReservationModel extends Model
             ->join('enfants', 'reservation.id_enfant = enfants.id')
             ->join('recupere', 'enfants.id = recupere.id_enfant')
             ->join('parents', 'enfants.parents_id = parents.id')
-            ->where(['professionnels.id' => ' '])
+            // ->where(['professionnels.id' => 1])
             ->findAll();
     }
 }
