@@ -8,13 +8,13 @@ class ProfessionnelsModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'professionnels';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'idPros';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nomPros', 'prenomPros', 'adresse', 'siret', 'tel', 'description', 'mdp', 'mail'];
+    protected $allowedFields    = ['nomPros', 'prenomPros', 'adressePros', 'siret', 'telPros', 'descriptionPros', 'mdpPros', 'mailPros'];
 
     // Dates
     protected $useTimestamps = false;
@@ -42,12 +42,13 @@ class ProfessionnelsModel extends Model
 
     public function findByEmail(string $mail)
     {
-        return $this->where(['mail' => $mail])->first();
+        return $this->where(['mailPros' => $mail])->first();
     }
 
-    public function call_pro_infos(){
+    public function call_pro_infos()
+    {
         return $this->select("*")
-        ->join('creneau', 'creneau.creche_id = professionnels.id')
-        ->findAll();
+            ->join('creneau', 'creneau.creche_id = professionnels.id')
+            ->findAll();
     }
 }

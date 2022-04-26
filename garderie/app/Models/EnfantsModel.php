@@ -14,7 +14,7 @@ class EnfantsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['parents_id','nom','prenom','recup_name','age','sexe','allergies','medicaments'];
+    protected $allowedFields    = ['parents_id','nomEnfants','prenomEnfants','recup_name','sexeEnfants','allergies','medicaments'];
 
     // Dates
     protected $useTimestamps = false;

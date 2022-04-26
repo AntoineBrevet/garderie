@@ -14,7 +14,7 @@ class CreneauModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['date','debut','fin','creche_id','nbr_place','nbr_place_restant'];
+    protected $allowedFields    = ['date', 'debut', 'fin', 'creche_id', 'nbr_place', 'nbr_place_restant'];
 
     // Dates
     protected $useTimestamps = false;
@@ -40,10 +40,11 @@ class CreneauModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function call_creneau_by_pro($idpro){
-           return $this->select("*") 
+    public function call_creneau_by_pro($idpro)
+    {
+        return $this->select("*")
             ->join('professionnels', 'creneau.creche_id = professionnels.id')
-            ->where(['professionnels.id' => $idpro]) 
+            ->where(['professionnels.id' => $idpro])
             ->findAll();
     }
 }

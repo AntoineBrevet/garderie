@@ -37,12 +37,12 @@
 
                     <div class="input-field col s6">
                         <label for="tel" class="active" style="color: black;">numéro de telephone</label>
-                        <input class="validate" type="text" value="" name="tel" id="tel" placeholder="ex: 06.18.99.65.32" required="">
+                        <input class="validate" type="text" value="" name="telPros" id="telPros" placeholder="ex: 06.18.99.65.32" required="">
                     </div>
 
                     <div class="input-field col s6">
                         <label for="ville" class="active" style="color: black;">Adresse</label>
-                        <input class="validate" type="text" value="" name="adresse" id="adresse" placeholder="adresse" required="">
+                        <input class="validate" type="text" value="" name="adressePros" id="adressePros" placeholder="adresse" required="">
                     </div>
 
                     <div class="input-field col s12">
@@ -57,12 +57,12 @@
 
                     <div class="input-field col s12">
                         <label for="email" class="active" style="color: black;">Email</label>
-                        <input class="validate" type="email" value="" name="mail" placeholder="ex: Dupond1990@gmail.com" required="">
+                        <input class="validate" type="email" value="" name="mailPros" placeholder="ex: Dupond1990@gmail.com" required="">
                     </div>
 
                     <div class="input-field col s12">
                         <label for="Password" class="active" style="color: black;">Password</label>
-                        <input class="validate" type="Password" value="" name="mdp" id="p1" placeholder="Mot de Passe" required="">
+                        <input class="validate" type="Password" value="" name="mdpPros" id="p1" placeholder="Mot de Passe" required="">
                         <input class="validate" type="Password" placeholder="Mot de Passe" onfocus="validatePassword(document.getElementById('p1'), this);" oninput="validatePassword(document.getElementById('p1'), this);" required="">
                     </div>
 

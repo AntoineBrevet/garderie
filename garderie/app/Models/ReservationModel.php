@@ -14,7 +14,7 @@ class ReservationModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_enfants','id_creneau'];
+    protected $allowedFields    = ['id_enfants', 'id_creneau'];
 
     // Dates
     protected $useTimestamps = false;
@@ -40,7 +40,8 @@ class ReservationModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function call_reservation_infos() {
+    public function call_reservation_infos()
+    {
         return $this->select("*")
             ->join('creneau', 'reservation.id_creneau = creneau.id')
             ->join('professionnels', 'creneau.creche_id = professionnels.id')

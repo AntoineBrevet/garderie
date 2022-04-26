@@ -8,13 +8,13 @@ class ParentsModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'parents';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'idParents';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nbr_enfants', 'nomParents', 'prenomParents', 'adresse', 'mdp', 'mail', 'tel'];
+    protected $allowedFields    = ['nbr_enfants', 'nomParents', 'prenomParents', 'adresseParents', 'mdpParents', 'mailParents', 'telParents'];
 
     // Dates
     protected $useTimestamps = false;
@@ -42,8 +42,6 @@ class ParentsModel extends Model
 
     public function findByEmail(string $mail)
     {
-        return $this->where(['mail' => $mail])->first();
+        return $this->where(['mailParents' => $mail])->first();
     }
-
-    
 }

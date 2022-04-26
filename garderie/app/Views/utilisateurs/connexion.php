@@ -27,12 +27,12 @@
 
                     <div class="input-field col s12">
                         <label for="email" class="active" style="color: black;">Email</label>
-                        <input class="validate" type="email" value="" name="mail" placeholder="ex: Dupond1990@gmail.com" required="">
+                        <input class="validate" type="email" value="" name="mailParents" placeholder="ex: Dupond1990@gmail.com" required="">
                     </div>
 
                     <div class="input-field col s12">
                         <label for="Password" class="active" style="color: black;">Password</label>
-                        <input class="validate" type="Password" value="" name="mdp" placeholder="Mot de Passe" required="">
+                        <input class="validate" type="Password" value="" name="mdpParents" placeholder="Mot de Passe" required="">
                     </div>
 
                     <div class="input-field col s12">

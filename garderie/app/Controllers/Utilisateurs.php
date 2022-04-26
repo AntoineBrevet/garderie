@@ -26,7 +26,7 @@ class Utilisateurs extends BaseController
         $data = [
             "data" => $this->enfants->getEnfantsBySessionId()
         ];
-        return view('utilisateurs/index',$data);
+        return view('utilisateurs/index', $data);
     }
     public function utilisateursIndex()
     {
@@ -35,18 +35,18 @@ class Utilisateurs extends BaseController
     public function connexion()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
-            'mail' => 'required|valid_email',
-            'mdp' => 'required',
+            'mailParents' => 'required|valid_email',
+            'mdpParents' => 'required',
         ])) {
 
-            $emailPost = $this->request->getPost("mail");
-            $passwordPost = $this->request->getPost("mdp");
+            $emailPost = $this->request->getPost("mailParents");
+            $passwordPost = $this->request->getPost("mdpParents");
 
             $parents = $this->parents->findByEmail($emailPost);
             if (!empty($parents)) {
-                if (password_verify($passwordPost, $parents["mdp"])) {
+                if (password_verify($passwordPost, $parents["mdpParents"])) {
                     session()->set([
-                        "mail" => $parents["mail"],
+                        "mailParents" => $parents["mailParents"],
                         "prenomParents" => $parents["prenomParents"],
                         "id" => $parents["id"]
                     ]);
@@ -67,21 +67,21 @@ class Utilisateurs extends BaseController
         if ($this->request->getMethod() === 'post' && $this->validate([
             'nomParents' => 'required|min_length[3]|max_length[255]',
             'prenomParents' => 'required|min_length[3]|max_length[255]',
-            'mail' => 'required|valid_email|is_unique[parents.mail]',
+            'mailParents' => 'required|valid_email|is_unique[parents.mailParents]',
             'dateNaissanceParents' => 'required',
-            'mdp' => 'required|min_length[6]|max_length[255]',
-            'adresse' => 'required',
-            'tel' => 'required',
+            'mdpParents' => 'required|min_length[6]|max_length[255]',
+            'adresseParents' => 'required',
+            'telParents' => 'required',
 
         ])) {
             $parents = [
                 "nomParents" => $this->request->getPost("nomParents"),
                 "prenomParents" => $this->request->getPost("prenomParents"),
-                "mail" => $this->request->getPost("mail"),
+                "mailParents" => $this->request->getPost("mailParents"),
                 "dateNaissanceParents" => $this->request->getPost("dateNaissanceParents"),
-                "mdp" => password_hash($this->request->getPost("mdp"), PASSWORD_DEFAULT),
-                "adresse" => $this->request->getPost("adresse"),
-                "tel" => $this->request->getPost("tel"),
+                "mdpParents" => password_hash($this->request->getPost("mdpParents"), PASSWORD_DEFAULT),
+                "adresseParents" => $this->request->getPost("adresseParents"),
+                "telParents" => $this->request->getPost("telParents"),
 
             ];
 

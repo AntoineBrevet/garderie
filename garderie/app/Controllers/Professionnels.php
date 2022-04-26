@@ -69,18 +69,18 @@ class Professionnels extends BaseController
     public function connexionPros()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
-            'mail' => 'required|valid_email',
-            'mdp' => 'required',
+            'mailPros' => 'required|valid_email',
+            'mdpPros' => 'required',
         ])) {
 
-            $emailPost = $this->request->getPost("mail");
-            $passwordPost = $this->request->getPost("mdp");
+            $emailPost = $this->request->getPost("mailPros");
+            $passwordPost = $this->request->getPost("mdpPros");
 
             $professionnels = $this->professionnels->findByEmail($emailPost);
             if (!empty($professionnels)) {
-                if (password_verify($passwordPost, $professionnels["mdp"])) {
+                if (password_verify($passwordPost, $professionnels["mdpPros"])) {
                     session()->set([
-                        "mail" => $professionnels["mail"],
+                        "mailPros" => $professionnels["mailPros"],
                         "prenomPros" => $professionnels["prenomPros"],
                         "id" => $professionnels["id"]
                     ]);
@@ -101,22 +101,22 @@ class Professionnels extends BaseController
         if ($this->request->getMethod() === 'post' && $this->validate([
             'nomPros' => 'required|min_length[3]|max_length[255]',
             'prenomPros' => 'required|min_length[3]|max_length[255]',
-            'mail' => 'required|valid_email|is_unique[professionnels.mail]',
+            'mailPros' => 'required|valid_email|is_unique[professionnels.mailPros]',
             'dateNaissancePros' => 'required',
-            'mdp' => 'required|min_length[6]|max_length[255]',
-            'adresse' => 'required',
-            'tel' => 'required',
+            'mdpPros' => 'required|min_length[6]|max_length[255]',
+            'adressePros' => 'required',
+            'telPros' => 'required',
             'siret' => 'required',
 
         ])) {
             $professionnels = [
                 "nomPros" => $this->request->getPost("nomPros"),
                 "prenomPros" => $this->request->getPost("prenomPros"),
-                "mail" => $this->request->getPost("mail"),
+                "mailPros" => $this->request->getPost("mailPros"),
                 "dateNaissancePros" => $this->request->getPost("dateNaissancePros"),
-                "mdp" => password_hash($this->request->getPost("mdp"), PASSWORD_DEFAULT),
-                "adresse" => $this->request->getPost("adresse"),
-                "tel" => $this->request->getPost("tel"),
+                "mdpPros" => password_hash($this->request->getPost("mdpPros"), PASSWORD_DEFAULT),
+                "adressePros" => $this->request->getPost("adressePros"),
+                "telPros" => $this->request->getPost("telPros"),
                 "siret" => $this->request->getPost("siret"),
 
 
