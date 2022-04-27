@@ -1,0 +1,74 @@
+    * {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    
+    .sec1 {
+        width: 90%;
+        height: auto;
+        margin: 50px auto;
+        padding: 40px;
+        background: linear-gradient(115deg, #1f73b4, #57c5cd);
+    }
+    
+    .sec1 h1 {
+        padding: 20px;
+        text-align: center;
+        color: white;
+    }
+    
+    .sec1 form {
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    .sec1 form div {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        margin: 10px auto;
+    }
+    
+    .sec1 form .radios {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .sec1 form .radios input,
+    .sec1 form .radios label {
+        margin: 10px;
+    }
+    
+    .sec1 form label {
+        color: white;
+    }
+    
+    .sec1 form div input {
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+    }
+    
+    .sec1 form .submit input {
+        width: 200px;
+        margin: 10px auto;
+        padding: 5px;
+        background-color: #c4a90c;
+        box-shadow: 3px 3px 8px #534f4f;
+        color: white;
+    }
+    
+    .sec1 form .submit input:hover {
+        background-color: #8c7804;
+    }
+    
+    .retour {
+        color: white;
+        padding: 10px;
+        width: 100px;
+    }
+    
+    a:hover {
+        text-decoration: none;
+        color: white;
+    }

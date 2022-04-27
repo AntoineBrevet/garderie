@@ -3,7 +3,7 @@
     <input id="nav-toggle" type="checkbox">
     <div class="logo">
 
-        <a href=""><img src="<?= base_url()  ?>/img/garderie.png" alt="logo"></a>
+        <a href="<?= base_url(); ?>/"><img src="<?= base_url()  ?>/img/garderie.png" alt="logo"></a>
     </div>
 
     <ul class="links">
