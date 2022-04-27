@@ -32,6 +32,7 @@ class Professionnels extends BaseController
             "infos_reserv" => $this->reservation->call_reservation_infos(),
             "infos_pro" => $this->professionnels->call_pro_infos(),
             "myCreneaux" => $this->creneau->call_creneau_by_pro(4),
+
         ];
 
         return view('professionnels/index', $data);

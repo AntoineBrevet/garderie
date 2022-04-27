@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="<?= base_url(); ?>/css/style.css" rel="stylesheet">
   <script type="text/javascript" src="<?= base_url(); ?>/js/main.js"></script>
+    <script type="text/javascript" src="<?= base_url(); ?>/js/mapInscription.js"></script>
+
 </head>
 
 <body>
@@ -40,15 +42,21 @@
             <input class="validate" type="text" value="" name="telParents" id="tel" placeholder="ex: 06.18.99.65.32" required="">
           </div>
 
-          <div class="input-field col s6">
-            <label for="ville" class="active" style="color: black;">Adresse</label>
-            <input class="validate" type="text" value="" name="adresseParents" id="adresse" placeholder="adresse" required="">
+              <div class="input-field col s6">
+                  <label for="naissance" class="active" style="color: black;">Date de naissance</label>
+                  <input type="text" class="datepicker" name="dateNaissanceParents" placeholder="10/02/1980" required="">
+              </div>
+
+                      <div>
+                      </div>
+                      <input type="text" class="datepicker" placeholder="Address" name='address' id="location"/>
+                      <div class="half-input-container">
+                      </div>
+
+                  <div class="map" id="map" style="display:none;"></div>
+
           </div>
 
-          <div class="input-field col s12">
-            <label for="naissance" class="active" style="color: black;">Date de naissance</label>
-            <input type="text" class="datepicker" name="dateNaissanceParents" placeholder="10/02/1980" required="">
-          </div>
           <div class="input-field col s12">
             <label for="email" class="active" style="color: black;">Email</label>
             <input class="validate" type="email" value="" name="mailParents" placeholder="ex: Dupond1990@gmail.com" required="">
@@ -66,9 +74,11 @@
             </button>
           </div>
         </form>
-      </div>
+    </div>
     </div>
   </div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHIY60MQ8Vyb5e7bM4P4_i5HsIcTr-kHw&libraries=places&callback=initMap&solution_channel=GMP_QB_addressselection_v1_cABC" async defer></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script type="text/javascript" src="js.js">
   </script>
