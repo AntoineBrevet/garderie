@@ -54,6 +54,14 @@ class Professionnels extends Migration
                 'type' => 'DATETIME',
                 'null' => true,
             ],
+            'latitudePros'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+            ],
+            'longitudePros'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+            ],
 
 
 

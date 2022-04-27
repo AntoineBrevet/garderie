@@ -14,7 +14,7 @@ class ProfessionnelsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nomPros', 'prenomPros', 'adressePros', 'siret', 'telPros', 'descriptionPros', 'mdpPros', 'mailPros'];
+    protected $allowedFields    = ['nomPros', 'prenomPros', 'adressePros', 'siret', 'telPros', 'descriptionPros', 'mdpPros', 'mailPros','longitudePros','latitudePros'];
 
     // Dates
     protected $useTimestamps = false;
@@ -51,4 +51,11 @@ class ProfessionnelsModel extends Model
             ->join('creneau', 'creneau.creche_id = professionnels.id')
             ->findAll();
     }
+    public function call_pro_by_localisation()
+    {
+        return $this->select("*")
+            ->findAll();
+    }
 }
+
+

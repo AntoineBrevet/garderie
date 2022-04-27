@@ -15,7 +15,9 @@ class Professionnels extends Seeder
             'mdpPros' => 'root',
             'mailPros' => 'Lacrecherie@pro.fr',
             'telPros' => 666653626,
-            'descriptionPros' => 'description de la creche'
+            'descriptionPros' => 'description de la creche',
+            'latitudePros' => "48.7786183",
+            'longitudePros' => "1.2837523",
             ],[
             'nomPros'    => 'laguarderie',
             'adressePros' => '1 rue Route',
@@ -23,7 +25,9 @@ class Professionnels extends Seeder
             'mdpPros' => 'root',
             'mailPros' => 'Laguarderie@pro.fr',
             'telPros' => 467735329,
-            'descriptionPros' => 'description de la guarderie'
+            'descriptionPros' => 'description de la guarderie',
+            'latitudePros' => "48.8786183",
+            'longitudePros' => "1.0837523",
         ]];
 
         foreach($data as $datas){
