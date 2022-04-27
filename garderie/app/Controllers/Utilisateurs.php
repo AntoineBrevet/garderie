@@ -84,7 +84,7 @@ class Utilisateurs extends BaseController
                         "latitudeParents" => $parents["latitudeParents"],
                         "id" => $parents["id"]
                     ]);
-                    return redirect()->to('utilisateurs/utilisateursIndex');
+                    return redirect()->to('utilisateursIndex');
                 } else {
                     echo 'Le mot de passe est invalide.';
                 }
