@@ -8,7 +8,7 @@ class ParentsModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'parents';
-    protected $primaryKey       = 'idParents';
+    protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';

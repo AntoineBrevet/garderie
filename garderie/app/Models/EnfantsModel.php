@@ -12,9 +12,9 @@ class EnfantsModel extends Model
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['parents_id','nomEnfants','prenomEnfants','recup_name','sexeEnfants','allergies','medicaments'];
+    protected $allowedFields    = ['parents_id','nomEnfants','prenomEnfants','sexeEnfants','dateNaissanceEnfants','allergies','medicaments'];
 
     // Dates
     protected $useTimestamps = false;
@@ -42,8 +42,7 @@ class EnfantsModel extends Model
 
     public function getEnfantsBySessionId() {
         return $this->select("*")
-            ->join('parents', 'enfants.parents_id = parents.id')
-            // ->where(['parents_id' => session("id")])
+            ->where(['parents_id' => session("id")])
             ->findAll();
     }
 }

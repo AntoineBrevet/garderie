@@ -18,7 +18,7 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-a {
+nav a, nav a:hover {
     text-decoration: none;
     color: #fff;
 }
