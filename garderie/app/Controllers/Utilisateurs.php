@@ -38,7 +38,31 @@ class Utilisateurs extends BaseController
 
     public function utilisateursIndex()
     {
-        return view('utilisateurs/utilisateursIndex');
+
+        if ($this->request->getMethod() === 'post' && $this->validate([
+                'latitudeHidden' => 'required',
+                'longitudeHidden' => 'required',
+            ])) {
+
+            $position = [
+                "latitudeParents" => $this->request->getPost("latitudeHidden"),
+                "longitudeParents" => $this->request->getPost("longitudeHidden"),
+
+            ];
+            $this->parents->update(['id' => session('id')], $position);
+            return redirect()->to('utilisateursIndex');
+        }
+    else {
+        $data = [
+            "localisation" => $this->professionnels->call_pro_by_localisation(),
+            "position" => $this->parents->find(session("id"))
+
+        ];
+
+        return view('utilisateurs/utilisateursIndex', $data);
+
+    }
+
     }
     public function connexion()
     {
@@ -56,6 +80,8 @@ class Utilisateurs extends BaseController
                     session()->set([
                         "mailParents" => $parents["mailParents"],
                         "prenomParents" => $parents["prenomParents"],
+                        "longitudeParents" => $parents["longitudeParents"],
+                        "latitudeParents" => $parents["latitudeParents"],
                         "id" => $parents["id"]
                     ]);
                     return redirect()->to('utilisateurs/utilisateursIndex');
@@ -78,34 +104,86 @@ class Utilisateurs extends BaseController
             'mailParents' => 'required|valid_email|is_unique[parents.mailParents]',
             'dateNaissanceParents' => 'required',
             'mdpParents' => 'required|min_length[6]|max_length[255]',
-            'adresseParents' => 'required',
+            'address' => 'required',
             'telParents' => 'required',
 
         ])) {
-            $parents = [
-                "nomParents" => $this->request->getPost("nomParents"),
-                "prenomParents" => $this->request->getPost("prenomParents"),
-                "mailParents" => $this->request->getPost("mailParents"),
-                "dateNaissanceParents" => $this->request->getPost("dateNaissanceParents"),
-                "mdpParents" => password_hash($this->request->getPost("mdpParents"), PASSWORD_DEFAULT),
-                "adresseParents" => $this->request->getPost("adresseParents"),
-                "telParents" => $this->request->getPost("telParents"),
 
-            ];
+            $data_arr = $this->geocode($this->request->getPost("address"));
 
-            $this->parents->insert($parents);
-            return redirect()->to('utilisateurs/utilisateursIndex');
+            // if able to geocode the address
+            if ($data_arr) {
+
+                $latitude = $data_arr[0];
+                $longitude = $data_arr[1];
+                $formatted_address = $data_arr[2];
+                var_dump($data_arr);
+?>
+                <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyCHIY60MQ8Vyb5e7bM4P4_i5HsIcTr-kHw"></script>
+                <script type="text/javascript">
+                    function init_map() {
+                        var myOptions = {
+                            zoom: 14,
+                            center: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>),
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        };
+                        map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
+                        marker = new google.maps.Marker({
+                            map: map,
+                            position: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>)
+                        });
+                        infowindow = new google.maps.InfoWindow({
+                            content: "<?php echo $formatted_address; ?>"
+                        });
+                        google.maps.event.addListener(marker, "click", function() {
+                            infowindow.open(map, marker);
+                        });
+                        infowindow.open(map, marker);
+                    }
+                    google.maps.event.addDomListener(window, 'load', init_map);
+                </script>
+
+<?php
+
+                $parents = [
+                    "nomParents" => $this->request->getPost("nomParents"),
+                    "prenomParents" => $this->request->getPost("prenomParents"),
+                    "mailParents" => $this->request->getPost("mailParents"),
+                    "dateNaissanceParents" => $this->request->getPost("dateNaissanceParents"),
+                    "mdpParents" => password_hash($this->request->getPost("mdpParents"), PASSWORD_DEFAULT),
+                    "adresseParents" => $this->request->getPost("address"),
+                    "telParents" => $this->request->getPost("telParents"),
+                    "latitudeParents" => $latitude,
+                    "longitudeParents" => $longitude
+
+                ];
+
+                $this->parents->insert($parents);
+                return redirect()->to('utilisateursIndex');
+            }
         } else {
             echo view("utilisateurs/inscription", [
                 'validation' => $this->validator
             ]);
         }
     }
+    public function updateLocalisation($lat, $long)
+    {
+
+        $position = [
+            "latitudeParents" => $lat,
+            "longitudeParents" => $long
+        ];
+
+        $this->parents->update(['id' => session("id")], $position);
+    }
+
     public function deconnexion()
     {
         session()->destroy();
         return redirect()->to('/');
     }
+
 
     public function showEnfants()
     {
@@ -140,6 +218,10 @@ class Utilisateurs extends BaseController
             echo view("utilisateurs/createEnfants");
         }
     }
+
+
+
+
     public function updateEnfants($id)
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
@@ -172,4 +254,52 @@ class Utilisateurs extends BaseController
         $this->enfants->delete($id);
         return redirect()->to('showEnfants');
     }
+
+
+    public function geocode($address){
+
+
+        // url encode the address
+        $address = urlencode($address);
+
+        // google map geocode api url
+        $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$address}&key=AIzaSyCHIY60MQ8Vyb5e7bM4P4_i5HsIcTr-kHw";
+
+        // get the json response
+        $resp_json = file_get_contents($url);
+
+        // decode the json
+        $resp = json_decode($resp_json, true);
+
+        // response status will be 'OK', if able to geocode given address
+        if ($resp['status'] == 'OK') {
+
+            // get the important data
+            $lati = isset($resp['results'][0]['geometry']['location']['lat']) ? $resp['results'][0]['geometry']['location']['lat'] : "";
+            $longi = isset($resp['results'][0]['geometry']['location']['lng']) ? $resp['results'][0]['geometry']['location']['lng'] : "";
+            $formatted_address = isset($resp['results'][0]['formatted_address']) ? $resp['results'][0]['formatted_address'] : "";
+
+            // verify if data is complete
+            if ($lati && $longi && $formatted_address) {
+
+                // put the data in the array
+                $data_arr = array();
+
+                array_push(
+                    $data_arr,
+                    $lati,
+                    $longi,
+                    $formatted_address
+                );
+
+                return $data_arr;
+            } else {
+                return false;
+            }
+        } else {
+            echo "<strong>ERROR: {$resp['status']}</strong>";
+            return false;
+        }
+    }
+
 }

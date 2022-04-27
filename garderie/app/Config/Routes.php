@@ -36,8 +36,11 @@ $routes->get('utilisateurs', 'Utilisateurs::index');
 $routes->get('professionnels', 'Professionnels::index');
 $routes->get('payment-stripe', 'StripeController::index');
 $routes->get('prosIndex', 'Professionnels::prosIndex');
-$routes->get('utilisateursIndex', 'Utilisateurs::utilisateursIndex');
+$routes->match(['get', 'post'],'utilisateursIndex', 'Utilisateurs::utilisateursIndex');
 $routes->get('showEnfants', 'Utilisateurs::showEnfants');
+$routes->get('query', 'Utilisateurs::showQuery');
+
+
 
 
 // Routes Model

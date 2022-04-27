@@ -53,6 +53,16 @@ class Parents extends Migration
                 'type'=> 'DATETIME',
                 'null' => true,
             ],
+            'latitudeParents'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+            ],
+            'longitudeParents'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+            ],
+
+
             'created_at datetime default current_timestamp',
             'updated_at datetime default null on update current_timestamp'
         ]);

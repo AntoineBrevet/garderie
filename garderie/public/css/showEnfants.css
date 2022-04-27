@@ -1,6 +1,49 @@
-/* a {
-    color: black;
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-a:hover {
-    color: black;
-} */
+
+.sec1 {
+    width: 90%;
+    height: 90vh;
+    text-align: center;
+    background: url(../img/bbsitterbusn.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 50px auto;
+    padding: 40px;
+    box-shadow: 5px 5px 25px black;
+}
+
+.title {
+    background: linear-gradient(115deg, #1f73b4, #57c5cd);
+    padding: 20px;
+    width: 400px;
+    margin: 50px auto;
+    color: white;
+}
+
+.sec1-div {
+    background: linear-gradient(115deg, rgb(31, 115, 180, .7), rgb(87, 197, 205, .7));
+    padding: 20px;
+    width: 60%;
+    height: auto;
+    margin: 100px auto 0 auto;
+}
+
+.sec1 a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    line-height: 2;
+    text-decoration: none;
+    font-size: 20px;
+    width: fit-content;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.sec1 a:hover {
+    background-color: #1f73b4;
+}

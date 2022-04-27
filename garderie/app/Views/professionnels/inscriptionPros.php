@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="<?= base_url(); ?>/css/stylePros.css" rel="stylesheet">
+    <script type="text/javascript" src="<?= base_url(); ?>/js/mapInscriptionPros.js"></script>
+
     <script type="text/javascript" src="<?= base_url(); ?>/js/main.js"></script>
 </head>
 
@@ -23,7 +25,7 @@
         </div>
         <div class="row" id="blanc">
             <div class="col l12 m12 s12" id="rectangle">
-                <form method="post">
+                <form method="post" autocomplete="off">
 
                     <div class="input-field col s6">
                         <label for="prenom" class="active" style="color: black;">Prénom</label>
@@ -40,10 +42,11 @@
                         <input class="validate" type="text" value="" name="telPros" id="telPros" placeholder="ex: 06.18.99.65.32" required="">
                     </div>
 
-                    <div class="input-field col s6">
-                        <label for="ville" class="active" style="color: black;">Adresse</label>
-                        <input class="validate" type="text" value="" name="adressePros" id="adressePros" placeholder="adresse" required="">
+                    <input type="text" class="datepicker" placeholder="Adresse" name='adresse' id="location"/>
+                    <div class="half-input-container">
                     </div>
+
+                    <div class="map" id="map" style="display:none;"></div>
 
                     <div class="input-field col s12">
                         <label for="naissance" class="active" style="color: black;">Date de naissance</label>
@@ -75,8 +78,9 @@
             </div>
         </div>
     </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHIY60MQ8Vyb5e7bM4P4_i5HsIcTr-kHw&libraries=places&callback=initMap&solution_channel=GMP_QB_addressselection_v1_cABC" async defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src="js.js">
     </script>
 </body>
 
