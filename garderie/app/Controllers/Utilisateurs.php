@@ -23,22 +23,10 @@ class Utilisateurs extends BaseController
 
     public function index()
     {
-<<<<<<< Updated upstream
-=======
-
         return view('utilisateurs/index');
-
->>>>>>> Stashed changes
-        $data = [
-            "data" => $this->enfants->getEnfantsBySessionId(),
-
-        ];
-        return view('utilisateurs/index', $data);
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     }
+
+    
     public function utilisateursIndex()
     {
 
@@ -63,10 +51,9 @@ class Utilisateurs extends BaseController
         ];
 
         return view('utilisateurs/utilisateursIndex', $data);
-<<<<<<< Updated upstream
-=======
+
     }
->>>>>>> Stashed changes
+
     }
     public function connexion()
     {
@@ -171,7 +158,6 @@ class Utilisateurs extends BaseController
             ]);
         }
     }
-<<<<<<< Updated upstream
     public function updateLocalisation($lat, $long)
     {
 
@@ -182,19 +168,13 @@ class Utilisateurs extends BaseController
 
         $this->parents->update(['id' => session("id")], $position);
     }
-=======
 
-
->>>>>>> Stashed changes
     public function deconnexion()
     {
         session()->destroy();
         return redirect()->to('/');
     }
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 
     public function showEnfants()
     {
@@ -265,13 +245,10 @@ class Utilisateurs extends BaseController
         $this->enfants->delete($id);
         return redirect()->to('showEnfants');
     }
-<<<<<<< Updated upstream
-    public function geocode($address)
-    {
-=======
+
 
     public function geocode($address){
->>>>>>> Stashed changes
+
 
         // url encode the address
         $address = urlencode($address);
@@ -315,9 +292,5 @@ class Utilisateurs extends BaseController
             return false;
         }
     }
-<<<<<<< Updated upstream
-=======
 
-
->>>>>>> Stashed changes
 }
