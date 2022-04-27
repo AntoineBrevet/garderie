@@ -19,7 +19,7 @@ var_dump($data);
     </div>
     <div>
         <label for="prenomEnfants">Prénom</label>
-        <input type="text" name="prenomEnfants" id="prenomEnfants" value="<?= $data['nomEnfants'] ?>">
+        <input type="text" name="prenomEnfants" id="prenomEnfants" value="<?= $data['prenomEnfants'] ?>">
     </div>
     <div>
         <input type="radio" id="sexeEnfants" name="sexeEnfants" value="masculin" <?php if ($data['sexeEnfants'] == "masculin"){ echo("checked");} ?>>

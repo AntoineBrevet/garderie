@@ -83,7 +83,7 @@ class Utilisateurs extends BaseController
             ];
 
             $this->parents->insert($parents);
-            return redirect()->to('utilisateurs/utilisateursIndex');
+            return redirect()->to('utilisateursIndex');
         } else {
             echo view("utilisateurs/inscription", [
                 'validation' => $this->validator
