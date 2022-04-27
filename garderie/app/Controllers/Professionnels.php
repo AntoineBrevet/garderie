@@ -40,20 +40,6 @@ class Professionnels extends BaseController
     {
         return view('professionnels/prosIndex');
     }
-    private function generateNewsDataFromPost()
-    {
-        return [
-            "titre" => $this->request->getPost('titre'),
-            "date" => $this->request->getPost('date'),
-            "debut" => $this->request->getPost('debut'),
-            "fin" => $this->request->getPost('fin'),
-            "nbr_place" => $this->request->getPost('title'),
-            "debut_session" => $this->request->getPost('debut_session'),
-            "fin_session" => $this->request->getPost('fin_session'),
-            "creche_id" => $this->request->getPost('creche_id'),
-
-        ];
-    }
 
     public function splitByHour($data)
     // prends le tableau entier et le slit par heure
@@ -138,14 +124,27 @@ class Professionnels extends BaseController
 
     function create()
     {
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'post' && $this->validate([
+            'Titre_Creneau' => 'required|min_length[3]|max_length[255]',
+            'debut' => 'required',
+            'fin' => 'required',
+            'nbr_place' => 'required',
+            'debut_session' => 'required',
+            'fin_session' => 'required',
 
+        ])) {
+            $creneau = [
+                "Titre_Creneau" => $this->request->getPost("Titre_Creneau"),
+                "debut" => $this->request->getPost("debut"),
+                "fin" => $this->request->getPost("fin"),
+                "nbr_place" => $this->request->getPost("nbr_place"),
+                "debut_session" => $this->request->getPost("debut_session"),
+                "fin_session" => $this->request->getPost("fin_session"),
+                "creche_id" => 1,
+            ];
 
-            if (!empty($this->request->getPost('debut')) && !empty($this->request->getPost('fin')) && !empty($this->request->getPost('titre'))) {
-                $professionnels = $this->generateNewsDataFromPost();
-                $this->ProfessionnelsModel->insert($professionnels);
-            }
-            return redirect()->to('/');
+            $this->creneau->insert($creneau);
+            return redirect()->to('prosIndex');
         } else {
             echo view("professionnels/create");
         }

@@ -25,8 +25,24 @@
                 <form method="post">
                     <div class="input-field col s6">
                         <label for="titre" class="active" style="color: black;">titre</label>
-                        <input type="text" value="" name="titre" placeholder="ex: Creche bois-guillaume" required="">
+                        <input type="text" value="" name="Titre_Creneau" placeholder="ex: Creche bois-guillaume" required="">
                     </div>
+
+                    <div class="input-field col s6">
+                        <label for="date" class="active" style="color: black;">Date</label>
+                        <input type="date" value="" name="date" placeholder="ex: choisissez une date" required="">
+                    </div>
+
+                    <div class="input-field col s6">
+                        <label for="debut" class="active" style="color: black;">debut</label>
+                        <input type="text" value="" name="debut" placeholder="ex: choisissez un debut" required="">
+                    </div>
+
+                    <div class="input-field col s6">
+                        <label for="fin" class="active" style="color: black;">fin</label>
+                        <input type="text" value="" name="fin" placeholder="ex: choisissez une fin" required="">
+                    </div>
+
                     <div class="input-field col s6">
                         <label for="debut_session" class="active" style="color: black;">horaire de debut</label>
                         <input type="text" value="" name="debut_session" placeholder="ex: 7h" required="">
@@ -35,11 +51,11 @@
                         <label for="fin_session" class="active" style="color: black;">horaire de fin</label>
                         <input type="text" value="" name="fin_session" placeholder="ex: 19h" required="">
                     </div>
-
                     <div class="input-field col s6">
                         <label for="email" class="active" style="color: black;">nombres de places</label>
-                        <input class="validate" type="text" value="" name="nbr_place_restant" placeholder="ex: Dupond1990@gmail.com" required="">
+                        <input type="text" value="" name="nbr_place" placeholder="ex: Dupond1990@gmail.com" required="">
                     </div>
+
 
 
                     <div class="input-field col s12">
