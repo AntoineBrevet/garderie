@@ -102,13 +102,13 @@ class Professionnels extends BaseController
             $data_arr = $this->geocode($this->request->getPost("adresse"));
 
             // if able to geocode the address
-            if($data_arr){
+            if ($data_arr) {
 
                 $latitude = $data_arr[0];
                 $longitude = $data_arr[1];
                 $formatted_address = $data_arr[2];
                 var_dump($data_arr);
-                ?>
+?>
                 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyCHIY60MQ8Vyb5e7bM4P4_i5HsIcTr-kHw"></script>
                 <script type="text/javascript">
                     function init_map() {
@@ -125,7 +125,7 @@ class Professionnels extends BaseController
                         infowindow = new google.maps.InfoWindow({
                             content: "<?php echo $formatted_address; ?>"
                         });
-                        google.maps.event.addListener(marker, "click", function () {
+                        google.maps.event.addListener(marker, "click", function() {
                             infowindow.open(map, marker);
                         });
                         infowindow.open(map, marker);
@@ -133,28 +133,27 @@ class Professionnels extends BaseController
                     google.maps.event.addDomListener(window, 'load', init_map);
                 </script>
 
-                <?php
+<?php
 
 
-            $professionnels = [
-                "nomPros" => $this->request->getPost("nomPros"),
-                "prenomPros" => $this->request->getPost("prenomPros"),
-                "mailPros" => $this->request->getPost("mailPros"),
-                "dateNaissancePros" => $this->request->getPost("dateNaissancePros"),
-                "mdpPros" => password_hash($this->request->getPost("mdpPros"), PASSWORD_DEFAULT),
-                "adressePros" => $this->request->getPost("adresse"),
-                "telPros" => $this->request->getPost("telPros"),
-                "siret" => $this->request->getPost("siret"),
-                "latitudePros" => $latitude,
-                "longitudePros" => $longitude
+                $professionnels = [
+                    "nomPros" => $this->request->getPost("nomPros"),
+                    "prenomPros" => $this->request->getPost("prenomPros"),
+                    "mailPros" => $this->request->getPost("mailPros"),
+                    "dateNaissancePros" => $this->request->getPost("dateNaissancePros"),
+                    "mdpPros" => password_hash($this->request->getPost("mdpPros"), PASSWORD_DEFAULT),
+                    "adressePros" => $this->request->getPost("adresse"),
+                    "telPros" => $this->request->getPost("telPros"),
+                    "siret" => $this->request->getPost("siret"),
+                    "latitudePros" => $latitude,
+                    "longitudePros" => $longitude
 
 
-            ];
+                ];
 
-            $this->professionnels->insert($professionnels);
-            var_dump($data_arr);
+                $this->professionnels->insert($professionnels);
+                var_dump($data_arr);
                 return redirect()->to('prosIndex');
-
             }
         } else {
             echo view("professionnels/inscriptionPros", [
@@ -198,10 +197,16 @@ class Professionnels extends BaseController
     }
     function profilPros()
     {
-        return view('professionnels/profilPros');
+        $this->professionnels->find(session("id"));
+        $data = [
+            "data" => $this->professionnels->find(session("id"))
+
+        ];
+        return view('professionnels/profilPros', $data);
     }
 
-    public function geocode($address){
+    public function geocode($address)
+    {
 
         // url encode the address
         $address = urlencode($address);
@@ -216,7 +221,7 @@ class Professionnels extends BaseController
         $resp = json_decode($resp_json, true);
 
         // response status will be 'OK', if able to geocode given address
-        if($resp['status']=='OK'){
+        if ($resp['status'] == 'OK') {
 
             // get the important data
             $lati = isset($resp['results'][0]['geometry']['location']['lat']) ? $resp['results'][0]['geometry']['location']['lat'] : "";
@@ -224,7 +229,7 @@ class Professionnels extends BaseController
             $formatted_address = isset($resp['results'][0]['formatted_address']) ? $resp['results'][0]['formatted_address'] : "";
 
             // verify if data is complete
-            if($lati && $longi && $formatted_address){
+            if ($lati && $longi && $formatted_address) {
 
                 // put the data in the array
                 $data_arr = array();
@@ -237,20 +242,12 @@ class Professionnels extends BaseController
                 );
 
                 return $data_arr;
-
-            }else{
+            } else {
                 return false;
             }
-
-        }
-
-        else{
+        } else {
             echo "<strong>ERROR: {$resp['status']}</strong>";
             return false;
         }
     }
-
-
 }
-
-
