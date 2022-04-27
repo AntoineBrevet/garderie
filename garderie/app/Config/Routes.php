@@ -37,11 +37,7 @@ $routes->get('professionnels', 'Professionnels::index');
 $routes->get('payment-stripe', 'StripeController::index');
 $routes->get('prosIndex', 'Professionnels::prosIndex');
 $routes->get('utilisateursIndex', 'Utilisateurs::utilisateursIndex');
-<<<<<<< Updated upstream
 $routes->get('showEnfants', 'Utilisateurs::showEnfants');
-=======
-$routes->get('query', 'Utilisateurs::showQuery');
->>>>>>> Stashed changes
 
 
 // Routes Model
