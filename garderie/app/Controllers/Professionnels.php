@@ -149,8 +149,8 @@ class Professionnels extends BaseController
             echo view("professionnels/create");
         }
     }
-    function profil()
+    function profilPros()
     {
-        return view('professionnels/profil');
+        return view('professionnels/profilPros');
     }
 }

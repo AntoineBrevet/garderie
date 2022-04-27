@@ -25,6 +25,17 @@ class Utilisateurs extends BaseController
     {
         return view('utilisateurs/index');
     }
+
+    public function profil()
+    {
+        $this->parents->find(session("id"));
+        $data = [
+            "data" => $this->parents->find(session("id"))
+            
+        ];
+        return view('utilisateurs/profil', $data);
+    }
+
     public function utilisateursIndex()
     {
         return view('utilisateurs/utilisateursIndex');
@@ -113,7 +124,7 @@ class Utilisateurs extends BaseController
             'allergies' => 'required',
             'medicaments' => 'required'
         ])) {
-            
+
             $enfants = [
                 "nomEnfants" => $this->request->getPost("nomEnfants"),
                 "prenomEnfants" => $this->request->getPost("prenomEnfants"),
@@ -138,7 +149,7 @@ class Utilisateurs extends BaseController
             'dateNaissanceEnfants' => 'required',
             'allergies' => 'required',
             'medicaments' => 'required'
-        ])) {            
+        ])) {
             $enfants = [
                 "nomEnfants" => $this->request->getPost("nomEnfants"),
                 "prenomEnfants" => $this->request->getPost("prenomEnfants"),
