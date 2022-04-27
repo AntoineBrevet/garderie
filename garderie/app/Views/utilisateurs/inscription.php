@@ -25,7 +25,7 @@
     </div>
     <div class="row" id="blanc">
       <div class="col l12 m12 s12" id="rectangle">
-        <form method="post">
+        <form method="post" autocomplete="off">
 
           <div class="input-field col s6">
             <label for="prenom" class="active" style="color: black;">Prénom</label>
@@ -47,8 +47,7 @@
                   <input type="text" class="datepicker" name="dateNaissanceParents" placeholder="10/02/1980" required="">
               </div>
 
-                      <div>
-                      </div>
+
                       <input type="text" class="datepicker" placeholder="Address" name='address' id="location"/>
                       <div class="half-input-container">
                       </div>
@@ -80,7 +79,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHIY60MQ8Vyb5e7bM4P4_i5HsIcTr-kHw&libraries=places&callback=initMap&solution_channel=GMP_QB_addressselection_v1_cABC" async defer></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script type="text/javascript" src="js.js">
   </script>
 </body>
 

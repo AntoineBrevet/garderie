@@ -10,7 +10,9 @@ body{
 #nom {
     text-transform: uppercase;
 }
-
+input{
+    color: white;
+}
 .btn{
   background-color: rgb(4, 114, 6, .5);
 }

@@ -91,32 +91,78 @@ class Professionnels extends BaseController
             'mailPros' => 'required|valid_email|is_unique[professionnels.mailPros]',
             'dateNaissancePros' => 'required',
             'mdpPros' => 'required|min_length[6]|max_length[255]',
-            'adressePros' => 'required',
+            'adresse' => 'required',
             'telPros' => 'required',
             'siret' => 'required',
 
+
+
         ])) {
+
+            $data_arr = $this->geocode($this->request->getPost("adresse"));
+
+            // if able to geocode the address
+            if($data_arr){
+
+                $latitude = $data_arr[0];
+                $longitude = $data_arr[1];
+                $formatted_address = $data_arr[2];
+                var_dump($data_arr);
+                ?>
+                <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyCHIY60MQ8Vyb5e7bM4P4_i5HsIcTr-kHw"></script>
+                <script type="text/javascript">
+                    function init_map() {
+                        var myOptions = {
+                            zoom: 14,
+                            center: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>),
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        };
+                        map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
+                        marker = new google.maps.Marker({
+                            map: map,
+                            position: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>)
+                        });
+                        infowindow = new google.maps.InfoWindow({
+                            content: "<?php echo $formatted_address; ?>"
+                        });
+                        google.maps.event.addListener(marker, "click", function () {
+                            infowindow.open(map, marker);
+                        });
+                        infowindow.open(map, marker);
+                    }
+                    google.maps.event.addDomListener(window, 'load', init_map);
+                </script>
+
+                <?php
+
+
             $professionnels = [
                 "nomPros" => $this->request->getPost("nomPros"),
                 "prenomPros" => $this->request->getPost("prenomPros"),
                 "mailPros" => $this->request->getPost("mailPros"),
                 "dateNaissancePros" => $this->request->getPost("dateNaissancePros"),
                 "mdpPros" => password_hash($this->request->getPost("mdpPros"), PASSWORD_DEFAULT),
-                "adressePros" => $this->request->getPost("adressePros"),
+                "adressePros" => $this->request->getPost("adresse"),
                 "telPros" => $this->request->getPost("telPros"),
                 "siret" => $this->request->getPost("siret"),
+                "latitudePros" => $latitude,
+                "longitudePros" => $longitude
 
 
             ];
 
             $this->professionnels->insert($professionnels);
-            return redirect()->to('prosIndex');
+            var_dump($data_arr);
+                return redirect()->to('prosIndex');
+
+            }
         } else {
             echo view("professionnels/inscriptionPros", [
                 'validation' => $this->validator
             ]);
         }
     }
+
     public function deconnexionPros()
     {
         session()->destroy();
@@ -154,4 +200,57 @@ class Professionnels extends BaseController
     {
         return view('professionnels/profil');
     }
+
+    public function geocode($address){
+
+        // url encode the address
+        $address = urlencode($address);
+
+        // google map geocode api url
+        $url = "https://maps.googleapis.com/maps/api/geocode/json?address={$address}&key=AIzaSyCHIY60MQ8Vyb5e7bM4P4_i5HsIcTr-kHw";
+
+        // get the json response
+        $resp_json = file_get_contents($url);
+
+        // decode the json
+        $resp = json_decode($resp_json, true);
+
+        // response status will be 'OK', if able to geocode given address
+        if($resp['status']=='OK'){
+
+            // get the important data
+            $lati = isset($resp['results'][0]['geometry']['location']['lat']) ? $resp['results'][0]['geometry']['location']['lat'] : "";
+            $longi = isset($resp['results'][0]['geometry']['location']['lng']) ? $resp['results'][0]['geometry']['location']['lng'] : "";
+            $formatted_address = isset($resp['results'][0]['formatted_address']) ? $resp['results'][0]['formatted_address'] : "";
+
+            // verify if data is complete
+            if($lati && $longi && $formatted_address){
+
+                // put the data in the array
+                $data_arr = array();
+
+                array_push(
+                    $data_arr,
+                    $lati,
+                    $longi,
+                    $formatted_address
+                );
+
+                return $data_arr;
+
+            }else{
+                return false;
+            }
+
+        }
+
+        else{
+            echo "<strong>ERROR: {$resp['status']}</strong>";
+            return false;
+        }
+    }
+
+
 }
+
+

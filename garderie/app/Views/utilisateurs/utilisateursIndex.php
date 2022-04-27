@@ -4,13 +4,22 @@
 <?= $this->extend('master') ?>
 
 <?= $this->section('css') ?>
-<!-- Mettre le CSS avec une balise link -->
+<link href="<?= base_url(); ?>/css/indexUser.css" rel="stylesheet">
+
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 <!-- Mettre le content de la page -->
 <div id="map" style="width: 500px; height: 400px;"></div>
-<button onclick="getLocation()">Trouver les pros les plus proches</button>
+
+<form class="myForm" method="post" autocomplete="off">
+
+    <input type="hidden" id="latitudeHidden" name="latitudeHidden">
+    <input type="hidden" id="longitudeHidden" name="longitudeHidden">
+
+    <input type="submit" id="submitLocalisation" name="submit" value="Actualiser la carte">
+</form>
+<button id ="buttonHidden" onclick="getLocation()">Trouver les pros les plus proches</button>
 
 
 <?= $this->endSection() ?>
