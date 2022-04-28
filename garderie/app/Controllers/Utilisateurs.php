@@ -78,7 +78,7 @@ class Utilisateurs extends BaseController
                         "utilisateurs" => true,
                         "id" => $parents["id"]
                     ]);
-                    return redirect()->to('utilisateursIndex');
+                    return redirect()->to(base_url() . '/utilisateursIndex');
                 } else {
                     echo 'Le mot de passe est invalide.';
                 }
@@ -153,7 +153,7 @@ class Utilisateurs extends BaseController
                 ];
 
                 $this->parents->insert($parents);
-                return redirect()->to('utilisateursIndex');
+                return redirect()->to('/');
             }
         } else {
             echo view("utilisateurs/inscription", [
@@ -175,7 +175,7 @@ class Utilisateurs extends BaseController
     public function deconnexion()
     {
         session()->destroy();
-        return redirect()->to('/');
+        return redirect()->to(base_url() . '/');
     }
     public function showEnfants()
     {

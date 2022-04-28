@@ -9,7 +9,10 @@ class Creneau extends Migration
     public function up()
     {
         $this->forge->addField([
-            'date'=> [
+            'date_debut'=> [
+                'type'=> 'DATE',
+            ],
+            'date_fin'=> [
                 'type'=> 'DATE',
             ],
             'debut'=> [

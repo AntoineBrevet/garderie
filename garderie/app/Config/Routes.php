@@ -51,6 +51,7 @@ $routes->match(['get', 'post'], 'create', 'Professionnels::create');
 $routes->match(['get', 'post'], 'profilPros', 'Professionnels::profilPros');
 $routes->match(['get', 'post'], 'profil', 'Utilisateurs::profil');
 $routes->get('deconnexion', 'Utilisateurs::deconnexion');
+$routes->get('deconnexionPros', 'Professionnels::deconnexionPros');
 
 $routes->match(['get', 'post'], 'createEnfants', 'Utilisateurs::createEnfants');
 $routes->match(['get', 'post'], 'updateEnfants/(:any)', 'Utilisateurs::updateEnfants/$1');

@@ -41,7 +41,6 @@ class Professionnels extends BaseController
     {
         return view('professionnels/prosIndex');
     }
-
     public function splitByHour($data)
     // prends le tableau entier et le slit par heure
     {
@@ -70,7 +69,7 @@ class Professionnels extends BaseController
                         "professionnels" => true,
                         "id" => $professionnels["id"]
                     ]);
-                    return redirect()->to('prosIndex');
+                    return redirect()->to(base_url() . '/prosIndex');
                 } else {
                     echo 'Le mot de passe est invalide.';
                 }
@@ -93,9 +92,6 @@ class Professionnels extends BaseController
             'adresse' => 'required',
             'telPros' => 'required',
             'siret' => 'required',
-
-
-
         ])) {
 
             $data_arr = $this->geocode($this->request->getPost("adresse"));
@@ -162,32 +158,104 @@ class Professionnels extends BaseController
     public function deconnexionPros()
     {
         session()->destroy();
-        return redirect()->to('/');
+        return redirect()->to(base_url() . '/professionnels');
     }
 
     function create()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
-            'Titre_Creneau' => 'required|min_length[3]|max_length[255]',
-            'debut' => 'required',
-            'fin' => 'required',
+            'date_debut' => 'required',
+            'date_fin' => 'required',
             'nbr_place' => 'required',
             'debut_session' => 'required',
-            'fin_session' => 'required',
-
+            'fin_session' => 'required'
         ])) {
-            $creneau = [
-                "Titre_Creneau" => $this->request->getPost("Titre_Creneau"),
-                "debut" => $this->request->getPost("debut"),
-                "fin" => $this->request->getPost("fin"),
-                "nbr_place" => $this->request->getPost("nbr_place"),
+            $data = [
                 "debut_session" => $this->request->getPost("debut_session"),
-                "fin_session" => $this->request->getPost("fin_session"),
-                "creche_id" => 1,
+                "fin_session" => $this->request->getPost("fin_session")
             ];
+            $debut2 = $data['debut_session'];
+            $fin2 = $data['fin_session'];
 
-            $this->creneau->insert($creneau);
-            return redirect()->to('prosIndex');
+            $debut = strtotime($this->request->getPost("date_debut"));
+            $fin = strtotime($this->request->getPost("date_fin"));
+            $dif = ceil(abs($fin - $debut) / 86400);
+
+            if ($dif == 0) {
+                for ($i = $debut2; $i < $fin2; $i++) {
+                    $data['debut'] = $i;
+                    $data['fin'] = $i + 1;
+                    $creneau = [
+                        "jour" => 1,
+                        "date_debut" => $this->request->getPost("date_debut"),
+                        "date_fin" => $this->request->getPost("date_fin"),
+                        "debut" => $data['debut'],
+                        "fin" => $data['fin'],
+                        "nbr_place" => $this->request->getPost("nbr_place"),
+                        "nbr_place_restant" => $this->request->getPost("nbr_place"),
+                        "debut_session" => $this->request->getPost("debut_session"),
+                        "fin_session" => $this->request->getPost("fin_session"),
+                        "creche_id" => session("id")
+                    ];
+                    $this->creneau->insert($creneau);
+                }
+                return redirect()->to('prosIndex');
+            } elseif ($dif > 0) {
+                for ($i = $debut2; $i < 24; $i++) {
+                    $data['debut'] = $i;
+                    $data['fin'] = $i + 1;
+                    $creneau = [
+                        "jour" => 1,
+                        "date_debut" => $this->request->getPost("date_debut"),
+                        "date_fin" => $this->request->getPost("date_fin"),
+                        "debut" => $data['debut'],
+                        "fin" => $data['fin'],
+                        "nbr_place" => $this->request->getPost("nbr_place"),
+                        "nbr_place_restant" => $this->request->getPost("nbr_place"),
+                        "debut_session" => $this->request->getPost("debut_session"),
+                        "fin_session" => $this->request->getPost("fin_session"),
+                        "creche_id" => session("id")
+                    ];
+                    $this->creneau->insert($creneau);
+                }
+                for ($i = 0; $i < ($dif - 1); $i++) {
+                    for ($j = 0; $j < 24; $j++) {
+                        $data['debut'] = $j;
+                        $data['fin'] = $j + 1;
+                        $creneau = [
+                            "jour" => $i + 2,
+                            "date_debut" => $this->request->getPost("date_debut"),
+                            "date_fin" => $this->request->getPost("date_fin"),
+                            "debut" => $data['debut'],
+                            "fin" => $data['fin'],
+                            "nbr_place" => $this->request->getPost("nbr_place"),
+                            "nbr_place_restant" => $this->request->getPost("nbr_place"),
+                            "debut_session" => $this->request->getPost("debut_session"),
+                            "fin_session" => $this->request->getPost("fin_session"),
+                            "creche_id" => session("id")
+                        ];
+                        $id = $i + 2;
+                        $this->creneau->insert($creneau);
+                    }
+                }
+                for ($i = 1; $i < $fin2; $i++) {
+                    $data['debut'] = $i;
+                    $data['fin'] = $i + 1;
+                    $creneau = [
+                        "jour" => $id + 1,
+                        "date_debut" => $this->request->getPost("date_debut"),
+                        "date_fin" => $this->request->getPost("date_fin"),
+                        "debut" => $data['debut'],
+                        "fin" => $data['fin'],
+                        "nbr_place" => $this->request->getPost("nbr_place"),
+                        "nbr_place_restant" => $this->request->getPost("nbr_place"),
+                        "debut_session" => $this->request->getPost("debut_session"),
+                        "fin_session" => $this->request->getPost("fin_session"),
+                        "creche_id" => session("id")
+                    ];
+                    $this->creneau->insert($creneau);
+                }
+            }
         } else {
             echo view("professionnels/create");
         }

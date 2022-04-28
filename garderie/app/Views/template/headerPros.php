@@ -12,7 +12,7 @@
         if (session("professionnels")) {?>
             <li><a href="<?= base_url()  ?>/create"><img src="<?= base_url()  ?>/img/create.png" alt="">Créer une annonce</a></li>
             <li><a href="<?= base_url()  ?>/profilPros"><img src="<?= base_url()  ?>/img/profile.png" alt="">Profile</a></li>
-            <li class="deconnexion"><img src="<?= base_url()  ?>/img/logout.png" alt=""><a href="">Déconnexion</a></li>
+            <li class="deconnexion"><img src="<?= base_url()  ?>/img/logout.png" alt=""><a href="<?= base_url() ?>/deconnexionPros">Déconnexion</a></li>
         <?php
         }
         else{?>
