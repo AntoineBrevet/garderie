@@ -8,8 +8,8 @@
         margin: 50px auto;
         padding: 40px;
         box-shadow: 5px 5px 15px black;
-        border: 2px dashed gold;
         background: linear-gradient(115deg, #1f73b4, #57c5cd);
+        border: 2px dashed gold;
     }
     
     .sec1 h1 {

@@ -16,7 +16,7 @@
 
     <input type="submit" id="submitLocalisation" name="submit" value="Actualiser la carte">
 </form>
-<button id ="buttonHidden" onclick="getLocation()">Trouver les pros les plus proches</button>
+<button id="buttonHidden" onclick="getLocation()">Trouver les pros les plus proches</button>
 
 
 <?= $this->endSection() ?>
@@ -24,15 +24,12 @@
 <?= $this->section('js') ?>
 <!-- Mettre le JS avec une balise script -->
 <script>
-
     var iCount = 1;
     var locations = [];
-
 </script>
-<?php foreach ($localisation as $localisations){
-   ?>
+<?php foreach ($localisation as $localisations) {
+?>
     <script>
-
         var longitude = "<?= $localisations["longitudePros"] ?>";
         var latitude = "<?= $localisations["latitudePros"] ?>";
         var nomPros = "<?= $localisations["nomPros"] ?>";
@@ -45,12 +42,10 @@
 }
 
 ?>
-    <script>
-
-        var longitudeParent = "<?= $position["longitudeParents"] ?>";
-        var latitudeParent = "<?= $position["latitudeParents"] ?>";
-
-    </script>
+<script>
+    var longitudeParent = "<?= $position["longitudeParents"] ?>";
+    var latitudeParent = "<?= $position["latitudeParents"] ?>";
+</script>
 
 <script type="text/javascript">
 
@@ -58,12 +53,15 @@
 
 
 </script>
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyCHIY60MQ8Vyb5e7bM4P4_i5HsIcTr-kHw"
-        type="text/javascript"></script>
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyCHIY60MQ8Vyb5e7bM4P4_i5HsIcTr-kHw" type="text/javascript"></script>
 <script src="<?php base_url() ?>/js/map.js"></script>
 <script src="<?php base_url() ?>/js/getLocation.js"></script>
-<script type="text/javascript"> var urlAjax =  "<?= base_url() ?>"</script>
+<script type="text/javascript">
+    var urlAjax = "<?= base_url() ?>"
+</script>
 
 
+<<<<<<< Updated upstream
+=======
 <?= $this->endSection() ?>
-
+>>>>>>> Stashed changes

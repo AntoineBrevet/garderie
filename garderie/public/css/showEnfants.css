@@ -4,7 +4,7 @@
 
 .sec1 {
     width: 90%;
-    height: 90vh;
+    height: auto;
     text-align: center;
     background: url(../img/bbsitterbusn.jpg);
     background-repeat: no-repeat;
@@ -25,7 +25,7 @@
 .sec1-div {
     background: linear-gradient(115deg, rgb(31, 115, 180, .7), rgb(87, 197, 205, .7));
     padding: 20px;
-    width: 60%;
+    width: 80%;
     height: auto;
     margin: 100px auto 0 auto;
 }
@@ -46,4 +46,92 @@
 
 .sec1 a:hover {
     background-color: #1f73b4;
+}
+
+.babies-list {
+    width: 90%;
+    height: 500px;
+    margin: 20px auto;
+    background-color: transparent;
+    overflow: auto;
+    box-shadow: 5px 5px 15px black;
+    border-radius: 5px;
+    /* border: 2px dashed gold;*/
+}
+
+.babies-list::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+.babies-list::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background: #57c5cd;
+    /* color of the tracking area */
+}
+
+.babies-list::-webkit-scrollbar-thumb {
+    background-color: #1f73b4;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 1px solid #fff;
+    ;
+    /* creates padding around scroll thumb */
+}
+
+.babies-list h1 {
+    color: #fff;
+}
+
+.baby-infos {
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.baby-infos div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1px auto;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.baby-infos div p {
+    padding-top: 9px;
+    margin-right: 100px;
+}
+
+.options-btn {
+    display: flex;
+}
+
+.options-btn a {
+    padding: 10px;
+    background-color: #57c5cd;
+    font-size: 15px;
+}
+
+
+/*---------------------responsive---------------------------*/
+
+@media (max-width:700px) {
+    .sec1-div {
+        width: 100%;
+    }
+    .babies-list {
+        width: 95%;
+    }
+    .baby-infos div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .baby-infos div p {
+        text-align: center;
+        margin: 0 auto;
+    }
 }
