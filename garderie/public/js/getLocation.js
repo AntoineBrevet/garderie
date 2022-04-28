@@ -7,7 +7,6 @@ button.addEventListener('click', () => {
 })
 
 
-
 function getLocation(){
     if (navigator.geolocation){
         navigator.geolocation.getCurrentPosition(showPosition,ShowError);

@@ -36,7 +36,7 @@ foreach($infos_pro as $info_pro){
 
         <div class="sec1-p">
             <h1 class="word"></h1>
-            <p>Vous êtes passionnés et vous avez les compétences nécessaires pour le métier de garde d'enfants! vous êtes tombés sur la bonne place</p>
+            <p>Vous êtes passionnés et vous avez les compétences nécessaires pour le métier de garde d'enfants? Vous êtes tombés sur la bonne place !</p>
             <button>Postulez par ici !</button>
         </div>
 

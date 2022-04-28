@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col s12 m12 l12" style="text-align:center; color:white;"><a href="<?= base_url(); ?>/">
+            <div class="col s12 m12 l12" style="text-align:center; color:white;"><a href="<?= base_url(); ?>/professionnels">
                     <img src="<?= base_url();  ?>/img/garderie.png" width="250px" alt=""></a>
                 <h3>crée ton Annonce</h3>
                 <p>Bienvenue sur la page de Création d'annonce!</p>

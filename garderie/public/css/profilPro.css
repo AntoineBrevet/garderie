@@ -1,0 +1,66 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.sec1 {
+    width: 90%;
+    height: auto;
+    background: linear-gradient(115deg, #047206, #7bd97d);
+    margin: 50px auto;
+    box-shadow: 5px 5px 15px black;
+}
+
+.sec1 img {
+    width: 150px;
+    padding: 20px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.sec1 h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+}
+
+.sec1 form {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.sec1 form label {
+    color: #fff;
+}
+
+.sec1 form div {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sec1 form div input,
+.sec1 form div textarea {
+    width: 80%;
+    padding: 10px;
+}
+
+.submit-button button {
+    width: 150px;
+    margin: 5px auto;
+    text-align: center;
+    padding: 20px;
+    background-color: gold;
+    border: none;
+    border-radius: 5px;
+}
+
+.submit-button button:hover {
+    background-color: goldenrod;
+}

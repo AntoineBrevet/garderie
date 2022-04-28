@@ -27,15 +27,9 @@ class Utilisateurs extends BaseController
         return view('pages/accueil');
     }
 
-    public function profil()
-    {
-        $this->parents->find(session("id"));
-        $data = [
-            "data" => $this->parents->find(session("id"))
-            
-        ];
-        return view('utilisateurs/profil', $data);
-    }
+
+
+
 
     public function utilisateursIndex()
     {
