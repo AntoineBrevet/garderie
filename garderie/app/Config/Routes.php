@@ -31,8 +31,7 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
-$routes->get('utilisateurs', 'Utilisateurs::index');
+$routes->get('/', 'Utilisateurs::index');
 $routes->get('professionnels', 'Professionnels::index');
 $routes->get('payment-stripe', 'StripeController::index');
 $routes->get('prosIndex', 'Professionnels::prosIndex');

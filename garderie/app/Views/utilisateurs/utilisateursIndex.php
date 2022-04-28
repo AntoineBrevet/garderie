@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-<?= $this->extend('master') ?>
-=======
 <?= $this->extend('master') ?>
 
 <?= $this->section('css') ?>
@@ -70,4 +67,3 @@
 
 <?= $this->endSection() ?>
 
->>>>>>> Stashed changes

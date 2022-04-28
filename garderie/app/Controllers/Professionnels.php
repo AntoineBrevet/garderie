@@ -28,11 +28,11 @@ class Professionnels extends BaseController
 
     public function index()
     {
+        session()->destroy();
         $data = [
             "infos_reserv" => $this->reservation->call_reservation_infos(),
             "infos_pro" => $this->professionnels->call_pro_infos(),
-            "myCreneaux" => $this->creneau->call_creneau_by_pro(4),
-
+            "myCreneaux" => $this->creneau->call_creneau_by_pro(4)
         ];
 
         return view('professionnels/index', $data);
@@ -67,8 +67,7 @@ class Professionnels extends BaseController
             if (!empty($professionnels)) {
                 if (password_verify($passwordPost, $professionnels["mdpPros"])) {
                     session()->set([
-                        "mailPros" => $professionnels["mailPros"],
-                        "prenomPros" => $professionnels["prenomPros"],
+                        "professionnels" => true,
                         "id" => $professionnels["id"]
                     ]);
                     return redirect()->to('prosIndex');
@@ -147,13 +146,11 @@ class Professionnels extends BaseController
                     "siret" => $this->request->getPost("siret"),
                     "latitudePros" => $latitude,
                     "longitudePros" => $longitude
-
-
                 ];
 
                 $this->professionnels->insert($professionnels);
                 var_dump($data_arr);
-                return redirect()->to('prosIndex');
+                return redirect()->to('professionnels');
             }
         } else {
             echo view("professionnels/inscriptionPros", [

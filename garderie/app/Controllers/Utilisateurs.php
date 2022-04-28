@@ -23,7 +23,8 @@ class Utilisateurs extends BaseController
 
     public function index()
     {
-        return view('utilisateurs/index');
+        session()->destroy();
+        return view('pages/accueil');
     }
 
     public function profil()
@@ -38,7 +39,6 @@ class Utilisateurs extends BaseController
 
     public function utilisateursIndex()
     {
-
         if ($this->request->getMethod() === 'post' && $this->validate([
                 'latitudeHidden' => 'required',
                 'longitudeHidden' => 'required',
@@ -47,7 +47,6 @@ class Utilisateurs extends BaseController
             $position = [
                 "latitudeParents" => $this->request->getPost("latitudeHidden"),
                 "longitudeParents" => $this->request->getPost("longitudeHidden"),
-
             ];
             $this->parents->update(['id' => session('id')], $position);
             return redirect()->to('utilisateursIndex');
@@ -56,7 +55,6 @@ class Utilisateurs extends BaseController
         $data = [
             "localisation" => $this->professionnels->call_pro_by_localisation(),
             "position" => $this->parents->find(session("id"))
-
         ];
 
         return view('utilisateurs/utilisateursIndex', $data);
@@ -73,15 +71,11 @@ class Utilisateurs extends BaseController
 
             $emailPost = $this->request->getPost("mailParents");
             $passwordPost = $this->request->getPost("mdpParents");
-
             $parents = $this->parents->findByEmail($emailPost);
             if (!empty($parents)) {
                 if (password_verify($passwordPost, $parents["mdpParents"])) {
                     session()->set([
-                        "mailParents" => $parents["mailParents"],
-                        "prenomParents" => $parents["prenomParents"],
-                        "longitudeParents" => $parents["longitudeParents"],
-                        "latitudeParents" => $parents["latitudeParents"],
+                        "utilisateurs" => true,
                         "id" => $parents["id"]
                     ]);
                     return redirect()->to('utilisateursIndex');
@@ -183,8 +177,6 @@ class Utilisateurs extends BaseController
         session()->destroy();
         return redirect()->to('/');
     }
-
-
     public function showEnfants()
     {
         $data = [
