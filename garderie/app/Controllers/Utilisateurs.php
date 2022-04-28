@@ -27,7 +27,12 @@ class Utilisateurs extends BaseController
         return view('pages/accueil');
     }
 
+<<<<<<< Updated upstream
     public function profil()
+=======
+
+    public function utilisateursIndex()
+>>>>>>> Stashed changes
     {
         $this->parents->find(session("id"));
         $data = [
