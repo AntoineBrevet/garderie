@@ -1,9 +1,3 @@
-<<<<<<< Updated upstream
-=======
-
-<?= $this->extend('master') ?>
-
->>>>>>> Stashed changes
 <?= $this->extend('master') ?>
 
 <?= $this->section('css') ?>
@@ -35,13 +29,7 @@
 
     <input type="submit" id="submitLocalisation" name="submit" value="Actualiser la carte">
 </form>
-<<<<<<< Updated upstream
 <button id="buttonHidden" onclick="getLocation()">Trouver les pros les plus proches</button>
-=======
-
-
-<button id ="buttonHidden" onclick="getLocation()">Trouver les pros les plus proches</button>
->>>>>>> Stashed changes
 
 
 <?= $this->endSection() ?>
@@ -56,16 +44,6 @@
 
 
 <script>
-<<<<<<< Updated upstream
-    var iCount = 1;
-    var locations = [];
-</script>
-<?php foreach ($localisation as $localisations) {
-?>
-    <script>
-        var longitude = "<?= $localisations["longitudePros"] ?>";
-        var latitude = "<?= $localisations["latitudePros"] ?>";
-=======
 
     function change(){
 
@@ -111,7 +89,6 @@
         var latitudeParent = "<?= $position["latitudeParents"] ?>";
         var longitudePros = "<?= $localisations["longitudePros"] ?>";
         var latitudePros = "<?= $localisations["latitudePros"] ?>";
->>>>>>> Stashed changes
         var nomPros = "<?= $localisations["nomPros"] ?>";
 
 
@@ -158,12 +135,6 @@ else if (select === "France"){
 <?php
 }
 ?>
-<<<<<<< Updated upstream
-<script>
-    var longitudeParent = "<?= $position["longitudeParents"] ?>";
-    var latitudeParent = "<?= $position["latitudeParents"] ?>";
-</script>
-=======
 
 
     }
@@ -174,7 +145,6 @@ else if (select === "France"){
 
     <?php foreach ($localisation as $localisations){
     ?>
->>>>>>> Stashed changes
 
 
 
@@ -220,25 +190,8 @@ else if (select === "France"){
     ?>
 
 </script>
-<<<<<<< Updated upstream
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyCHIY60MQ8Vyb5e7bM4P4_i5HsIcTr-kHw" type="text/javascript"></script>
-<script src="<?php base_url() ?>/js/map.js"></script>
-<script src="<?php base_url() ?>/js/getLocation.js"></script>
-<script type="text/javascript">
-    var urlAjax = "<?= base_url() ?>"
-</script>
-=======
 
 <script type="text/javascript"> var urlAjax =  "<?= base_url() ?>"</script>
->>>>>>> Stashed changes
 
-
-<<<<<<< Updated upstream
-=======
 <?= $this->endSection() ?>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 
-
->>>>>>> Stashed changes
