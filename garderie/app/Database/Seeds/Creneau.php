@@ -16,8 +16,7 @@ class Creneau extends Seeder
             'creche_id' => 1,
             'nbr_place' => 25,
             'nbr_place_restant' => 24,
-            'debut_session' => 8,
-            'fin_session' =>11,
+            'session_id' => 1,
         ],
          [
             'date_debut' => date('d-m-y'),
@@ -26,8 +25,7 @@ class Creneau extends Seeder
             'fin' => 10,
             'creche_id' => 1,
             'nbr_place' => 25,
-            'debut_session' => 8,
-            'fin_session' =>11,
+            'session_id' => 1,
             'nbr_place_restant' => 24,
          ],
         [
@@ -37,8 +35,7 @@ class Creneau extends Seeder
             'fin' => 11,
             'creche_id' => 1,
             'nbr_place' => 25,
-            'debut_session' => 8,
-            'fin_session' =>11,
+            'session_id' => 1,
             'nbr_place_restant' => 24,
         ], [
             'date_debut' => date('d-m-y'),
@@ -47,8 +44,7 @@ class Creneau extends Seeder
             'fin' => 11,
             'creche_id' => 2,
             'nbr_place' => 25,
-            'debut_session' => 8,
-            'fin_session' =>12,
+            'session_id' => 2,
             'nbr_place_restant' => 24,
         ]];
 

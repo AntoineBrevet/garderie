@@ -48,17 +48,13 @@ class Creneau extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,   
             ],
-            'debut_session'=>[
-                'type'=> 'INT',
-                'constraint' => 11,
-                'unsigned'       => true,
-            ],           
-             'fin_session'=>[
+            'session_id' =>[
                 'type'=> 'INT',
                 'constraint' => 11,
                 'unsigned'       => true,
             ],
             'deleted_at'=> [
+                
                 'type'=> 'DATETIME',
                 'null' => true,
             ],
@@ -67,6 +63,7 @@ class Creneau extends Migration
             'updated_at datetime default null on update current_timestamp'
         ]);
         $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('session_id', 'session', 'id');
         $this->forge->addForeignKey('creche_id', 'professionnels', 'id');
         $this->forge->createTable('creneau');
     }

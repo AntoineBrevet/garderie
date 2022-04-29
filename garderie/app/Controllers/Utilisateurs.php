@@ -43,12 +43,15 @@ class Utilisateurs extends BaseController
         } else {
             $data = [
                 "localisation" => $this->professionnels->call_pro_by_localisation(),
-                "position" => $this->parents->find(session("id"))
+                "position" => $this->parents->find(session("id")),
+                "proByName" => $this->professionnels->call_pro_by_name('laguarderie'),
+                "proInfosById" => $this->professionnels->call_pro_infos_by_id(1),
             ];
 
             return view('utilisateurs/utilisateursIndex', $data);
         }
-    }
+    
+    
 
     function profil()
     {
@@ -147,7 +150,6 @@ class Utilisateurs extends BaseController
                     "telParents" => $this->request->getPost("telParents"),
                     "latitudeParents" => $latitude,
                     "longitudeParents" => $longitude
-
                 ];
 
                 $this->parents->insert($parents);

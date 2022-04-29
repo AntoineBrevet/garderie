@@ -47,4 +47,21 @@ class CreneauModel extends Model
             ->where(['professionnels.id' => $idpro])
             ->findAll();
     }
+
+    public function call_creneau_by_places($nbr){
+        return $this->select("*")
+            ->where(['nbr_place_restant >' => $nbr])
+            ->findAll();
+    }
+
+    public function call_all_creneau(){
+        return $this->select("*")
+            ->findAll();
+    }
+
+    public function call_creneau_infos_by_id($id){
+        return $this->select("*")
+            ->where(['id' => $id])
+            ->findAll();
+    }
 }

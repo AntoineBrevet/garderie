@@ -31,6 +31,11 @@
 </form>
 <button id="buttonHidden" onclick="getLocation()">Trouver les pros les plus proches</button>
 
+<?php 
+// foreach($proByName as $name){
+//     var_dump($name);
+// }
+?>
 
 <?= $this->endSection() ?>
 

@@ -31,8 +31,12 @@ class Professionnels extends BaseController
         session()->destroy();
         $data = [
             "infos_reserv" => $this->reservation->call_reservation_infos(),
-            "infos_pro" => $this->professionnels->call_pro_infos(),
-            "myCreneaux" => $this->creneau->call_creneau_by_pro(4)
+            "infos_pro" => $this->professionnels->call_pro_infos_by_id(1),
+            "myCreneaux" => $this->creneau->call_creneau_by_pro(4),
+            "creneauPlaces" => $this->creneau->call_creneau_by_places(30),
+            "allCreneau" =>  $this->creneau->call_all_creneau(),
+            "creneauInfos" => $this->creneau->call_creneau_infos_by_id(3),
+            "recupByEnfant" => $this->recupere->call_recup_by_enfants(1),
         ];
 
         return view('professionnels/index', $data);
