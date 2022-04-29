@@ -50,7 +50,6 @@ class Utilisateurs extends BaseController
 
             return view('utilisateurs/utilisateursIndex', $data);
         }
-    
     }
 
     function profil()
@@ -63,7 +62,7 @@ class Utilisateurs extends BaseController
         return view('utilisateurs/profil', $data);
     }
 
-    protected function connexion()
+    public function connexion()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
             'mailParents' => 'required|valid_email',
