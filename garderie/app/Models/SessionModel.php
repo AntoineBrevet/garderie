@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class RecupereModel extends Model
+class SessionModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'recupere';
+    protected $table            = 'sessions';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_enfant','telRecup','id','nomRecup','prenomRecup'];
+    protected $allowedFields    = ['id','debutSession','finSession','creche_id'];
 
     // Dates
     protected $useTimestamps = false;
@@ -39,11 +39,4 @@ class RecupereModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function call_recup_by_enfants($id){
-        return $this->select("*")
-            ->join('enfants','id_enfant = enfants.id')
-            ->where(['enfants.id' => $id])
-            ->findAll();
-    }
 }
