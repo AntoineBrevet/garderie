@@ -9,6 +9,10 @@ class Creneau extends Migration
     public function up()
     {
         $this->forge->addField([
+            'jour'=> [
+                'type'=> 'INT',
+                'constraint' => 11,
+            ],
             'date_debut'=> [
                 'type'=> 'DATE',
             ],

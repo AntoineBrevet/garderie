@@ -43,7 +43,7 @@ class Utilisateurs extends BaseController
                 "longitudeParents" => $this->request->getPost("longitudeHidden"),
             ];
             $this->parents->update(['id' => session('id')], $position);
-            return redirect()->to('utilisateursIndex');
+            return redirect()->to(base_url() . '/utilisateursIndex');
         }
     else {
         $data = [
@@ -147,7 +147,7 @@ class Utilisateurs extends BaseController
                 ];
 
                 $this->parents->insert($parents);
-                return redirect()->to('/');
+                return redirect()->to(base_url() . '/');
             }
         } else {
             echo view("utilisateurs/inscription", [
@@ -199,7 +199,7 @@ class Utilisateurs extends BaseController
                 "parents_id" => session("id")
             ];
             $this->enfants->insert($enfants);
-            return redirect()->to('showEnfants');
+            return redirect()->to(base_url() . '/showEnfants');
         } else {
             echo view("utilisateurs/createEnfants");
         }
@@ -227,7 +227,7 @@ class Utilisateurs extends BaseController
                 "medicaments" => $this->request->getPost("medicaments")
             ];
             $this->enfants->update(['id' => $id], $enfants);
-            return redirect()->to('showEnfants');
+            return redirect()->to(base_url() . '/showEnfants');
         } else {
             $data = [
                 "data" => $this->enfants->find($id)
@@ -238,7 +238,7 @@ class Utilisateurs extends BaseController
     public function deleteEnfants($id)
     {
         $this->enfants->delete($id);
-        return redirect()->to('showEnfants');
+        return redirect()->to(base_url() . '/showEnfants');
     }
 
 
