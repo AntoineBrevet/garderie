@@ -41,7 +41,7 @@
                                                         ?>">
 
         </div>
-        <div> <label for="prenom">nombres d'enfants</label>
+        <div> <label for="prenom">Siret</label>
             <input type="text" name="password" value="<?php
                                                         echo ($data['siret']);
                                                         ?>">

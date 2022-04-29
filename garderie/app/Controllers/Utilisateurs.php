@@ -27,16 +27,12 @@ class Utilisateurs extends BaseController
         return view('pages/accueil');
     }
 
-
-
-
-
     public function utilisateursIndex()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
-                'latitudeHidden' => 'required',
-                'longitudeHidden' => 'required',
-            ])) {
+            'latitudeHidden' => 'required',
+            'longitudeHidden' => 'required',
+        ])) {
 
             $position = [
                 "latitudeParents" => $this->request->getPost("latitudeHidden"),
@@ -44,18 +40,26 @@ class Utilisateurs extends BaseController
             ];
             $this->parents->update(['id' => session('id')], $position);
             return redirect()->to('utilisateursIndex');
+        } else {
+            $data = [
+                "localisation" => $this->professionnels->call_pro_by_localisation(),
+                "position" => $this->parents->find(session("id"))
+            ];
+
+            return view('utilisateurs/utilisateursIndex', $data);
         }
-    else {
+    }
+
+    function profil()
+    {
+        $this->parents->find(session("id"));
         $data = [
-            "localisation" => $this->professionnels->call_pro_by_localisation(),
-            "position" => $this->parents->find(session("id"))
+            "data" => $this->parents->find(session("id"))
+
         ];
-
-        return view('utilisateurs/utilisateursIndex', $data);
-
+        return view('utilisateurs/profil', $data);
     }
 
-    }
     public function connexion()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
@@ -242,7 +246,8 @@ class Utilisateurs extends BaseController
     }
 
 
-    public function geocode($address){
+    public function geocode($address)
+    {
 
 
         // url encode the address
@@ -287,5 +292,4 @@ class Utilisateurs extends BaseController
             return false;
         }
     }
-
 }
