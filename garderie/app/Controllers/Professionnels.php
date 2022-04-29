@@ -146,7 +146,7 @@ class Professionnels extends BaseController
 
                 $this->professionnels->insert($professionnels);
                 var_dump($data_arr);
-                return redirect()->to('professionnels');
+                return redirect()->to(base_url() . '/professionnels');
             }
         } else {
             echo view("professionnels/inscriptionPros", [
@@ -199,7 +199,7 @@ class Professionnels extends BaseController
                     ];
                     $this->creneau->insert($creneau);
                 }
-                return redirect()->to('prosIndex');
+                return redirect()->to(base_url() . '/prosIndex');
             } elseif ($dif > 0) {
                 for ($i = $debut2; $i < 24; $i++) {
                     $data['debut'] = $i;
@@ -239,6 +239,9 @@ class Professionnels extends BaseController
                     }
                 }
                 for ($i = 1; $i < $fin2; $i++) {
+                    if ($dif == 1) {
+                        $id = 1;
+                    }
                     $data['debut'] = $i;
                     $data['fin'] = $i + 1;
                     $creneau = [
@@ -256,6 +259,7 @@ class Professionnels extends BaseController
                     $this->creneau->insert($creneau);
                 }
             }
+            return redirect()->to(base_url() . '/prosIndex');
         } else {
             echo view("professionnels/create");
         }
