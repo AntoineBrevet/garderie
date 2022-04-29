@@ -240,7 +240,7 @@ class Professionnels extends BaseController
                 }
                 for ($i = 1; $i < $fin2; $i++) {
                     if ($dif == 1) {
-                        $id = 2;
+                        $id = 1;
                     }
                     $data['debut'] = $i;
                     $data['fin'] = $i + 1;
