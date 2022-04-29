@@ -16,6 +16,8 @@ class Professionnels extends BaseController
     private $parents;
     private $professionnels;
     private $reservation;
+    private $recupere;
+    private $session;
 
     function __construct()
     {
@@ -24,6 +26,8 @@ class Professionnels extends BaseController
         $this->parents = model(ParentsModel::class);
         $this->professionnels = model(ProfessionnelsModel::class);
         $this->reservation = model(ReservationModel::class);
+        $this->recupere = model(RecupereModel::class);
+        $this->session = model(SessionModel::class);
     }
 
     public function index()

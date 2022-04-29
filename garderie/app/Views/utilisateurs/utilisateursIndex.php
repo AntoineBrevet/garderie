@@ -66,13 +66,18 @@
 
 
 
+<select onchange=change() name="selectVal" id="selectVal">
+    <option value="1">1km</option>
+    <option value="2">2km</option>
+    <option value="5">5km</option>
+    <option value="10">10km</option>
+    <option value="20">20km</option>
+    <option value="50">50km</option>
+    <option value="100">100km</option>
+    <option value="France" selected>Toute la france</option>
+</select><br>
 
 
-<?php 
-// foreach($proByName as $name){
-//     var_dump($name);
-// }
-?>
 
 <?= $this->endSection() ?>
 
@@ -227,6 +232,22 @@
     }
     ?>
 </script>
+<script type="text/javascript">
+    var urlAjax = "<?= base_url() ?>"
+</script>
+
+
+<?php
+
+// foreach($ as $){
+//     echo ' ' . $i .' : Infos<br>';
+//     echo $info_reserv['nomEnfants'] . ' ' . $info_reserv['prenomEnfants'] .'<br>';
+//     echo $info_reserv['nomParents'] . ' ' . $info_reserv['prenomParents']. '-' . $info_reserv['telParents'] .'<br>';
+//     echo $info_reserv['nomRecup'] . ' ' . $info_reserv['prenomRecup']. '-' . $info_reserv['telRecup'].'<br>';
+//     echo '<hr>';
+
+// };
+?>
 
 <script type="text/javascript">
     var urlAjax = "<?= base_url() ?>"
