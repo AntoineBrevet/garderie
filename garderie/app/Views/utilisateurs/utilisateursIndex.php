@@ -42,32 +42,37 @@
 
 <section class="sec2">
     <div>
-        <h1>Feeds</h1>
+        <h1>Feeds Annonces</h1>
 
     </div>
 
 </section>
 
 
+<div class="feed">
+
+    <?php
+    foreach ($sessions as $session) { ?>
+        <div class="annonces">
+            <?php echo $session['creche_id'] ?>
+            <br>
+            heure de debut <?php echo $session['debutSession'] ?>heures
+            <br>
+            heure de fin <?php echo $session['finSession'] ?>heures
+            <br>
+            Nom du Professionnel<?php echo $session['nomPros'] ?>
+            <br>
+            mail de celui-ci<?php echo $session['mailPros'] ?>
+            <br>
+            telephone de celui-ci<?php echo $session['telPros'] ?>
+            <br>
+            adresse de la creche<?php echo $session['adressePros'] ?>
+        </div>
+        <br>
+    <?php } ?>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 <?= $this->endSection() ?>
 
@@ -225,23 +230,6 @@
 <script type="text/javascript">
     var urlAjax = "<?= base_url() ?>"
 </script>
-
-
-<?php
-
-// foreach($ as $){
-//     echo ' ' . $i .' : Infos<br>';
-//     echo $info_reserv['nomEnfants'] . ' ' . $info_reserv['prenomEnfants'] .'<br>';
-//     echo $info_reserv['nomParents'] . ' ' . $info_reserv['prenomParents']. '-' . $info_reserv['telParents'] .'<br>';
-//     echo $info_reserv['nomRecup'] . ' ' . $info_reserv['prenomRecup']. '-' . $info_reserv['telRecup'].'<br>';
-//     echo '<hr>';
-
-// };
-
-foreach($sessions as $session){
-    var_dump($session) . '<hr>';
-}
-?>
 
 <script type="text/javascript">
     var urlAjax = "<?= base_url() ?>"

@@ -65,3 +65,46 @@ form {
     text-align: center;
     color: #fff;
 }
+
+.feed{
+    background-color: #fff;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.fixe{
+    margin-right: 15px;
+}
+.annonces{
+    display: inline-block;
+    font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+    border-color: #eee #ddd #bbb;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    margin: 20px;
+    padding: 0 16px 16px 16px;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20px;
+    width: 95%;
+}
+/* responsif */
+/* .annonces{
+    display: inline-block;
+
+    font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+    border-color: #eee #ddd #bbb;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    margin: 20px 50px;
+    padding: 0 16px 16px 16px;
+    max-width: 468px;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20px;
+} */
