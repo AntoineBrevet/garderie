@@ -10,6 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="<?= base_url(); ?>/css/header.css" rel="stylesheet">
     <link href="<?= base_url(); ?>/css/footer.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>/css/style.css" rel="stylesheet">
     <?= $this->renderSection('css') ?>
     <title>Baby Garde</title>
 </head>
@@ -17,7 +18,7 @@
 <body>
 
     <?php include_once('template/header.php') ?>
-    
+
     <?= $this->renderSection('content') ?>
 
     <?php include_once('template/footer.php') ?>

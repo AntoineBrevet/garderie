@@ -1,3 +1,67 @@
-#submitLocalisation{
-    display:none;
+#submitLocalisation {
+    display: none;
+}
+
+body {
+    background: linear-gradient(115deg, #1f73b4, #57c5cd);
+}
+
+.sec1,
+.sec2 {
+    padding: 40px;
+}
+
+.sec1 h1 {
+    text-align: center;
+    color: #fff;
+}
+
+#map {
+    box-shadow: 5px 5px 25px black;
+    margin: 100px auto;
+}
+
+.myForm,
+form {
+    width: 50%;
+    height: auto;
+    margin: 30px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.myForm>#search {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.sec1 label {
+    color: #fff;
+}
+
+#buttonHidden,
+#submitLocalisation,
+#selectVal {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    width: auto;
+}
+
+#selectVal option {
+    background-color: #1f73b4;
+    color: #fff;
+    padding: 3px;
+}
+
+
+/*----sec2-----*/
+
+.sec2 h1 {
+    text-align: center;
+    color: #fff;
 }

@@ -50,9 +50,7 @@ class Utilisateurs extends BaseController
 
             return view('utilisateurs/utilisateursIndex', $data);
         }
-    
-    
-
+    }
     function profil()
     {
         $this->parents->find(session("id"));
