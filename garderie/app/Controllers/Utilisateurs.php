@@ -11,6 +11,7 @@ class Utilisateurs extends BaseController
     private $parents;
     private $professionnels;
     private $reservation;
+    private $session;
 
     function __construct()
     {
@@ -19,6 +20,7 @@ class Utilisateurs extends BaseController
         $this->parents = model(ParentsModel::class);
         $this->professionnels = model(ProfessionnelsModel::class);
         $this->reservation = model(ReservationModel::class);
+        $this->session = model(SessionModel::class);
     }
 
     public function index()
@@ -46,6 +48,7 @@ class Utilisateurs extends BaseController
                 "position" => $this->parents->find(session("id")),
                 "proByName" => $this->professionnels->call_pro_by_name('laguarderie'),
                 "proInfosById" => $this->professionnels->call_pro_infos_by_id(1),
+                "sessions" => $this->session->call_all_session(),
             ];
 
             return view('utilisateurs/utilisateursIndex', $data);
@@ -90,6 +93,7 @@ class Utilisateurs extends BaseController
             'validation' => $this->validator
         ]);
     }
+
     public function inscription()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
@@ -210,9 +214,6 @@ class Utilisateurs extends BaseController
         }
     }
 
-
-
-
     public function updateEnfants($id)
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
@@ -294,3 +295,4 @@ class Utilisateurs extends BaseController
         }
     }
 }
+

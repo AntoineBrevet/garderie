@@ -23,10 +23,6 @@
                 <div class="baby-infos">
 
                     <div>
-                        <h4> ID :</h4>
-                        <p><?= $datas["id"] ?></p>
-                    </div>
-                    <div>
                         <h4> Nom :</h4>
                         <p><?= $datas["nomEnfants"] ?></p>
 

@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class SessionModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'sessions';
+    protected $table            = 'session';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -39,4 +39,10 @@ class SessionModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function call_all_session(){
+        return $this->select('*')
+            ->join('professionnels','creche_id = professionnels.id')
+            ->findAll();
+    }
 }

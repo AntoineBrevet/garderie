@@ -237,6 +237,10 @@
 //     echo '<hr>';
 
 // };
+
+foreach($sessions as $session){
+    var_dump($session) . '<hr>';
+}
 ?>
 
 <script type="text/javascript">
