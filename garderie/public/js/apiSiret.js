@@ -1,18 +1,19 @@
-// Create a request variable and assign a new XMLHttpRequest object to it.
-var request = new XMLHttpRequest()
+function verif(){
 
-// Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'https://www.data.gouv.fr/fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret/', true)
+    let query = document.getElementById('query').value
+    fetch('https://entreprise.data.gouv.fr/api/sirene/v1/siret/' + query)
+        .then(res => res.json())
+        .then(function (data){
+            console.log(data['etablissement']['siret'])
+            document.getElementById('query').style = "border-color: green;"
+            document.getElementById('spanVerif').innerHTML = "numéro de siret valide"
 
-request.onload = function () {
-    // Begin accessing JSON data here
-    var data = JSON.parse(this.response)
+        })
 
-    data.forEach(movie => {
-        // Log each movie's title
-        console.log(movie.title)
-    })
+        .catch(function () {
+            console.log("error");
+            document.getElementById('query').style = "border-color: red;"
+            document.getElementById('spanVerif').innerHTML = "numéro de siret invalide"
+
+        });
 }
-
-// Send request
-request.send()

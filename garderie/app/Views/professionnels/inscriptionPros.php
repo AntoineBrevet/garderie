@@ -11,6 +11,8 @@
     <script type="text/javascript" src="<?= base_url(); ?>/js/mapInscriptionPros.js"></script>
 
     <script type="text/javascript" src="<?= base_url(); ?>/js/main.js"></script>
+    <script type="text/javascript" src="<?= base_url(); ?>/js/apiSiret.js"></script>
+
 </head>
 
 <body>
@@ -54,8 +56,9 @@
                     </div>
 
                     <div class="input-field col s12">
-                        <label for="siret" class="active" style="color: black;">Numero de Siret</label>
-                        <input class="validate" type="text" value="" name="siret" id="siret" placeholder="Numero de Siret" required="">
+                        <button onclick="verif()">Vérification</button>
+                        <span id="spanVerif">Merci de renseigner votre numéro de Siret.</span>
+                        <input type="text" id="query" placeholder="Numéro de siret">
                     </div>
 
                     <div class="input-field col s12">

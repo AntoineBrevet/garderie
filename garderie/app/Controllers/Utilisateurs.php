@@ -29,6 +29,11 @@ class Utilisateurs extends BaseController
         return view('pages/accueil');
     }
 
+
+
+
+
+    
     public function utilisateursIndex()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
