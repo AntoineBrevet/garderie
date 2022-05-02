@@ -48,6 +48,7 @@
 .sec1 form div input {
     width: 80%;
     padding: 10px;
+    color: black;
 }
 
 .submit-button button {
@@ -62,4 +63,14 @@
 
 .submit-button button:hover {
     background-color: goldenrod;
+}
+.btnModif{
+    width: 200px;
+    margin: 10px auto;
+    padding: 5px;
+    background-color: #c4a90c;
+    box-shadow: 3px 3px 8px #534f4f;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
 }

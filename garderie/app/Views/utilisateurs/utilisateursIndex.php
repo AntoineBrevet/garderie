@@ -56,17 +56,17 @@
         <div class="annonces">
             <?php echo $session['creche_id'] ?>
             <br>
-            heure de debut <?php echo $session['debutSession'] ?>heures
+            Nom du Professionnel :<?php echo $session['nomPros'] ?>
             <br>
-            heure de fin <?php echo $session['finSession'] ?>heures
+            mail de celui-ci :<?php echo $session['mailPros'] ?>
             <br>
-            Nom du Professionnel<?php echo $session['nomPros'] ?>
+            telephone de celui-ci :<?php echo $session['telPros'] ?>
             <br>
-            mail de celui-ci<?php echo $session['mailPros'] ?>
+            adresse de la creche :<?php echo $session['adressePros'] ?>
             <br>
-            telephone de celui-ci<?php echo $session['telPros'] ?>
+            <div class="">heure(s)d'ouverture de la creche:<?php echo $session['debutSession'] ?>-<?php echo $session['finSession'] ?> heures</div>
             <br>
-            adresse de la creche<?php echo $session['adressePros'] ?>
+            <a href="<?= base_url(); ?><?= $session["id"]; ?>" class="profil_candidat">voir le profil</a>
         </div>
         <br>
     <?php } ?>

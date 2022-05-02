@@ -14,60 +14,59 @@
 <section class="sec1">
 
     <h2> <img src="<?= base_url()  ?>/img/planche.png" alt=""> le profil </h2>
-    <form action="#" method="POST">
+    <form action="" method="POST">
 
         <div>
             <label for="prenom">Nom</label>
-            <input type="nom" name="nom" value="<?php
-                                                echo ($data['nomParents']);
-                                                ?>">
+            <input type="nom" name="nomParents" value="<?php
+                                                        echo ($data['nomParents']);
+                                                        ?>">
         </div>
         <div>
             <label for="prenom">Prénom</label>
-            <input type="prenom" name="prenom" value="<?php
-                                                        echo ($data['prenomParents']);
-                                                        ?>">
+            <input type="prenom" name="prenomParents" value="<?php
+                                                                echo ($data['prenomParents']);
+                                                                ?>">
         </div>
         </div>
         <div> <label for="prenom">date de naissance</label>
-            <input type="text" name="password" value="<?php
-                                                        echo ($data['dateNaissanceParents']);
-                                                        ?>">
+            <input type="date" name="dateNaissanceParents" value="<?php
+                                                                    echo ($data['dateNaissanceParents']);
+                                                                    ?>">
 
         </div>
         </div>
         <div> <label for="prenom">Adresse</label>
-            <input type="text" name="password" value="<?php
-                                                        echo ($data['adresseParents']);
-                                                        ?>">
+            <input type="text" name="adresseParents" value="<?php
+                                                            echo ($data['adresseParents']);
+                                                            ?>">
 
         </div>
         <div> <label for="prenom">nombres d'enfants</label>
-            <input type="text" name="password" value="<?php
-                                                        echo ($data['nbr_enfants']);
-                                                        ?>">
+            <input type="text" name="nbr_enfants" value="<?php
+                                                            echo ($data['nbr_enfants']);
+                                                            ?>">
 
         </div>
         <div> <label for="prenom">Adresse E-mail</label>
-            <input type="email" name="email" value="<?php
-                                                    echo ($data['mailParents']);
-                                                    ?>">
+            <input type="email" name="mailParents" value="<?php
+                                                            echo ($data['mailParents']);
+                                                            ?>">
         </div>
         </div>
         <div> <label for="prenom">numéro de télephone</label>
-            <input type="text" name="password" value="<?php
+            <input type="text" name="telParents" value="<?php
                                                         echo ($data['telParents']);
                                                         ?>">
 
         </div>
         <div> <label for="prenom">Mot de Passe</label>
-            <input type="text" name="password" value="<?php
+            <input type="text" name="mdpParents" value="<?php
                                                         echo ($data['mdpParents']);
                                                         ?>">
 
         </div>
-        <div class="submit-button"><button type="submit" value="">Modifier</button></div>
-
+        <input type="submit" class="btnModif" value="Modifier le profil"><br>
 
     </form>
 </section>

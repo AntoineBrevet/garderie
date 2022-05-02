@@ -35,7 +35,7 @@ $routes->get('/', 'Utilisateurs::index');
 $routes->get('professionnels', 'Professionnels::index');
 $routes->get('payment-stripe', 'StripeController::index');
 $routes->get('prosIndex', 'Professionnels::prosIndex');
-$routes->match(['get', 'post'],'utilisateursIndex', 'Utilisateurs::utilisateursIndex');
+$routes->match(['get', 'post'], 'utilisateursIndex', 'Utilisateurs::utilisateursIndex');
 $routes->get('showEnfants', 'Utilisateurs::showEnfants');
 $routes->get('query', 'Utilisateurs::showQuery');
 
@@ -49,13 +49,13 @@ $routes->match(['get', 'post'], 'inscriptionPros', 'Professionnels::inscriptionP
 $routes->match(['get', 'post'], 'connexionPros', 'Professionnels::connexionPros');
 $routes->match(['get', 'post'], 'create', 'Professionnels::create');
 $routes->match(['get', 'post'], 'profilPros', 'Professionnels::profilPros');
-$routes->match(['get', 'post'], 'profil', 'Utilisateurs::profil');
 $routes->get('deconnexion', 'Utilisateurs::deconnexion');
 $routes->get('deconnexionPros', 'Professionnels::deconnexionPros');
 
 $routes->match(['get', 'post'], 'createEnfants', 'Utilisateurs::createEnfants');
 $routes->match(['get', 'post'], 'updateEnfants/(:any)', 'Utilisateurs::updateEnfants/$1');
 $routes->get('deleteEnfants/(:any)', 'Utilisateurs::deleteEnfants/$1');
+$routes->match(['get', 'post'], 'profil', 'Utilisateurs::modifProfil');
 
 
 

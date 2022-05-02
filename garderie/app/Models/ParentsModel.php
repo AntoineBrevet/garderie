@@ -14,7 +14,7 @@ class ParentsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nbr_enfants', 'nomParents', 'prenomParents', 'adresseParents', 'mdpParents', 'mailParents', 'telParents', 'latitudeParents', 'longitudeParents'];
+    protected $allowedFields    = ['nbr_enfants', 'nomParents', 'prenomParents','dateNaissanceParents', 'adresseParents', 'mdpParents', 'mailParents', 'telParents', 'latitudeParents', 'longitudeParents'];
 
     // Dates
     protected $useTimestamps = false;
@@ -44,4 +44,5 @@ class ParentsModel extends Model
     {
         return $this->where(['mailParents' => $mail])->first();
     }
+    
 }

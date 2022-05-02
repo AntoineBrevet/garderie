@@ -33,7 +33,7 @@ class Utilisateurs extends BaseController
 
 
 
-    
+
     public function utilisateursIndex()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
@@ -60,15 +60,15 @@ class Utilisateurs extends BaseController
         }
     }
 
-    function profil()
-    {
-        $this->parents->find(session("id"));
-        $data = [
-            "data" => $this->parents->find(session("id"))
+    // function profil()
+    // {
+    //     $this->parents->find(session("id"));
+    //     $data = [
+    //         "data" => $this->parents->find(session("id"))
 
-        ];
-        return view('utilisateurs/profil', $data);
-    }
+    //     ];
+    //     return view('utilisateurs/profil', $data);
+    // }
 
     public function connexion()
     {
@@ -202,7 +202,10 @@ class Utilisateurs extends BaseController
             'allergies' => 'required',
             'medicaments' => 'required'
         ])) {
-
+            $nbr = $this->parents->find(session('id'));
+            $parents = [
+                "nbr_enfants" => $nbr["nbr_enfants"] + 1
+            ];
             $enfants = [
                 "nomEnfants" => $this->request->getPost("nomEnfants"),
                 "prenomEnfants" => $this->request->getPost("prenomEnfants"),
@@ -213,6 +216,7 @@ class Utilisateurs extends BaseController
                 "parents_id" => session("id")
             ];
             $this->enfants->insert($enfants);
+            $this->parents->update(['id' => session('id')], $parents);
             return redirect()->to(base_url() . '/showEnfants');
         } else {
             echo view("utilisateurs/createEnfants");
@@ -248,6 +252,11 @@ class Utilisateurs extends BaseController
     }
     public function deleteEnfants($id)
     {
+        $nbr = $this->parents->find(session('id'));
+        $parents = [
+            "nbr_enfants" => $nbr["nbr_enfants"] - 1
+        ];
+        $this->parents->update(['id' => session('id')], $parents);
         $this->enfants->delete($id);
         return redirect()->to(base_url() . '/showEnfants');
     }
@@ -299,5 +308,35 @@ class Utilisateurs extends BaseController
             return false;
         }
     }
+    public function modifprofil()
+    {
+        if ($this->request->getMethod() === 'post' && $this->validate([
+            'nomParents' => 'required',
+            'prenomParents' => 'required',
+            'dateNaissanceParents' => 'required',
+            'adresseParents' => 'required',
+            'nbr_enfants' => 'required',
+            'mailParents' => 'required',
+            'telParents' => 'required',
+            'mdpParents' => 'required'
+        ])) {
+            $parents = [
+                "nomParents" => $this->request->getPost("nomParents"),
+                "prenomParents" => $this->request->getPost("prenomParents"),
+                "adresseParents" => $this->request->getPost("adresseParents"),
+                "dateNaissanceParents" => $this->request->getPost("dateNaissanceParents"),
+                "nbr_enfants" => $this->request->getPost("nbr_enfants"),
+                "mailParents" => $this->request->getPost("mailParents"),
+                "telParents" => $this->request->getPost("telParents"),
+                "mdpParents" => $this->request->getPost("mdpParents")
+            ];
+            $this->parents->update(['id' => session('id')], $parents);
+            return redirect()->to(base_url() . '/profil');
+        } else {
+            $data = [
+                "data" => $this->parents->find(session('id'))
+            ];
+            echo view("utilisateurs/profil", $data);
+        }
+    }
 }
-
