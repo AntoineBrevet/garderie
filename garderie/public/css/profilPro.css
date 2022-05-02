@@ -2,6 +2,8 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+
+
 .sec1 {
     width: 90%;
     height: auto;
@@ -63,4 +65,32 @@
 
 .submit-button button:hover {
     background-color: goldenrod;
+}
+
+
+#bodyCard{
+    height:390px !important;
+    display: flex;
+}
+
+#calendarCard{
+    width: 50%;
+}
+.otherCards{
+    width: 33.33% !important;
+}
+
+.containerProfil{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.fc .fc-toolbar {
+    display: inline!important;
+    /* justify-content: space-between; */
+}
+#top {
+    display: none;
 }

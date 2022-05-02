@@ -52,13 +52,13 @@
 
                     <div class="input-field col s12">
                         <label for="naissance" class="active" style="color: black;">Date de naissance</label>
-                        <input type="text" class="datepicker" name="dateNaissancePros" placeholder="10/02/1980" required="">
+                        <input type="date" class="datepicker" name="dateNaissancePros" placeholder="10/02/1980" required="">
                     </div>
 
                     <div class="input-field col s12">
-                        <button onclick="verif()">Vérification</button>
+
                         <span id="spanVerif">Merci de renseigner votre numéro de Siret.</span>
-                        <input type="text" id="query" placeholder="Numéro de siret">
+                        <input type="text" oninput="verif()" id="query" name="siret" placeholder="Numéro de siret">
                     </div>
 
                     <div class="input-field col s12">
