@@ -30,6 +30,12 @@ class Session extends Migration
             'constraint'     => 11,
             'unsigned'       => true,
 
+        ],  
+        'date_debut'=> [
+            'type'=> 'DATE',
+        ],
+        'date_fin'=> [
+            'type'=> 'DATE',
         ],
         'deleted_at'=> [
             'type'=> 'DATETIME',

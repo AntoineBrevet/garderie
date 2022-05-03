@@ -44,7 +44,7 @@
 
               <div class="input-field col s6">
                   <label for="naissance" class="active" style="color: black;">Date de naissance</label>
-                  <input type="text" class="datepicker" name="dateNaissanceParents" placeholder="10/02/1980" required="">
+                  <input type="date" class="datepicker" name="dateNaissanceParents" placeholder="10/02/1980" required="">
               </div>
 
 

@@ -119,7 +119,6 @@ class Utilisateurs extends BaseController
 
                 $latitude = $data_arr[0];
                 $longitude = $data_arr[1];
-                $formatted_address = $data_arr[2];
                 var_dump($data_arr);
 
 
@@ -283,6 +282,8 @@ class Utilisateurs extends BaseController
             return false;
         }
     }
+
+
     public function modifprofil()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
@@ -313,5 +314,14 @@ class Utilisateurs extends BaseController
             ];
             echo view("utilisateurs/profil", $data);
         }
+    }
+
+    public function singleUser($id) {
+        $data = [
+            "data" => $this->professionnels->find($id)
+        ];
+        echo view("utilisateurs/singleUser", $data);
+
+
     }
 }

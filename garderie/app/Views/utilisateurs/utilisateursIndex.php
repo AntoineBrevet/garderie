@@ -54,19 +54,37 @@
     <?php
     foreach ($sessions as $session) { ?>
         <div class="annonces">
-            <?php echo $session['creche_id'] ?>
+            <div class="id">
+                <?php echo $session['creche_id'] ?>
+            </div>
             <br>
-            Nom du Professionnel :<?php echo $session['nomPros'] ?>
+            <div class="column">
+                <div class="nom">
+                    <img src="<?= base_url() ?>/img/profile.png" alt=""><?php echo $session['nomPros'] ?>
+                </div>
+
+                <div class="mail">
+                    <img src="<?= base_url() ?>/img/email.png" alt=""><?php echo $session['mailPros'] ?>
+                </div>
+            </div>
+            <hr>
+            <div class="column">
+                <div class="tel">
+                    <img src="<?= base_url() ?>/img/telephone.png" alt=""> <?php echo $session['telPros'] ?>
+                </div>
+
+                <div class="adresse">
+                    <img src="<?= base_url() ?>/img/adresse.png" alt=""> <?php echo $session['adressePros'] ?>
+                </div>
+            </div>
+            <hr>
+            <div class="heures">
+                <img src="<?= base_url() ?>/img/heure.png" alt=""> <?php echo $session['debutSession'] ?>-<?php echo $session['finSession'] ?> heures
+            </div>
             <br>
-            mail de celui-ci :<?php echo $session['mailPros'] ?>
-            <br>
-            telephone de celui-ci :<?php echo $session['telPros'] ?>
-            <br>
-            adresse de la creche :<?php echo $session['adressePros'] ?>
-            <br>
-            <div class="">heure(s)d'ouverture de la creche:<?php echo $session['debutSession'] ?>-<?php echo $session['finSession'] ?> heures</div>
-            <br>
-            <a href="<?= base_url(); ?><?= $session["id"]; ?>" class="profil_candidat">voir le profil</a>
+            <div>
+                <a href="<?= base_url(); ?>/singleUser/<?= $session["creche_id"]; ?>" class="profil_candidat">voir le profil</a>
+            </div>
         </div>
         <br>
     <?php } ?>

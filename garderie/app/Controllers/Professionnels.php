@@ -91,6 +91,11 @@ class Professionnels extends BaseController
     }
     public function inscriptionPros()
     {
+
+        $apiUrl = "https://entreprise.data.gouv.fr/api/sirene/v1/siret/21310555400017";
+        $response = file_get_contents($apiUrl, False);
+        $result = json_decode($response, true);
+
         if ($this->request->getMethod() === 'post' && $this->validate([
             'nomPros' => 'required|min_length[3]|max_length[255]',
             'prenomPros' => 'required|min_length[3]|max_length[255]',
@@ -105,33 +110,43 @@ class Professionnels extends BaseController
             $data_arr = $this->geocode($this->request->getPost("adresse"));
 
             // if able to geocode the address
-            if ($data_arr) {
 
-                $latitude = $data_arr[0];
-                $longitude = $data_arr[1];
-                $formatted_address = $data_arr[2];
-                var_dump($data_arr);
+if ($result['etablissement']['siret'] === $this->request->getPost("siret")){
 
+    if ($data_arr) {
 
+        $latitude = $data_arr[0];
+        $longitude = $data_arr[1];
+        var_dump($data_arr);
 
-                $professionnels = [
-                    "nomPros" => $this->request->getPost("nomPros"),
-                    "prenomPros" => $this->request->getPost("prenomPros"),
-                    "mailPros" => $this->request->getPost("mailPros"),
-                    "dateNaissancePros" => $this->request->getPost("dateNaissancePros"),
-                    "mdpPros" => password_hash($this->request->getPost("mdpPros"), PASSWORD_DEFAULT),
-                    "adressePros" => $this->request->getPost("adresse"),
-                    "telPros" => $this->request->getPost("telPros"),
-                    "siret" => $this->request->getPost("siret"),
-                    "latitudePros" => $latitude,
-                    "longitudePros" => $longitude
-                ];
+        $professionnels = [
+            "nomPros" => $this->request->getPost("nomPros"),
+            "prenomPros" => $this->request->getPost("prenomPros"),
+            "mailPros" => $this->request->getPost("mailPros"),
+            "dateNaissancePros" => $this->request->getPost("dateNaissancePros"),
+            "mdpPros" => password_hash($this->request->getPost("mdpPros"), PASSWORD_DEFAULT),
+            "adressePros" => $this->request->getPost("adresse"),
+            "telPros" => $this->request->getPost("telPros"),
+            "siret" => $this->request->getPost("siret"),
+            "latitudePros" => $latitude,
+            "longitudePros" => $longitude
+        ];
 
-                $this->professionnels->insert($professionnels);
-                var_dump($data_arr);
-                return redirect()->to(base_url() . '/professionnels');
+        $this->professionnels->insert($professionnels);
+        var_dump($data_arr);
+        return redirect()->to(base_url() . '/professionnels');
+        
+    }
+}
+            else if ($result['etablissement']['siret'] != $this->request->getPost("siret"))
+            {
+                echo view("professionnels/inscriptionPros");
+                echo "numéro de siret invalide";
+
             }
-        } else {
+        }
+
+        else {
             echo view("professionnels/inscriptionPros", [
                 'validation' => $this->validator
             ]);
