@@ -9,8 +9,7 @@ class Creneau extends Seeder
     public function run()
     {
         $datas = [[
-            'date_debut' => date('d-m-y'),
-            'date_fin' => date('d-m-y'),
+           
             'debut' => 8,
             'fin' => 9,
             'creche_id' => 1,
@@ -19,8 +18,7 @@ class Creneau extends Seeder
             'session_id' => 1,
         ],
          [
-            'date_debut' => date('d-m-y'),
-            'date_fin' => date('d-m-y'),            
+          
             'debut' => 9,
             'fin' => 10,
             'creche_id' => 1,
@@ -29,8 +27,7 @@ class Creneau extends Seeder
             'nbr_place_restant' => 24,
          ],
         [
-            'date_debut' => date('d-m-y'),
-            'date_fin' => date('d-m-y'),
+
             'debut' => 10,
             'fin' => 11,
             'creche_id' => 1,
@@ -38,8 +35,7 @@ class Creneau extends Seeder
             'session_id' => 1,
             'nbr_place_restant' => 24,
         ], [
-            'date_debut' => date('d-m-y'),
-            'date_fin' => date('d-m-y'),
+
             'debut' => 10,
             'fin' => 11,
             'creche_id' => 2,

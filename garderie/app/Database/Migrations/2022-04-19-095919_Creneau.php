@@ -13,12 +13,6 @@ class Creneau extends Migration
                 'type'=> 'INT',
                 'constraint' => 11,
             ],
-            'date_debut'=> [
-                'type'=> 'DATE',
-            ],
-            'date_fin'=> [
-                'type'=> 'DATE',
-            ],
             'debut'=> [
                 'type'=> 'INT',
                 'constraint' => 11,
