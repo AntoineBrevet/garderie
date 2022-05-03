@@ -23,11 +23,10 @@
                                                         ?>">
         </div>
         <div>
-            <label for="prenom">Prénom</label>
+
             <input type="prenom" name="prenomParents" value="<?php
                                                                 echo ($data['prenomParents']);
                                                                 ?>">
-        </div>
         </div>
         <div> <label for="prenom">date de naissance</label>
             <input type="date" name="dateNaissanceParents" value="<?php

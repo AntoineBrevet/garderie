@@ -148,7 +148,7 @@ form {
     width: 40%;
 }
 
-.annonces>div {
+.annonces>div{
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -156,7 +156,7 @@ form {
     align-items: center;
 }
 
-.annonces div>a {
+.annonces div>a ,.payement{
     background-color: #57c5cd;
     padding: 10px;
     border-radius: 10px;
@@ -164,6 +164,32 @@ form {
     text-decoration: none;
     text-align: center;
     width: 200px;
+}
+.single {
+    background-color: #f8f7f7;
+    width: 80%;
+    height: 600px;
+    overflow: auto;
+    border-radius: 10px;
+    margin: 100px auto;
+    box-shadow: 5px 5px 25px black;
+    color: #6a6a6a;
+    display: flex;
+    flex-direction:column;
+}
+.payement{
+    background-color: #57c5cd;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    width: 200px;
+}
+.description{
+    text-align: center;
+    display: flex;
+
 }
 
 
