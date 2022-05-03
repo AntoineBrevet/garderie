@@ -83,7 +83,7 @@
             </div>
             <br>
             <div>
-                <a href="<?= base_url(); ?><?= $session["id"]; ?>" class="profil_candidat">voir le profil</a>
+                <a href="<?= base_url(); ?>/singleUser/<?= $session["creche_id"]; ?>" class="profil_candidat">voir le profil</a>
             </div>
         </div>
         <br>

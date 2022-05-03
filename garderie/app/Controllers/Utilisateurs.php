@@ -284,6 +284,8 @@ class Utilisateurs extends BaseController
             return false;
         }
     }
+
+
     public function modifprofil()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
@@ -314,5 +316,14 @@ class Utilisateurs extends BaseController
             ];
             echo view("utilisateurs/profil", $data);
         }
+    }
+
+    public function singleUser($id) {
+        $data = [
+            "data" => $this->professionnels->find($id)
+        ];
+        echo view("utilisateurs/singleUser", $data);
+
+
     }
 }

@@ -1,4 +1,4 @@
-<?= $this->extend('masterPros') ?>
+<?= $this->extend('master') ?>
 
 <?= $this->section('css') ?>
     <!-- Mettre le CSS avec une balise link -->

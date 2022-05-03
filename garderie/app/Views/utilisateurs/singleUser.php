@@ -1,11 +1,13 @@
-<?= $this->extend('masterPros') ?>
+<?= $this->extend('master') ?>
 
 <?= $this->section('css') ?>
     <!-- Mettre le CSS avec une balise link -->
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-    <!-- Mettre le content de la page -->
+
+<?php var_dump($data)?>
+
 <?= $this->endSection() ?>
 
 <?= $this->section('js') ?>
