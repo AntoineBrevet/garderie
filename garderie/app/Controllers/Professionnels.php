@@ -111,32 +111,7 @@ class Professionnels extends BaseController
                 $longitude = $data_arr[1];
                 $formatted_address = $data_arr[2];
                 var_dump($data_arr);
-?>
-                <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyCHIY60MQ8Vyb5e7bM4P4_i5HsIcTr-kHw"></script>
-                <script type="text/javascript">
-                    function init_map() {
-                        var myOptions = {
-                            zoom: 14,
-                            center: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>),
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        };
-                        map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
-                        marker = new google.maps.Marker({
-                            map: map,
-                            position: new google.maps.LatLng(<?php echo $latitude; ?>, <?php echo $longitude; ?>)
-                        });
-                        infowindow = new google.maps.InfoWindow({
-                            content: "<?php echo $formatted_address; ?>"
-                        });
-                        google.maps.event.addListener(marker, "click", function() {
-                            infowindow.open(map, marker);
-                        });
-                        infowindow.open(map, marker);
-                    }
-                    google.maps.event.addDomListener(window, 'load', init_map);
-                </script>
 
-<?php
 
 
                 $professionnels = [
@@ -226,6 +201,7 @@ class Professionnels extends BaseController
                     ];
                     $this->creneau->insert($creneau);
                 }
+
                 for ($i = 0; $i < ($dif - 1); $i++) {
                     for ($j = 0; $j < 24; $j++) {
                         $data['debut'] = $j;
