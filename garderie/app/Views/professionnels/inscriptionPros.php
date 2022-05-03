@@ -44,7 +44,7 @@
                         <input class="validate" type="text" value="" name="telPros" id="telPros" placeholder="ex: 06.18.99.65.32" required="">
                     </div>
 
-                    <input type="text" class="datepicker" placeholder="Adresse" name='adresse' id="location"/>
+                    <input type="text" class="datepicker" placeholder="Adresse" name='adresse' id="location" />
                     <div class="half-input-container">
                     </div>
 

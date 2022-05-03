@@ -3,21 +3,24 @@ html {
     min-height: 100%;
 }
 
-body{
-  background: linear-gradient(115deg, #047206, #7bd97d);
+body {
+    background: linear-gradient(115deg, #047206, #7bd97d);
 }
 
 #nom {
     text-transform: uppercase;
 }
-input{
+
+input {
     color: white;
 }
-.btn{
-  background-color: rgb(4, 114, 6, .5);
+
+.btn {
+    background-color: rgb(4, 114, 6, .5);
 }
-.btn:hover{
-  background-color: rgb(4, 114, 6, .5);
+
+.btn:hover {
+    background-color: rgb(4, 114, 6, .5);
 }
 
 .btn:hover {
