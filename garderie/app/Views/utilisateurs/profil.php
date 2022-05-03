@@ -22,7 +22,8 @@
                                                         echo ($data['nomParents']);
                                                         ?>">
         </div>
-        <div>
+
+        <div> <label for="prenom">Prenom</label>
 
             <input type="prenom" name="prenomParents" value="<?php
                                                                 echo ($data['prenomParents']);
@@ -34,7 +35,7 @@
                                                                     ?>">
 
         </div>
-        </div>
+
         <div> <label for="prenom">Adresse</label>
             <input type="text" name="adresseParents" value="<?php
                                                             echo ($data['adresseParents']);
