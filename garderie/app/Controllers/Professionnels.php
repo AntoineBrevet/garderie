@@ -216,6 +216,7 @@ if ($result['etablissement']['siret'] === $this->request->getPost("siret")){
                     ];
                     $this->creneau->insert($creneau);
                 }
+
                 for ($i = 0; $i < ($dif - 1); $i++) {
                     for ($j = 0; $j < 24; $j++) {
                         $data['debut'] = $j;

@@ -1,4 +1,16 @@
+<?php
+$stripeCustom = "";
+if ($stripeCustom !== ""){
+  var_dump($stripeCustom);
+  $stripeInvoice = new \Stripe\StripeClient(
+    'sk_test_51KqedTGFqnMK1iszIFr79OxZ1CH2hUAFrL2t0yBcoLCJczQ34hu5Zr5wLltWLpOlvjIi7ebMiDH5WD2j0l9ejSc300Q95hDGvu'
+  );
+  $stripeInvoice->invoices->create([
+    'customer' => $stripeCustom,
+  ]);
+}
 
+?>
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +26,7 @@
   <div class="container">
 
     <pre id="getTokenRes"></pre>
+    <pre id="getTokenRes2"></pre>
 
     <div class="d-grid mb-3">
       <button class="btn btn-dark" onclick="handlePayment(50)">Pay $50</button>

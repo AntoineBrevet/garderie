@@ -120,9 +120,7 @@ class Utilisateurs extends BaseController
                 $latitude = $data_arr[0];
                 $longitude = $data_arr[1];
                 var_dump($data_arr);
-?>
 
-<?php
 
                 $parents = [
                     "nomParents" => $this->request->getPost("nomParents"),
