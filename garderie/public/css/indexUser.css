@@ -148,7 +148,7 @@ form {
     width: 40%;
 }
 
-.annonces>div{
+.annonces>div {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -156,7 +156,8 @@ form {
     align-items: center;
 }
 
-.annonces div>a ,.payement{
+.annonces div>a,
+.payement {
     background-color: #57c5cd;
     padding: 10px;
     border-radius: 10px;
@@ -165,19 +166,24 @@ form {
     text-align: center;
     width: 200px;
 }
+
+
+/*----------------------------single user--------------------------------*/
+
 .single {
     background-color: #f8f7f7;
     width: 80%;
-    height: 600px;
+    height: auto;
     overflow: auto;
     border-radius: 10px;
     margin: 100px auto;
     box-shadow: 5px 5px 25px black;
     color: #6a6a6a;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
 }
-.payement{
+
+.payement {
     background-color: #57c5cd;
     padding: 10px;
     border-radius: 10px;
@@ -185,11 +191,59 @@ form {
     text-decoration: none;
     text-align: center;
     width: 200px;
+    margin: 10px auto;
 }
-.description{
+
+.payement:hover {
+    background-color: #1f73b4;
+}
+
+.payement a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.description {
     text-align: center;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
 
+.single>div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.single img {
+    width: 150px;
+}
+
+.single>div:first-child img {
+    width: 150px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.row-contents {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.row-contents>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 
