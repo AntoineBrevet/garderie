@@ -2,16 +2,23 @@
 
 <?= $this->section('css') ?>
 <link href="<?= base_url(); ?>/css/indexUser.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>/css/messagesPv.css" rel="stylesheet">
+
 
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+
+<?php
+
+include 'messagesPvPros.php';
+?>
+
 <!-- Mettre le content de la page -->
 <section class="sec1">
     <h1>Cherechez des creches autours de vous</h1>
 
     <div class="myForm">
-        <input type="search" name="search" id="search" placeholder="Search...">
         <form method="post" autocomplete="off">
 
 
@@ -47,6 +54,11 @@
     </div>
 
 </section>
+<label>debut</label>
+    <input type="date" name="dateDebut" id="dateDebut" style="color:black"><br>
+    <label>fin</label>
+
+    <input type="date" name="dateFin" id="dateFin" style="color:black">
 
 
 <div class="feed">
@@ -79,7 +91,7 @@
             </div>
             <hr>
             <div class="heures">
-                <img src="<?= base_url() ?>/img/heure.png" alt=""> <?php echo $session['debutSession'] ?>-<?php echo $session['finSession'] ?> heures
+                <img src="<?= base_url() ?>/img/heure.png" alt=""> <?php echo $session['date_debut']. " - ". $session['debutSession'] ." heures " ." " ?><?php echo $session['date_fin']. " - ". $session['finSession']." heures " ?>
             </div>
             <br>
             <div>
@@ -99,6 +111,8 @@
 <script src="<?php base_url() ?>/js/map.js"></script>
 <script src="<?php base_url() ?>/js/getLocation.js"></script>
 <script src="<?php base_url() ?>/js/apiSiret.js"></script>
+    <script src="<?php base_url() ?>/js/dateRechercheUser.js"></script>
+
 
 
 
@@ -245,12 +259,88 @@
     }
     ?>
 </script>
-<script type="text/javascript">
-    var urlAjax = "<?= base_url() ?>"
-</script>
+
 
 <script type="text/javascript">
-    var urlAjax = "<?= base_url() ?>"
+
+        var urlAjax = "<?= base_url() ?>"
+        var urlAjaxSearchStart = "<?= base_url('utilisateursIndex'); ?>"
+        var urlAjaxSearchEnd = "<?= base_url('utilisateursIndex'); ?>"
+        var urlAjaxSearchBoth = "<?= base_url('utilisateursIndex'); ?>"
+
+        document.querySelector('#dateDebut').addEventListener('input',searchStart)
+        document.querySelector('#dateFin').addEventListener('input',searchEnd)
+
+        function searchStart(){
+            if (document.querySelector('#dateFin').value === "") {
+                console.log("oui");
+                $.ajax({
+                    url: urlAjaxSearchStart,
+                    type: 'post',
+                    dataType: 'json',
+                    data: {searchStart: document.querySelector('#dateDebut').value},
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+            } else {
+                searchBoth();
+            }
+        }
+
+        function searchEnd() {
+
+            if (document.querySelector('#dateDebut').value === "") {
+
+                console.log("non");
+                $.ajax({
+                    url: urlAjaxSearchEnd,
+                    type: 'post',
+                    dataType: 'json',
+                    data: {searchEnd: document.querySelector('#dateFin').value},
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+            } else {
+                searchBoth();
+            }
+        }
+
+
+        function searchBoth(){
+
+            console.log("non");
+            $.ajax({
+                url:urlAjaxSearchBoth,
+                type: 'post',
+                dataType:'json',
+                data:{
+                    searchStart:document.querySelector('#dateDebut').value,
+                    searchEnd:document.querySelector('#dateFin').value
+                },
+
+                success:function(data){
+                    alert(data);
+                }
+            });
+
+        }
+        <?php
+            if(isset($data)) {
+
+
+                foreach ($data as $datas) {
+                    echo $datas;
+                }
+            }
+?>
+
+
+
 </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
 <?= $this->endSection() ?>

@@ -14,7 +14,7 @@ class SessionModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id','debutSession','finSession','creche_id'];
+    protected $allowedFields    = ['id','debutSession','finSession','creche_id','date_debut','date_fin'];
 
     // Dates
     protected $useTimestamps = false;
@@ -43,6 +43,26 @@ class SessionModel extends Model
     public function call_all_session(){
         return $this->select('*')
             ->join('professionnels','creche_id = professionnels.id')
+            ->findAll();
+    }
+
+    public function call_all_session_where_debut($debut){
+        return $this->select('*')
+            ->where('date_debut <=' , $debut)
+            ->where('date_fin >=' , $debut)
+
+            ->findAll();
+    }
+    public function call_all_session_where_fin($fin){
+        return $this->select('*')
+            ->where('date_fin >=' , $fin)
+            ->where('date_debut <=' , $fin)
+            ->findAll();
+    }
+    public function call_all_session_where_both($debut, $fin){
+        return $this->select('*')
+            ->where('date_debut <=' , $debut)
+            ->where('date_fin >=' , $fin)
             ->findAll();
     }
 }

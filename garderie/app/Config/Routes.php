@@ -38,6 +38,9 @@ $routes->get('prosIndex', 'Professionnels::prosIndex');
 $routes->match(['get', 'post'], 'utilisateursIndex', 'Utilisateurs::utilisateursIndex');
 $routes->get('showEnfants', 'Utilisateurs::showEnfants');
 $routes->get('query', 'Utilisateurs::showQuery');
+$routes->match(['get', 'post'],'utilisateursIndex', 'Utilisateurs::showSearchStart');
+$routes->match(['get', 'post'],'utilisateursIndex', 'Utilisateurs::showSearchEnd');
+$routes->match(['get', 'post'],'utilisateursIndex', 'Utilisateurs::showSearchBoth');
 
 
 

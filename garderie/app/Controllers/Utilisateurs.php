@@ -316,6 +316,61 @@ class Utilisateurs extends BaseController
         }
     }
 
+    public function showSearchStart(){
+
+        if ($this->request->isAJAX()) {
+            $query = service('request')->getPost('search');
+            $dataStart = $this->session->call_all_session_where_debut($this->request->getPost('searchStart'));
+            var_dump($dataStart);
+            $data = [
+                "localisation" => $this->professionnels->call_pro_by_localisation(),
+                "position" => $this->parents->find(session("id")),
+                "proByName" => $this->professionnels->call_pro_by_name('laguarderie'),
+                "proInfosById" => $this->professionnels->call_pro_infos_by_id(1),
+                "sessions" => $this->session->call_all_session(),
+                "data" => $dataStart
+            ];
+            echo view("utilisateurs/utilisateursIndex", $data);
+        }
+        }
+    public function showSearchEnd(){
+
+        if ($this->request->isAJAX()) {
+            $query = service('request')->getPost('search');
+            $dataEnd = $this->session->call_all_session_where_fin($this->request->getPost('searchEnd'));
+            var_dump($dataEnd);
+            $data = [
+                "localisation" => $this->professionnels->call_pro_by_localisation(),
+                "position" => $this->parents->find(session("id")),
+                "proByName" => $this->professionnels->call_pro_by_name('laguarderie'),
+                "proInfosById" => $this->professionnels->call_pro_infos_by_id(1),
+                "sessions" => $this->session->call_all_session(),
+                "data" => $dataEnd
+            ];
+            echo view("utilisateurs/utilisateursIndex", $data);
+        }
+    }
+    public function showSearchBoth(){
+
+        if ($this->request->isAJAX()) {
+            $query = service('request')->getPost('search');
+            $dataBoth = $this->session->call_all_session_where_both($this->request->getPost('searchStart'),$this->request->getPost('searchEnd'));
+            var_dump($dataBoth);
+            $data = [
+                "localisation" => $this->professionnels->call_pro_by_localisation(),
+                "position" => $this->parents->find(session("id")),
+                "proByName" => $this->professionnels->call_pro_by_name('laguarderie'),
+                "proInfosById" => $this->professionnels->call_pro_infos_by_id(1),
+                "sessions" => $this->session->call_all_session(),
+                "data" => $dataBoth
+            ];
+            echo view("utilisateurs/utilisateursIndex", $data);
+
+
+        }
+    }
+
+
     public function singleUser($id) {
         $data = [
             "data" => $this->professionnels->find($id)
