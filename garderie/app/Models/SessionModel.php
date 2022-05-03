@@ -45,24 +45,4 @@ class SessionModel extends Model
             ->join('professionnels','creche_id = professionnels.id')
             ->findAll();
     }
-
-    public function call_all_session_where_debut($debut){
-        return $this->select('*')
-            ->where('date_debut <=' , $debut)
-            ->where('date_fin >=' , $debut)
-
-            ->findAll();
-    }
-    public function call_all_session_where_fin($fin){
-        return $this->select('*')
-            ->where('date_fin >=' , $fin)
-            ->where('date_debut <=' , $fin)
-            ->findAll();
-    }
-    public function call_all_session_where_both($debut, $fin){
-        return $this->select('*')
-            ->where('date_debut <=' , $debut)
-            ->where('date_fin >=' , $fin)
-            ->findAll();
-    }
 }

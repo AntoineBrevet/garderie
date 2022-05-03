@@ -2,7 +2,7 @@
 
 <?= $this->section('css') ?>
 <link href="<?= base_url(); ?>/css/indexUser.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>/css/messagesPv.css" rel="stylesheet">
+<link href="<?= base_url(); ?>/css/messagesPv.css" rel="stylesheet">
 
 
 <?= $this->endSection() ?>
@@ -55,10 +55,10 @@ include 'messagesPvPros.php';
 
 </section>
 <label>debut</label>
-    <input type="date" name="dateDebut" id="dateDebut" style="color:black"><br>
-    <label>fin</label>
+<input type="date" name="dateDebut" id="dateDebut" style="color:black"><br>
+<label>fin</label>
 
-    <input type="date" name="dateFin" id="dateFin" style="color:black">
+<input type="date" name="dateFin" id="dateFin" style="color:black">
 
 
 <div class="feed">
@@ -91,7 +91,7 @@ include 'messagesPvPros.php';
             </div>
             <hr>
             <div class="heures">
-                <img src="<?= base_url() ?>/img/heure.png" alt=""> <?php echo $session['date_debut']. " - ". $session['debutSession'] ." heures " ." " ?><?php echo $session['date_fin']. " - ". $session['finSession']." heures " ?>
+                <img src="<?= base_url() ?>/img/heure.png" alt=""> <?php echo $session['date_debut'] . " - " . $session['debutSession'] . " heures " . " " ?><?php echo $session['date_fin'] . " - " . $session['finSession'] . " heures " ?>
             </div>
             <br>
             <div>
@@ -111,7 +111,7 @@ include 'messagesPvPros.php';
 <script src="<?php base_url() ?>/js/map.js"></script>
 <script src="<?php base_url() ?>/js/getLocation.js"></script>
 <script src="<?php base_url() ?>/js/apiSiret.js"></script>
-    <script src="<?php base_url() ?>/js/dateRechercheUser.js"></script>
+<script src="<?php base_url() ?>/js/dateRechercheUser.js"></script>
 
 
 
@@ -262,85 +262,125 @@ include 'messagesPvPros.php';
 
 
 <script type="text/javascript">
+    var urlAjax = "<?= base_url() ?>"
+    var urlAjaxSearchStart = "<?= base_url('utilisateursIndex'); ?>"
+    var urlAjaxSearchEnd = "<?= base_url('utilisateursIndex'); ?>"
+    var urlAjaxSearchBoth = "<?= base_url('utilisateursIndex'); ?>"
 
-        var urlAjax = "<?= base_url() ?>"
-        var urlAjaxSearchStart = "<?= base_url('utilisateursIndex'); ?>"
-        var urlAjaxSearchEnd = "<?= base_url('utilisateursIndex'); ?>"
-        var urlAjaxSearchBoth = "<?= base_url('utilisateursIndex'); ?>"
+    document.querySelector('#dateDebut').addEventListener('input', searchStart)
+    document.querySelector('#dateFin').addEventListener('input', searchEnd)
 
-        document.querySelector('#dateDebut').addEventListener('input',searchStart)
-        document.querySelector('#dateFin').addEventListener('input',searchEnd)
+    function searchStart() {
+        if (document.querySelector('#dateFin').value === "") {
 
-        function searchStart(){
-            if (document.querySelector('#dateFin').value === "") {
-                console.log("oui");
-                $.ajax({
-                    url: urlAjaxSearchStart,
-                    type: 'post',
-                    dataType: 'json',
-                    data: {searchStart: document.querySelector('#dateDebut').value},
-                    success: function (data) {
-                        alert(data);
-                    }
-                });
-            } else {
-                searchBoth();
-            }
-        }
+            document.querySelector('.feed').innerHTML = '';
 
-        function searchEnd() {
+            <?php
+            for ($i = 0; $i < count($sessions); $i++) {
+            ?>
 
-            if (document.querySelector('#dateDebut').value === "") {
+                var dateDebut = "<?= $sessions[$i]["date_debut"] ?>";
+                var dateFin = "<?= $sessions[$i]["date_fin"] ?>";
+                var heureDebut = "<?= $sessions[$i]["debutSession"] ?>";
+                var heureFin = "<?= $sessions[$i]["finSession"] ?>";
+                var idCreche = "<?= $sessions[$i]["creche_id"] ?>";
+                var nomPros = "<?= $sessions[$i]["nomPros"] ?>";
+                var mailPros = "<?= $sessions[$i]["mailPros"] ?>";
+                var telPros = "<?= $sessions[$i]["telPros"] ?>";
+                var adressePros = "<?= $sessions[$i]["adressePros"] ?>";
 
-                console.log("non");
-                $.ajax({
-                    url: urlAjaxSearchEnd,
-                    type: 'post',
-                    dataType: 'json',
-                    data: {searchEnd: document.querySelector('#dateFin').value},
-                    success: function (data) {
-                        alert(data);
-                    }
-                });
-            } else {
-                searchBoth();
-            }
-        }
-
-
-        function searchBoth(){
-
-            console.log("non");
-            $.ajax({
-                url:urlAjaxSearchBoth,
-                type: 'post',
-                dataType:'json',
-                data:{
-                    searchStart:document.querySelector('#dateDebut').value,
-                    searchEnd:document.querySelector('#dateFin').value
-                },
-
-                success:function(data){
-                    alert(data);
+                if (document.querySelector('#dateDebut').value >= dateDebut && document.querySelector('#dateDebut').value <= dateFin) {
+                    document.querySelector('.feed').innerHTML += '<div class="annonces"><div class="id">' + idCreche + '</div><br><div class="column"><div class="nom"><img src="<?= base_url() ?>/img/profile.png" alt="">' + nomPros + '</div><div class="mail"><img src="<?= base_url() ?>/img/email.png" alt="">' + mailPros + '</div></div><hr><div class="column"><div class="tel"><img src="<?= base_url() ?>/img/telephone.png" alt="">' + telPros + '</div><div class="adresse"><img src="<?= base_url() ?>/img/adresse.png" alt="">' + adressePros + '</div></div><hr><div class="heures"><img src="<?= base_url() ?>/img/heure.png" alt="">' + dateDebut + ' ' + heureDebut + ' ' + dateFin + ' ' + heureFin + '</div><br><div><a href="<?= base_url(); ?>/singleUser/' + idCreche + '" class="profil_candidat">voir le profil</a></div></div><br>'
                 }
-            });
-
+                <?php
+                if ($i == count($sessions) - 1) {
+                ?>
+                    if (document.querySelector('.feed').innerHTML == '') {
+                        document.querySelector('.feed').innerHTML += 'Aucun créneau trouvé!'
+                    }
+            <?php
+                }
+            }
+            ?>
+        } else {
+            searchBoth();
         }
+    }
+
+    function searchEnd() {
+        if (document.querySelector('#dateDebut').value === "") {
+
+            document.querySelector('.feed').innerHTML = '';
+
+            <?php
+            for ($i = 0; $i < count($sessions); $i++) {
+            ?>
+
+                var dateDebut = "<?= $sessions[$i]["date_debut"] ?>";
+                var dateFin = "<?= $sessions[$i]["date_fin"] ?>";
+                var heureDebut = "<?= $sessions[$i]["debutSession"] ?>";
+                var heureFin = "<?= $sessions[$i]["finSession"] ?>";
+                var idCreche = "<?= $sessions[$i]["creche_id"] ?>";
+                var nomPros = "<?= $sessions[$i]["nomPros"] ?>";
+                var mailPros = "<?= $sessions[$i]["mailPros"] ?>";
+                var telPros = "<?= $sessions[$i]["telPros"] ?>";
+                var adressePros = "<?= $sessions[$i]["adressePros"] ?>";
+
+                if (document.querySelector('#dateFin').value >= dateDebut && document.querySelector('#dateFin').value <= dateFin) {
+                    document.querySelector('.feed').innerHTML += '<div class="annonces"><div class="id">' + idCreche + '</div><br><div class="column"><div class="nom"><img src="<?= base_url() ?>/img/profile.png" alt="">' + nomPros + '</div><div class="mail"><img src="<?= base_url() ?>/img/email.png" alt="">' + mailPros + '</div></div><hr><div class="column"><div class="tel"><img src="<?= base_url() ?>/img/telephone.png" alt="">' + telPros + '</div><div class="adresse"><img src="<?= base_url() ?>/img/adresse.png" alt="">' + adressePros + '</div></div><hr><div class="heures"><img src="<?= base_url() ?>/img/heure.png" alt="">' + dateDebut + ' ' + heureDebut + ' ' + dateFin + ' ' + heureFin + '</div><br><div><a href="<?= base_url(); ?>/singleUser/' + idCreche + '" class="profil_candidat">voir le profil</a></div></div><br>'
+                }
+                <?php
+                if ($i == count($sessions) - 1) {
+                ?>
+                    if (document.querySelector('.feed').innerHTML == '') {
+                        document.querySelector('.feed').innerHTML += 'Aucun créneau trouvé!'
+                    }
+            <?php
+                }
+            }
+            ?>
+        } else {
+            searchBoth();
+        }
+    }
+
+
+    function searchBoth() {
+        document.querySelector('.feed').innerHTML = '';
+
         <?php
-            if(isset($data)) {
+        for ($i = 0; $i < count($sessions); $i++) {
+        ?>
 
+            var dateDebut = "<?= $sessions[$i]["date_debut"] ?>";
+            var dateFin = "<?= $sessions[$i]["date_fin"] ?>";
+            var heureDebut = "<?= $sessions[$i]["debutSession"] ?>";
+            var heureFin = "<?= $sessions[$i]["finSession"] ?>";
+            var idCreche = "<?= $sessions[$i]["creche_id"] ?>";
+            var nomPros = "<?= $sessions[$i]["nomPros"] ?>";
+            var mailPros = "<?= $sessions[$i]["mailPros"] ?>";
+            var telPros = "<?= $sessions[$i]["telPros"] ?>";
+            var adressePros = "<?= $sessions[$i]["adressePros"] ?>";
 
-                foreach ($data as $datas) {
-                    echo $datas;
-                }
+            if (document.querySelector('#dateDebut').value >= dateDebut && document.querySelector('#dateFin').value <= dateFin) {
+                document.querySelector('.feed').innerHTML += '<div class="annonces"><div class="id">' + idCreche + '</div><br><div class="column"><div class="nom"><img src="<?= base_url() ?>/img/profile.png" alt="">' + nomPros + '</div><div class="mail"><img src="<?= base_url() ?>/img/email.png" alt="">' + mailPros + '</div></div><hr><div class="column"><div class="tel"><img src="<?= base_url() ?>/img/telephone.png" alt="">' + telPros + '</div><div class="adresse"><img src="<?= base_url() ?>/img/adresse.png" alt="">' + adressePros + '</div></div><hr><div class="heures"><img src="<?= base_url() ?>/img/heure.png" alt="">' + dateDebut + ' ' + heureDebut + ' ' + dateFin + ' ' + heureFin + '</div><br><div><a href="<?= base_url(); ?>/singleUser/' + idCreche + '" class="profil_candidat">voir le profil</a></div></div><br>'
             }
-?>
+            <?php
+            if ($i == count($sessions) - 1) {
+            ?>
+                if (document.querySelector('.feed').innerHTML == '') {
+                    document.querySelector('.feed').innerHTML += 'Aucun créneau trouvé!'
+                }
+        <?php
+            }
+        }
+        ?>
 
 
-
+    }
 </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 <?= $this->endSection() ?>
