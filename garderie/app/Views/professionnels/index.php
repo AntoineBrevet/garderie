@@ -70,7 +70,9 @@
     </div>
     <div data-aos="zoom-in-up" data-aos-duration="2000">
         <p>Vous avez tous les acquis nécessaires! <br> n'hésitez pas à vous inscrire en tant que professionnel</p>
-        <button>Créez votre compte Pro</button>
+        <a href="<?= base_url(); ?>/inscriptionPros">
+            <button>Créez votre compte Pro</button>
+        </a>
     </div>
 </section>
 <section class="sec3 " data-aos="zoom-in-up" data-aos-duration="2000">

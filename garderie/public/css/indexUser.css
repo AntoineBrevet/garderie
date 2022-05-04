@@ -23,9 +23,7 @@ body {
 
 .myForm,
 form {
-    width: 50%;
     height: auto;
-    margin: 30px auto;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -44,12 +42,12 @@ form {
 }
 
 #buttonHidden,
-#submitLocalisation,
 #selectVal {
     padding: 10px;
     border: none;
     border-radius: 10px;
     width: auto;
+    margin-left: 25px;
 }
 
 #selectVal option {
@@ -244,6 +242,27 @@ form {
     align-items: center;
     justify-content: center;
 }
+.retour{
+    display: flex;
+    color: #f1eded;
+}
+.retour{
+    transition-duration: 500ms;
+    display: flex;
+    color: white;
+    text-decoration: none;
+    width: fit-content;
+    margin: 10px auto;
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+a:hover {
+    background-color: #1f73b4;
+    transition-duration: 500ms;
+    transform: scale(1.1);
+}
+
 
 
 /* responsif */

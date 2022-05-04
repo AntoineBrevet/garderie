@@ -8,8 +8,8 @@
 <section class="sec1">
     <h1 class="title">SHOW ENFANTS</h1>
     <div class="sec1-div">
-        <form>
-            <input class="retour" type="button" value="Retour" onclick="history.go(-1)">
+        <form class="retour">
+            <a href="<?= base_url() ?>/utilisateursIndex" class="retour"> <img src="<?= base_url()  ?>/img/retour.png" alt=""></a><br>
         </form>
         <a href="<?= base_url(); ?>/createEnfants"><img src="<?= base_url() ?>/img/ajoute-d'enfants.png" width="100px" alt=""> Ajouter un enfant</a><br>
         <div class="babies-list">

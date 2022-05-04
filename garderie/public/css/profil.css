@@ -78,10 +78,22 @@
         margin-left: auto;
         margin-right: auto;
     }
-    .retour2{
+    .retour{
+        transition-duration: 500ms;
         display: flex;
-        color: #f1eded;
-        background-color: red;
-        margin-left: -40px;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        line-height: 2;
+        text-decoration: none;
+        font-size: 20px;
+        width: fit-content;
+        margin: 10px auto;
+        padding: 20px;
+        border-radius: 20px;
     }
-
+    a:hover {
+        background-color: #1f73b4;
+        transition-duration: 500ms;
+        transform: scale(1.1);
+    }

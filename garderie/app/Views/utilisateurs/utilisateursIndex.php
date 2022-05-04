@@ -38,9 +38,9 @@ include 'messagesPvPros.php';
                 <option value="France" selected>Toute la france</option>
             </select><br>
 
-            <input type="submit" id="submitLocalisation" name="submit" value="Actualiser la carte">
+            <button id="buttonHidden" onclick="getLocation()">Se Geocaliser</button>
         </form>
-        <button id="buttonHidden" onclick="getLocation()">Trouver les pros les plus proches</button>
+
 
     </div>
     <div id="map" style="width: 90%; height: 600px;"></div>

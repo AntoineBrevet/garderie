@@ -6,7 +6,9 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-
+<form class="retour">
+    <a href="<?= base_url() ?>/utilisateursIndex" class="retour"> <img src="<?= base_url()  ?>/img/retour.png" alt=""></a><br>
+</form>
 <section class="single">
     <div>
         <img src="<?= base_url() ?>/img/user-single-profil.png" alt="">
@@ -82,7 +84,7 @@
     </div>
     <br>
     <div class="message">
-        <a href="<?= base_url(); ?>/messages/<?=$data['id']?>">Contacter</a>
+        <a href="<?= base_url(); ?>/messages/<?= $data['id'] ?>">Contacter</a>
     </div>
     <div class="payement">
         <a href="<?= base_url(); ?>/Payement">Payement</a> <img src="<?= base_url() ?>/img/Payement.png" alt="">

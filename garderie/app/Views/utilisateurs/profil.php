@@ -10,11 +10,10 @@
 <?php
 //var_dump($data)
 ?>
-
+<form class="retour">
+    <a href="<?= base_url() ?>/utilisateursIndex" class="retour"> <img src="<?= base_url()  ?>/img/retour.png" alt=""></a><br>
+</form>
 <section class="sec1">
-    <form>
-        <input class="retour2" type="button" value="Retour" onclick="history.go(-1)">
-    </form>
 
     <h2> <img src="<?= base_url()  ?>/img/planche.png" alt=""> le profil </h2>
     <form action="" method="POST">
