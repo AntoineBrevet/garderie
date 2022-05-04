@@ -243,44 +243,19 @@ form {
     justify-content: center;
 }
 .retour{
-    display: flex;
-    color: #f1eded;
-}
-.retour{
     transition-duration: 500ms;
     display: flex;
     color: white;
     text-decoration: none;
     width: fit-content;
     margin: 10px auto;
+    padding: 20px;
     border-radius: 20px;
     margin-left: 20px;
-    margin-top: 10px;
 }
-a:hover {
-    background-color: #1f73b4;
+.retour:hover {
+    background-color: #134870;
     transition-duration: 500ms;
     transform: scale(1.1);
 }
 
-
-
-/* responsif */
-
-
-/* .annonces{
-    display: inline-block;
-
-    font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
-    border-color: #eee #ddd #bbb;
-    border-radius: 5px;
-    border-style: solid;
-    border-width: 1px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    margin: 20px 50px;
-    padding: 0 16px 16px 16px;
-    max-width: 468px;
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 20px;
-} */

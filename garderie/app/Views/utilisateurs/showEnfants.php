@@ -8,9 +8,7 @@
 <section class="sec1">
     <h1 class="title">SHOW ENFANTS</h1>
     <div class="sec1-div">
-        <form class="retour">
-            <a href="<?= base_url() ?>/utilisateursIndex" class="retour"> <img src="<?= base_url()  ?>/img/retour.png" alt=""></a><br>
-        </form>
+        <a href="<?= base_url() ?>/utilisateursIndex" class="retour"> <img src="<?= base_url()  ?>/img/retour.png" alt=""></a><br>
         <a href="<?= base_url(); ?>/createEnfants"><img src="<?= base_url() ?>/img/ajoute-d'enfants.png" width="100px" alt=""> Ajouter un enfant</a><br>
         <div class="babies-list">
             <h1>Liste des enfants</h1>
@@ -55,12 +53,12 @@
                         <h4>Recuperateurs :</h4>
                         <p></p>
                         <?php
-                        foreach ($recup as $rec) { 
+                        foreach ($recup as $rec) {
                             if ($rec['id_enfant'] == $datas['id']) {
-                            echo $rec['prenomRecup'] . ' ';
+                                echo $rec['prenomRecup'] . ' ';
+                            }
                         }
-                        }
-                         ?>
+                        ?>
                     </div>
                     <div class="options-btn">
                         <a href="<?= base_url() ?>/updateEnfants/<?= $datas["id"] ?>">Modifier l'enfant</a><br>

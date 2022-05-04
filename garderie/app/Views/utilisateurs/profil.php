@@ -10,9 +10,8 @@
 <?php
 //var_dump($data)
 ?>
-<form class="retour">
     <a href="<?= base_url() ?>/utilisateursIndex" class="retour"> <img src="<?= base_url()  ?>/img/retour.png" alt=""></a><br>
-</form>
+
 <section class="sec1">
 
     <h2> <img src="<?= base_url()  ?>/img/planche.png" alt=""> le profil </h2>
