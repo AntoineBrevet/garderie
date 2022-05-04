@@ -12,9 +12,13 @@
 ?>
 
 <section class="sec1">
+    <form>
+        <input class="retour2" type="button" value="Retour" onclick="history.go(-1)">
+    </form>
 
     <h2> <img src="<?= base_url()  ?>/img/planche.png" alt=""> le profil </h2>
     <form action="" method="POST">
+
 
         <div>
             <label for="prenom">Nom</label>

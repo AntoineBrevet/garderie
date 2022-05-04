@@ -2,8 +2,15 @@
 
     <input id="nav-toggle" type="checkbox">
     <div class="logo">
-
-        <a href="<?= base_url(); ?>/"><img src="<?= base_url()  ?>/img/garderie.png" alt="logo"></a>
+        <?php
+        if (session("utilisateurs")) { ?>
+            <a href="<?= base_url(); ?>/utilisateursIndex"><img src="<?= base_url()  ?>/img/garderie.png" alt="logo"></a>
+        <?php
+        } else { ?>
+            <a href="<?= base_url(); ?>/"><img src="<?= base_url()  ?>/img/garderie.png" alt="logo"></a>
+        <?php
+        }
+        ?>
     </div>
 
     <ul class="links">

@@ -36,10 +36,6 @@ class Utilisateurs extends BaseController
     }
 
 
-
-
-
-
     public function utilisateursIndex()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
@@ -65,16 +61,6 @@ class Utilisateurs extends BaseController
             return view('utilisateurs/utilisateursIndex', $data);
         }
     }
-
-    // function profil()
-    // {
-    //     $this->parents->find(session("id"));
-    //     $data = [
-    //         "data" => $this->parents->find(session("id"))
-
-    //     ];
-    //     return view('utilisateurs/profil', $data);
-    // }
 
     public function connexion()
     {
@@ -352,13 +338,16 @@ class Utilisateurs extends BaseController
             echo view("utilisateurs/profil", $data);
         }
     }
-    
-    public function singleUser($id) {
+
+    public function singleUser($id)
+    {
+
         $data = [
-            "data" => $this->professionnels->find($id)
+            "data" => $this->professionnels->find($id),
+            "session_creneaux" => $this->session->find($id)
+
         ];
+     
         echo view("utilisateurs/singleUser", $data);
-
-
     }
 }

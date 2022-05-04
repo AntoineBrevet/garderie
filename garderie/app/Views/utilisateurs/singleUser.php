@@ -60,12 +60,24 @@
         </div>
     </div>
     <hr>
-    <div class="description"> <img src="<?= base_url() ?>/img/desc1.png" alt="">
-        <label for="desc">description</label>
-        <div class="desc">
-            <?php
-            echo ($data['descriptionPros']);
-            ?>
+    <div class="row-contents">
+        <div><img src="<?= base_url() ?>/img/desc1.png" alt="">
+            <label for="desc">description</label>
+            <div class="desc">
+                <?php
+                echo ($data['descriptionPros']);
+                ?>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div><img src="<?= base_url() ?>/img/heure.png" alt="">
+            </div>
+            <div>
+                <?php echo $session_creneaux['date_debut'] . " - " . $session_creneaux['debutSession'] . " heures " . " " ?>
+                <br>
+                <?php echo $session_creneaux['date_fin'] . " - " . $session_creneaux['finSession'] . " heures " ?>
+            </div>
         </div>
     </div>
     <br>
