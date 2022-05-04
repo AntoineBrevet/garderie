@@ -92,7 +92,7 @@ class Professionnels extends BaseController
     public function inscriptionPros()
     {
 
-        $apiUrl = "https://entreprise.data.gouv.fr/api/sirene/v1/siret/21310555400017";
+        $apiUrl = "https://entreprise.data.gouv.fr/api/sirene/v3/etablissements/21310555400017";
         $response = file_get_contents($apiUrl, False);
         $result = json_decode($response, true);
 
