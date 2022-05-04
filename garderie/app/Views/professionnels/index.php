@@ -9,71 +9,28 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div class=" sec1">
 
+<section class="sec1">
+    <div class="sec1-container">
 
+        <div class="sec1-p">
+            <h1 class="word"></h1>
+            <p>Vous êtes passionnés et vous avez les compétences nécessaires pour le métier de garde d'enfants? Vous êtes tombés sur la bonne place !</p>
 
-    <?php
-
-    $i = 1;
-
-    foreach ($recupByEnfant as $recup) {
-    }
-
-    // foreach($infos_reserv as $info_reserv){
-    //     var_dump($info_reserv);
-    //     echo '<hr>';
-    // echo 'Creneau ' . $i .' : Infos<br>';
-    // echo $info_reserv['nomEnfants'] . ' ' . $info_reserv['prenomEnfants'] .'<br>';
-    // echo $info_reserv['nomParents'] . ' ' . $info_reserv['prenomParents']. '-' . $info_reserv['telParents'] .'<br>';
-    // echo $info_reserv['nomRecup'] . ' ' . $info_reserv['prenomRecup']. '-' . $info_reserv['telRecup'].'<br>';
-    // echo '<hr>';
-    // $i++;
-    //  };
-
-    // foreach($infos_pro as $info_pro){
-    //     echo '<hr>Pro Infos : id = ' . $info_pro['proid'] .' <hr>';
-    //     var_dump($info_pro);
-
-    //     echo $info_pro['nomPros'] . '<br>'; 
-    //     echo $info_pro['debut'].'-'.$info_pro['fin'].'<br>'; 
-    // }
-
-    // foreach($creneauPlaces as $place){
-    //     echo 'Creneau by Places <br>';
-    //     var_dump($place);
-    // }
-
-    // foreach($allCreneau as $all){
-    //     var_dump($all);
-    // }
-
-    // foreach($creneauInfos as $infos){
-    //     var_dump($infos);
-    // }
-
-    ?>
-    <section class="sec1">
-        <div class="sec1-container">
-
-            <div class="sec1-p">
-                <h1 class="word"></h1>
-                <p>Vous êtes passionnés et vous avez les compétences nécessaires pour le métier de garde d'enfants? Vous êtes tombés sur la bonne place !</p>
-                <button>Postulez par ici !</button>
-            </div>
-
-            <div>
-
-                <ul class="slideshow">
-                    <li> <span></span> </li>
-                    <li> <span></span></li>
-                    <li> <span></span></li>
-                    <li> <span></span></li>
-
-                </ul>
-            </div>
         </div>
-</div>
+
+        <div>
+
+            <ul class="slideshow">
+                <li> <span></span> </li>
+                <li> <span></span></li>
+                <li> <span></span></li>
+                <li> <span></span></li>
+
+            </ul>
+        </div>
+    </div>
+    </div>
 </section>
 
 </div>

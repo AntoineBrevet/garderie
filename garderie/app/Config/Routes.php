@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Utilisateurs::index');
 $routes->get('professionnels', 'Professionnels::index');
+
 $routes->get('payment-stripe', 'StripeController::index');
 $routes->get('prosIndex', 'Professionnels::prosIndex');
 $routes->match(['get', 'post'], 'utilisateursIndex', 'Utilisateurs::utilisateursIndex');
@@ -41,6 +42,8 @@ $routes->get('query', 'Utilisateurs::showQuery');
 $routes->match(['get', 'post'],'utilisateursIndex', 'Utilisateurs::showSearchStart');
 $routes->match(['get', 'post'],'utilisateursIndex', 'Utilisateurs::showSearchEnd');
 $routes->match(['get', 'post'],'utilisateursIndex', 'Utilisateurs::showSearchBoth');
+$routes->get('messages/(:any)', 'Utilisateurs::messages/$1');
+
 
 
 

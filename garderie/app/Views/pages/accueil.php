@@ -28,7 +28,7 @@
     </div>
 </section>
 <section class="sec2">
-    <title></title>
+
     <div data-aos="fade-up-right" data-aos-duration="2000">
         <img src="<?= base_url()  ?>/img/sec2.png" alt='sec2'>
     </div>

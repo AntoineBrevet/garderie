@@ -12,6 +12,8 @@ class Utilisateurs extends BaseController
     private $professionnels;
     private $reservation;
     private $session;
+    private $messages;
+
 
     function __construct()
     {
@@ -21,6 +23,8 @@ class Utilisateurs extends BaseController
         $this->professionnels = model(ProfessionnelsModel::class);
         $this->reservation = model(ReservationModel::class);
         $this->session = model(SessionModel::class);
+        $this->messages = model(MessagesModel::class);
+
     }
 
     public function index()
@@ -98,6 +102,17 @@ class Utilisateurs extends BaseController
             'validation' => $this->validator
         ]);
     }
+
+
+
+    public function messages($id){
+            $data = [
+                "data" => $this->professionnels->find($id)
+            ];
+            echo view("utilisateurs/messages", $data);
+
+        }
+
 
     public function inscription()
     {

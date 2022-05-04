@@ -36,7 +36,6 @@
     <p>Contactez un professionnel pour démarrer une conversation</p>
 
     <div class="line"></div>
-    <label for="click" class="close-btn">Fermer</label>
 
 
 

@@ -69,6 +69,9 @@
         </div>
     </div>
     <br>
+    <div class="message">
+        <a href="<?= base_url(); ?>/messages/<?=$data['id']?>">Contacter</a>
+    </div>
     <div class="payement">
         <a href="<?= base_url(); ?>/Payement">Payement</a> <img src="<?= base_url() ?>/img/Payement.png" alt="">
     </div>
