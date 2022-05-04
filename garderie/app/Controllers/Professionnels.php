@@ -180,79 +180,110 @@ if ($result['etablissement']['siret'] === $this->request->getPost("siret")){
             $dif = ceil(abs($fin - $debut) / 86400);
 
             if ($dif == 0) {
+                $session_creneaux = [
+                    "creche_id" => session("id"),
+                    "debutSession" => $this->request->getPost("debut_session"),
+                    "finSession" => $this->request->getPost("fin_session"),
+                    "date_debut" => $this->request->getPost("date_debut"),
+                    "date_fin" => $this->request->getPost("date_fin"),
+                ];
+                $this->session->insert($session_creneaux);
+                $last_id = $this->session->getInsertID();
                 for ($i = $debut2; $i < $fin2; $i++) {
                     $data['debut'] = $i;
                     $data['fin'] = $i + 1;
+
                     $creneau = [
                         "jour" => 1,
-                        "date_debut" => $this->request->getPost("date_debut"),
-                        "date_fin" => $this->request->getPost("date_fin"),
                         "debut" => $data['debut'],
                         "fin" => $data['fin'],
                         "nbr_place" => $this->request->getPost("nbr_place"),
                         "nbr_place_restant" => $this->request->getPost("nbr_place"),
-                        "debut_session" => $this->request->getPost("debut_session"),
-                        "fin_session" => $this->request->getPost("fin_session"),
-                        "creche_id" => session("id")
+                        "creche_id" => session("id"),
+                        "session_id" => $last_id
+
                     ];
                     $this->creneau->insert($creneau);
+
                 }
                 return redirect()->to(base_url() . '/prosIndex');
             } elseif ($dif > 0) {
+                $session_creneaux = [
+                    "creche_id" => session("id"),
+                    "debut_session" => $this->request->getPost("debut_session"),
+                    "fin_session" => $this->request->getPost("fin_session"),
+                    "date_debut" => $this->request->getPost("date_debut"),
+                    "date_fin" => $this->request->getPost("date_fin"),
+                ];
+                $this->session->insert($session_creneaux);
+                $last_id = $this->session->getInsertID();
                 for ($i = $debut2; $i < 24; $i++) {
                     $data['debut'] = $i;
                     $data['fin'] = $i + 1;
+              
                     $creneau = [
                         "jour" => 1,
-                        "date_debut" => $this->request->getPost("date_debut"),
-                        "date_fin" => $this->request->getPost("date_fin"),
                         "debut" => $data['debut'],
                         "fin" => $data['fin'],
                         "nbr_place" => $this->request->getPost("nbr_place"),
                         "nbr_place_restant" => $this->request->getPost("nbr_place"),
-                        "debut_session" => $this->request->getPost("debut_session"),
-                        "fin_session" => $this->request->getPost("fin_session"),
-                        "creche_id" => session("id")
+                        "creche_id" => session("id"),
+                        "session_id" => $last_id
+
                     ];
+
                     $this->creneau->insert($creneau);
                 }
-
+    $session_creneaux = [
+                "creche_id" => session("id"),
+                "debut_session" => $this->request->getPost("debut_session"),
+                "fin_session" => $this->request->getPost("fin_session"),
+                "date_debut" => $this->request->getPost("date_debut"),
+                "date_fin" => $this->request->getPost("date_fin"),
+            ];
+                    $this->session->insert($session_creneaux);
+                    $last_id = $this->session->getInsertID();
                 for ($i = 0; $i < ($dif - 1); $i++) {
                     for ($j = 0; $j < 24; $j++) {
                         $data['debut'] = $j;
                         $data['fin'] = $j + 1;
+
                         $creneau = [
                             "jour" => $i + 2,
-                            "date_debut" => $this->request->getPost("date_debut"),
-                            "date_fin" => $this->request->getPost("date_fin"),
                             "debut" => $data['debut'],
                             "fin" => $data['fin'],
                             "nbr_place" => $this->request->getPost("nbr_place"),
                             "nbr_place_restant" => $this->request->getPost("nbr_place"),
-                            "debut_session" => $this->request->getPost("debut_session"),
-                            "fin_session" => $this->request->getPost("fin_session"),
-                            "creche_id" => session("id")
+                            "creche_id" => session("id"),
+                            "session_id" => $last_id
                         ];
-                        $id = $i + 2;
+
+                        $increment = $i + 2;
                         $this->creneau->insert($creneau);
                     }
                 }
                 for ($i = 1; $i < $fin2; $i++) {
                     if ($dif == 1) {
-                        $id = 1;
+                        $increment = 1;
                     }
                     $data['debut'] = $i;
                     $data['fin'] = $i + 1;
-                    $creneau = [
-                        "jour" => $id + 1,
+                    $session_creneaux = [
+                        "creche_id" => session("id"),
+                        "debut_session" => $this->request->getPost("debut_session"),
+                        "fin_session" => $this->request->getPost("fin_session"),
                         "date_debut" => $this->request->getPost("date_debut"),
                         "date_fin" => $this->request->getPost("date_fin"),
+                    ];
+
+                    $this->session->insert($session_creneaux);
+                    $last_id = $this->session->getInsertID();
+                    $creneau = [
+                        "jour" => $increment + 1,
                         "debut" => $data['debut'],
                         "fin" => $data['fin'],
                         "nbr_place" => $this->request->getPost("nbr_place"),
                         "nbr_place_restant" => $this->request->getPost("nbr_place"),
-                        "debut_session" => $this->request->getPost("debut_session"),
-                        "fin_session" => $this->request->getPost("fin_session"),
                         "creche_id" => session("id")
                     ];
                     $this->creneau->insert($creneau);
@@ -274,7 +305,7 @@ if ($result['etablissement']['siret'] === $this->request->getPost("siret")){
     }
 
     public function geocode($address)
-    {
+    {   
 
         // url encode the address
         $address = urlencode($address);
