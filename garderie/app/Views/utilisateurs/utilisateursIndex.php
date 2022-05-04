@@ -64,7 +64,12 @@ include 'messagesPvPros.php';
 <div class="feed">
 
     <?php
-    foreach ($sessions as $session) { ?>
+    foreach ($sessions as $session) {
+        $dateDebut = $session["date_debut"];
+        $newDateDebut = date("d-m-Y", strtotime($dateDebut));
+        $dateFin = $session["date_fin"];
+        $newDateFin = date("d-m-Y", strtotime($dateFin));
+    ?>
         <div class="annonces">
             <div class="id">
                 <?php echo $session['creche_id'] ?>
@@ -91,7 +96,7 @@ include 'messagesPvPros.php';
             </div>
             <hr>
             <div class="heures">
-                <img src="<?= base_url() ?>/img/heure.png" alt=""> <?php echo $session['date_debut'] . " - " . $session['debutSession'] . " heures " . " " ?><?php echo $session['date_fin'] . " - " . $session['finSession'] . " heures " ?>
+                <img src="<?= base_url() ?>/img/heure.png" alt=""> <?php echo $newDateDebut . " - " . $session['debutSession'] . " heures " . " " ?><?php echo $newDateFin . " - " . $session['finSession'] . " heures " ?>
             </div>
             <br>
             <div>
@@ -277,10 +282,16 @@ include 'messagesPvPros.php';
 
             <?php
             for ($i = 0; $i < count($sessions); $i++) {
+                $dateDebut = $sessions[$i]["date_debut"];
+                $newDateDebut = date("d-m-Y", strtotime($dateDebut));
+                $dateFin = $sessions[$i]["date_fin"];
+                $newDateFin = date("d-m-Y", strtotime($dateFin));
             ?>
 
-                var dateDebut = "<?= $sessions[$i]["date_debut"] ?>";
-                var dateFin = "<?= $sessions[$i]["date_fin"] ?>";
+                var dateDebut = "<?= $newDateDebut ?>";
+                var dateFin = "<?= $newDateFin ?>";
+                var dateDebut2 = "<?= $dateDebut ?>";
+                var dateFin2 = "<?= $dateFin ?>";
                 var heureDebut = "<?= $sessions[$i]["debutSession"] ?>";
                 var heureFin = "<?= $sessions[$i]["finSession"] ?>";
                 var idCreche = "<?= $sessions[$i]["creche_id"] ?>";
@@ -289,13 +300,14 @@ include 'messagesPvPros.php';
                 var telPros = "<?= $sessions[$i]["telPros"] ?>";
                 var adressePros = "<?= $sessions[$i]["adressePros"] ?>";
 
-                if (document.querySelector('#dateDebut').value >= dateDebut && document.querySelector('#dateDebut').value <= dateFin) {
+                if (document.querySelector('#dateDebut').value >= dateDebut2 && document.querySelector('#dateDebut').value <= dateFin2) {
                     document.querySelector('.feed').innerHTML += '<div class="annonces"><div class="id">' + idCreche + '</div><br><div class="column"><div class="nom"><img src="<?= base_url() ?>/img/profile.png" alt="">' + nomPros + '</div><div class="mail"><img src="<?= base_url() ?>/img/email.png" alt="">' + mailPros + '</div></div><hr><div class="column"><div class="tel"><img src="<?= base_url() ?>/img/telephone.png" alt="">' + telPros + '</div><div class="adresse"><img src="<?= base_url() ?>/img/adresse.png" alt="">' + adressePros + '</div></div><hr><div class="heures"><img src="<?= base_url() ?>/img/heure.png" alt="">' + dateDebut + ' - ' + heureDebut + ' heures ' + dateFin + ' - ' + heureFin + ' heures</div><br><div><a href="<?= base_url(); ?>/singleUser/' + idCreche + '" class="profil_candidat">voir le profil</a></div></div><br>'
                 }
                 <?php
                 if ($i == count($sessions) - 1) {
                 ?>
                     if (document.querySelector('.feed').innerHTML == '') {
+                        console.log("oui");
                         document.querySelector('.feed').innerHTML += 'Aucun créneau trouvé!'
                     }
             <?php
@@ -314,10 +326,16 @@ include 'messagesPvPros.php';
 
             <?php
             for ($i = 0; $i < count($sessions); $i++) {
+                $dateDebut = $sessions[$i]["date_debut"];
+                $newDateDebut = date("d-m-Y", strtotime($dateDebut));
+                $dateFin = $sessions[$i]["date_fin"];
+                $newDateFin = date("d-m-Y", strtotime($dateFin));
             ?>
 
-                var dateDebut = "<?= $sessions[$i]["date_debut"] ?>";
-                var dateFin = "<?= $sessions[$i]["date_fin"] ?>";
+                var dateDebut = "<?= $newDateDebut ?>";
+                var dateFin = "<?= $newDateFin ?>";
+                var dateDebut2 = "<?= $dateDebut ?>";
+                var dateFin2 = "<?= $dateFin ?>";
                 var heureDebut = "<?= $sessions[$i]["debutSession"] ?>";
                 var heureFin = "<?= $sessions[$i]["finSession"] ?>";
                 var idCreche = "<?= $sessions[$i]["creche_id"] ?>";
@@ -326,7 +344,7 @@ include 'messagesPvPros.php';
                 var telPros = "<?= $sessions[$i]["telPros"] ?>";
                 var adressePros = "<?= $sessions[$i]["adressePros"] ?>";
 
-                if (document.querySelector('#dateFin').value >= dateDebut && document.querySelector('#dateFin').value <= dateFin) {
+                if (document.querySelector('#dateFin').value >= dateDebut2 && document.querySelector('#dateFin').value <= dateFin2) {
                     document.querySelector('.feed').innerHTML += '<div class="annonces"><div class="id">' + idCreche + '</div><br><div class="column"><div class="nom"><img src="<?= base_url() ?>/img/profile.png" alt="">' + nomPros + '</div><div class="mail"><img src="<?= base_url() ?>/img/email.png" alt="">' + mailPros + '</div></div><hr><div class="column"><div class="tel"><img src="<?= base_url() ?>/img/telephone.png" alt="">' + telPros + '</div><div class="adresse"><img src="<?= base_url() ?>/img/adresse.png" alt="">' + adressePros + '</div></div><hr><div class="heures"><img src="<?= base_url() ?>/img/heure.png" alt="">' + dateDebut + ' ' + heureDebut + ' ' + dateFin + ' ' + heureFin + '</div><br><div><a href="<?= base_url(); ?>/singleUser/' + idCreche + '" class="profil_candidat">voir le profil</a></div></div><br>'
                 }
                 <?php
@@ -350,10 +368,16 @@ include 'messagesPvPros.php';
 
         <?php
         for ($i = 0; $i < count($sessions); $i++) {
+            $dateDebut = $sessions[$i]["date_debut"];
+            $newDateDebut = date("d-m-Y", strtotime($dateDebut));
+            $dateFin = $sessions[$i]["date_fin"];
+            $newDateFin = date("d-m-Y", strtotime($dateFin));
         ?>
 
-            var dateDebut = "<?= $sessions[$i]["date_debut"] ?>";
-            var dateFin = "<?= $sessions[$i]["date_fin"] ?>";
+            var dateDebut = "<?= $newDateDebut ?>";
+            var dateFin = "<?= $newDateFin ?>";
+            var dateDebut2 = "<?= $dateDebut ?>";
+            var dateFin2 = "<?= $dateFin ?>";
             var heureDebut = "<?= $sessions[$i]["debutSession"] ?>";
             var heureFin = "<?= $sessions[$i]["finSession"] ?>";
             var idCreche = "<?= $sessions[$i]["creche_id"] ?>";
@@ -362,7 +386,7 @@ include 'messagesPvPros.php';
             var telPros = "<?= $sessions[$i]["telPros"] ?>";
             var adressePros = "<?= $sessions[$i]["adressePros"] ?>";
 
-            if (document.querySelector('#dateDebut').value >= dateDebut && document.querySelector('#dateFin').value <= dateFin) {
+            if (document.querySelector('#dateDebut').value >= dateDebut2 && document.querySelector('#dateFin').value <= dateFin2) {
                 document.querySelector('.feed').innerHTML += '<div class="annonces"><div class="id">' + idCreche + '</div><br><div class="column"><div class="nom"><img src="<?= base_url() ?>/img/profile.png" alt="">' + nomPros + '</div><div class="mail"><img src="<?= base_url() ?>/img/email.png" alt="">' + mailPros + '</div></div><hr><div class="column"><div class="tel"><img src="<?= base_url() ?>/img/telephone.png" alt="">' + telPros + '</div><div class="adresse"><img src="<?= base_url() ?>/img/adresse.png" alt="">' + adressePros + '</div></div><hr><div class="heures"><img src="<?= base_url() ?>/img/heure.png" alt="">' + dateDebut + ' ' + heureDebut + ' ' + dateFin + ' ' + heureFin + '</div><br><div><a href="<?= base_url(); ?>/singleUser/' + idCreche + '" class="profil_candidat">voir le profil</a></div></div><br>'
             }
             <?php

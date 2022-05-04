@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class EnfantsModel extends Model
+class MessagesModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'enfants';
+    protected $table            = 'messages';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
-    protected $useSoftDeletes   = true;
+    protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['parents_id','nomEnfants','prenomEnfants','sexeEnfants','dateNaissanceEnfants','allergies','medicaments'];
+    protected $allowedFields    = ['id_auteur', 'id_destinataire', 'contenu'];
 
     // Dates
     protected $useTimestamps = false;
@@ -40,11 +40,12 @@ class EnfantsModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getEnfantsBySessionId() {
+    public function displayMessages($idpro)
+    {
         return $this->select("*")
-            ->where(['parents_id' => session("id")])
+            ->join('professionnels', 'creneau.creche_id = professionnels.id')
+            ->where(['professionnels.id' => $idpro])
             ->findAll();
     }
-
 
 }
