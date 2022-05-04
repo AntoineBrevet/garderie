@@ -1,0 +1,15 @@
+.proP{
+    color:#2F4F4F;
+    text-align: left;
+
+}
+.parentP{
+    color:black;
+    text-align: right;
+}
+.container{
+    background: white;
+    width: 50%;
+    height: 500px;
+    border-radius: 3px;
+}

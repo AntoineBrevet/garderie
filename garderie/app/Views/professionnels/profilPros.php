@@ -57,8 +57,9 @@
                 <ul class="navbar-nav">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="bi bi-chat"></i> Messages
+                        <a class="nav-link" href="<?= base_url(); ?>/contactPros">
+                            <i class="bi bi-chat"></i>Messages
+
                             <span class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto">6</span>
                         </a>
                     </li>

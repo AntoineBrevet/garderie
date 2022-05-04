@@ -56,6 +56,8 @@ class Utilisateurs extends BaseController
                 "proByName" => $this->professionnels->call_pro_by_name('laguarderie'),
                 "proInfosById" => $this->professionnels->call_pro_infos_by_id(1),
                 "sessions" => $this->session->call_all_session(),
+                'contact'=>$this->messages->displayContactUser(),
+                'allmessages'=>$this->messages->displayAllMessages()
             ];
 
             return view('utilisateurs/utilisateursIndex', $data);
@@ -93,13 +95,34 @@ class Utilisateurs extends BaseController
 
 
 
-    public function messages($id){
-            $data = [
-                "data" => $this->professionnels->find($id)
-            ];
-            echo view("utilisateurs/messages", $data);
+    public function messages($id)
+    {
+        if ($this->request->getMethod() === 'post' && $this->validate([
+                'message'=>'required'
 
+            ])) {
+
+
+                $message = [
+                    'id_auteur'=>session('id'),
+                    'id_destinataire'=>$id,
+                    "contenu" => $this->request->getPost("message"),
+                    "statut"=>"parent",
+
+                ];
+
+                $this->messages->insert($message);
+                return redirect()->to(base_url() . '/messages/'.$id);
+
+        } else {
+            $data = [
+                'message'=>$this->messages->displayMessages($id)
+            ];
+
+            echo view("utilisateurs/messages", $data);
         }
+    }
+
 
 
     public function inscription()
@@ -350,4 +373,6 @@ class Utilisateurs extends BaseController
      
         echo view("utilisateurs/singleUser", $data);
     }
+
+
 }

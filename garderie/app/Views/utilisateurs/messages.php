@@ -1,34 +1,44 @@
+<?= $this->extend('master') ?>
+
+<?= $this->section('css') ?>
+<link href="<?= base_url(); ?>/css/messages.css" rel="stylesheet">
+
+<?= $this->endSection() ?>
+
+<?= $this->section('content') ?>
+<div class="container">
 <?php
-session_start();
-$bdd = new PDO('mysql:dbname=dm;host=localhost; charset=utf8;','root','');
 
-if (!$_SESSION['pseudo']) {
-    header('Location: connexion.php');
+
+foreach ($message as $messages){
+    if($messages['statut'] == "parent"){
+        ?>
+        <p class="parentP"><?= $messages['contenu'];?></p>
+        <?php
+
+    } else if ($messages['statut'] == "pro"){
+        ?>
+        <p class="proP"><?= $messages['contenu'];?></p>
+        <?php
+
+}
 }
 
-if (isset($_GET['id']) && !empty($_GET['id'])) {
+?>
+<form method="POST" action="">
+    <textarea name="message"></textarea>
+    <br>
+    <input type="submit" name="envoyer">
+
+    <section id="messages">
+    </section>
+</form>
+</div>
+
+<?= $this->endSection() ?>
+
+<?= $this->section('js') ?>
+<!-- Mettre le JS avec une balise script -->
+<?= $this->endSection() ?>
 
 
-    $getID = $_GET['id'];
-    $ID = $_SESSION['id'];
-
-    $recupUser = $bdd->prepare('SELECT * FROM users WHERE id = ?');
-    $recupUser->execute(array($getID));
-
-    if($recupUser->rowCount() > 0){
-
-        if(isset($_POST['envoyer'])){
-
-            $message = htmlspecialchars($_POST['message']);
-            $insertMessage = $bdd->prepare('INSERT INTO messages(message, id_destinataire, id_auteur)VALUES(?,?,?)');
-            $insertMessage->execute(array($message, $getID, $ID));
-
-        }
-    }else{
-        echo "aucun utilisateur trouvé";
-    }
-
-
-}else{
-    echo "aucun identifiant trouvé";
-}

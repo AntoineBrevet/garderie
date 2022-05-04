@@ -18,6 +18,8 @@ class Professionnels extends BaseController
     private $reservation;
     private $recupere;
     private $session;
+    private $messages;
+
 
     function __construct()
     {
@@ -28,6 +30,8 @@ class Professionnels extends BaseController
         $this->reservation = model(ReservationModel::class);
         $this->recupere = model(RecupereModel::class);
         $this->session = model(SessionModel::class);
+        $this->messages = model(MessagesModel::class);
+
     }
 
     public function index()
@@ -92,9 +96,7 @@ class Professionnels extends BaseController
     public function inscriptionPros()
     {
 
-        $apiUrl = "https://entreprise.data.gouv.fr/api/sirene/v3/etablissements/21310555400017";
-        $response = file_get_contents($apiUrl, False);
-        $result = json_decode($response, true);
+
 
         if ($this->request->getMethod() === 'post' && $this->validate([
             'nomPros' => 'required|min_length[3]|max_length[255]',
@@ -106,7 +108,9 @@ class Professionnels extends BaseController
             'telPros' => 'required',
             'siret' => 'required',
         ])) {
-
+            $apiUrl = "https://entreprise.data.gouv.fr/api/sirene/v3/etablissements/".$this->request->getPost("siret");
+            $response = file_get_contents($apiUrl, False);
+            $result = json_decode($response, true);
             $data_arr = $this->geocode($this->request->getPost("adresse"));
 
             // if able to geocode the address
@@ -151,6 +155,15 @@ if ($result['etablissement']['siret'] === $this->request->getPost("siret")){
                 'validation' => $this->validator
             ]);
         }
+    }
+
+    public function contactPros(){
+        $data = [
+            'contact'=>$this->messages->displayContact()
+        ];
+
+        echo view("professionnels/contactPros", $data);
+
     }
 
     public function deconnexionPros()
@@ -302,6 +315,35 @@ if ($result['etablissement']['siret'] === $this->request->getPost("siret")){
 
         ];
         return view('professionnels/profilPros', $data);
+    }
+
+    function messagesPros($id){
+        if ($this->request->getMethod() === 'post' && $this->validate([
+                'message'=>'required'
+
+            ])) {
+
+
+            $message = [
+                'id_auteur'=>session('id'),
+                'id_destinataire'=>$id,
+                "contenu" => $this->request->getPost("message"),
+                "statut"=>"pro",
+
+            ];
+
+            $this->messages->insert($message);
+            return redirect()->to(base_url() . '/messagesPros/'.$id);
+
+        } else {
+            $data = [
+                'message'=>$this->messages->displayMessages($id)
+            ];
+
+            echo view("professionnels/messagesPros", $data);
+        }
+
+
     }
 
     public function geocode($address)

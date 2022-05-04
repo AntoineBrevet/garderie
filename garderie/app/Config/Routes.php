@@ -42,7 +42,8 @@ $routes->get('query', 'Utilisateurs::showQuery');
 $routes->match(['get', 'post'],'utilisateursIndex', 'Utilisateurs::showSearchStart');
 $routes->match(['get', 'post'],'utilisateursIndex', 'Utilisateurs::showSearchEnd');
 $routes->match(['get', 'post'],'utilisateursIndex', 'Utilisateurs::showSearchBoth');
-$routes->get('messages/(:any)', 'Utilisateurs::messages/$1');
+$routes->match(['get', 'post'],'messages/(:any)', 'Utilisateurs::messages/$1');
+$routes->match(['get', 'post'],'messagesPros/(:any)', 'Professionnels::messagesPros/$1');
 
 
 
@@ -59,6 +60,9 @@ $routes->get('deconnexion', 'Utilisateurs::deconnexion');
 $routes->get('deconnexionPros', 'Professionnels::deconnexionPros');
 $routes->get('singlePro/(:any)', 'Professionnels::singlePro/$1');
 $routes->get('singleUser/(:any)', 'Utilisateurs::singleUser/$1');
+$routes->get('contactPros', 'Professionnels::contactPros');
+
+
 
 
 
