@@ -42,8 +42,7 @@ class RecupereModel extends Model
 
     public function call_recup_by_enfants($id){
         return $this->select("*")
-            ->join('enfants','id_enfant = enfants.id')
-            ->where(['enfants.id' => $id])
+            ->where(['id_enfant' => $id])
             ->findAll();
     }
 }

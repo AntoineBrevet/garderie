@@ -14,15 +14,14 @@
         <a href="<?= base_url(); ?>/createEnfants"><img src="<?= base_url() ?>/img/ajoute-d'enfants.png" width="100px" alt=""> Ajouter un enfant</a><br>
         <div class="babies-list">
             <h1>Liste des enfants</h1>
+
             <?php
-            foreach ($data as $datas) {
+            foreach ($infos as $datas) {
                 $dateOfBirth = $datas["dateNaissanceEnfants"];
                 $today = date("Y-m-d");
                 $diff = date_diff(date_create($dateOfBirth), date_create($today));
                 $age = $diff->format('%y');
-
             ?>
-
                 <div class="baby-infos">
 
                     <div>
@@ -52,22 +51,27 @@
                         <h4> Médicaments :</h4>
                         <p> <?= $datas["medicaments"] ?></p>
                     </div>
+                    <div>
+                        <h4>Recuperateurs :</h4>
+                        <p></p>
+                        <?php
+                        foreach ($recup as $rec) { 
+                            if ($rec['id_enfant'] == $datas['id']) {
+                            echo $rec['prenomRecup'] . ' ';
+                        }
+                        }
+                         ?>
+                    </div>
                     <div class="options-btn">
                         <a href="<?= base_url() ?>/updateEnfants/<?= $datas["id"] ?>">Modifier l'enfant</a><br>
                         <a href="<?= base_url() ?>/deleteEnfants/<?= $datas["id"] ?>">Supprimer l'enfant</a><br>
                     </div>
                 </div>
-
             <?php
             }
             ?>
         </div>
     </div>
-
-
-
-
-
 </section>
 
 <?= $this->endSection() ?>
