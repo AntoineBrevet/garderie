@@ -14,6 +14,7 @@ class Utilisateurs extends BaseController
     private $session;
     private $messages;
 
+    private $recupere;
 
     function __construct()
     {
@@ -25,6 +26,7 @@ class Utilisateurs extends BaseController
         $this->session = model(SessionModel::class);
         $this->messages = model(MessagesModel::class);
 
+        $this->recupere = model(RecupereModel::class);
     }
 
     public function index()
@@ -174,13 +176,33 @@ class Utilisateurs extends BaseController
         session()->destroy();
         return redirect()->to(base_url() . '/');
     }
+
     public function showEnfants()
     {
+        $recupArray = [];
+        $recup = [];
+        $i = 0;
+        $myKidsArray =  
+        $this->enfants->getEnfantsBySessionId()
+        ;
+
+        foreach($myKidsArray as $myKid){
+            $recup = $this->recupere->call_recup_by_enfants($myKid['id']);
+            foreach($recup as $rec){
+            array_push($recupArray, $rec);
+        }
+        }
+
+
+
         $data = [
-            "data" => $this->enfants->getEnfantsBySessionId()
+            'infos' => $myKidsArray,
+            'recup' => $recupArray     
         ];
+        
         echo view("utilisateurs/showEnfants", $data);
     }
+
     public function createEnfants()
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
