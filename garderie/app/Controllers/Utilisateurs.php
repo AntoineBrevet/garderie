@@ -65,8 +65,8 @@ class Utilisateurs extends BaseController
                 "proByName" => $this->professionnels->call_pro_by_name('laguarderie'),
                 "proInfosById" => $this->professionnels->call_pro_infos_by_id(1),
                 "sessions" => $this->session->call_all_session(),
-                'contact'=>$this->messages->displayContactUser(),
-                'allmessages'=>$this->messages->displayAllMessages()
+                'contact' => $this->messages->displayContactUser(),
+                'allmessages' => $this->messages->displayAllMessages()
             ];
 
             return view('utilisateurs/utilisateursIndex', $data);
@@ -107,25 +107,24 @@ class Utilisateurs extends BaseController
     public function messages($id)
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
-                'message'=>'required'
+            'message' => 'required'
 
-            ])) {
+        ])) {
 
 
-                $message = [
-                    'id_auteur'=>session('id'),
-                    'id_destinataire'=>$id,
-                    "contenu" => $this->request->getPost("message"),
-                    "statut"=>"parent",
+            $message = [
+                'id_auteur' => session('id'),
+                'id_destinataire' => $id,
+                "contenu" => $this->request->getPost("message"),
+                "statut" => "parent",
 
-                ];
+            ];
 
-                $this->messages->insert($message);
-                return redirect()->to(base_url() . '/messages/'.$id);
-
+            $this->messages->insert($message);
+            return redirect()->to(base_url() . '/messages/' . $id);
         } else {
             $data = [
-                'message'=>$this->messages->displayMessages($id)
+                'message' => $this->messages->displayMessages($id)
             ];
 
             echo view("utilisateurs/messages", $data);
@@ -169,6 +168,22 @@ class Utilisateurs extends BaseController
                     "longitudeParents" => $longitude
                 ];
 
+
+                // Given password
+                $password = 'user-input-pass';
+
+                // Validate password strength
+                $uppercase = preg_match('@[A-Z]@', $password);
+                $lowercase = preg_match('@[a-z]@', $password);
+                $number    = preg_match('@[0-9]@', $password);
+                $specialChars = preg_match('@[^\w]@', $password);
+
+                if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+                    echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+                } else {
+                    echo 'Strong password.';
+                }
+
                 $this->parents->insert($parents);
                 return redirect()->to(base_url() . '/');
             }
@@ -200,24 +215,23 @@ class Utilisateurs extends BaseController
         $recupArray = [];
         $recup = [];
         $i = 0;
-        $myKidsArray =  
-        $this->enfants->getEnfantsBySessionId()
-        ;
+        $myKidsArray =
+            $this->enfants->getEnfantsBySessionId();
 
-        foreach($myKidsArray as $myKid){
+        foreach ($myKidsArray as $myKid) {
             $recup = $this->recupere->call_recup_by_enfants($myKid['id']);
-            foreach($recup as $rec){
-            array_push($recupArray, $rec);
-        }
+            foreach ($recup as $rec) {
+                array_push($recupArray, $rec);
+            }
         }
 
 
 
         $data = [
             'infos' => $myKidsArray,
-            'recup' => $recupArray     
+            'recup' => $recupArray
         ];
-        
+
         echo view("utilisateurs/showEnfants", $data);
     }
 
@@ -379,9 +393,7 @@ class Utilisateurs extends BaseController
             "session_creneaux" => $this->session->find($id)
 
         ];
-     
+
         echo view("utilisateurs/singleUser", $data);
     }
-
-
 }

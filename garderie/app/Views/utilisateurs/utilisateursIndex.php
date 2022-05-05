@@ -3,8 +3,6 @@
 <?= $this->section('css') ?>
 <link href="<?= base_url(); ?>/css/indexUser.css" rel="stylesheet">
 <link href="<?= base_url(); ?>/css/messagesPv.css" rel="stylesheet">
-
-
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -56,13 +54,18 @@ include 'messagesPvPros.php';
     </div>
 
 </section>
-<label>debut</label>
-<input type="date" name="dateDebut" id="dateDebut" style="color:black"><br>
-<label>fin</label>
+<div class="dates">
+    <div>
+        <label>Debut : </label>
+        <input type="date" name="dateDebut" id="dateDebut" style="color:black">
+    </div>
+    <br>
+    <div>
+        <label>Fin : </label>
 
-<input type="date" name="dateFin" id="dateFin" style="color:black">
-
-
+        <input type="date" name="dateFin" id="dateFin" style="color:black">
+    </div>
+</div>
 <div class="feed">
 
     <?php
@@ -406,7 +409,6 @@ include 'messagesPvPros.php';
     }
 
     var urlAjaxMessage = "<?= base_url('utilisateursIndex'); ?>"
-
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

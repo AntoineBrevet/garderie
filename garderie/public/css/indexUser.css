@@ -19,6 +19,7 @@ body {
 #map {
     box-shadow: 5px 5px 25px black;
     margin: 100px auto;
+    border-radius: 10px;
 }
 
 .myForm, form {
@@ -44,7 +45,7 @@ body {
 #selectVal {
     padding: 10px;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     width: auto;
     margin-left: 25px;
 }
@@ -87,6 +88,29 @@ body {
     background-color: #1f73b4;
     border-radius: 20px;
     ;
+}
+
+.dates {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    margin: 20px auto;
+}
+
+.dates label {
+    color: #fff;
+}
+
+.dates #dateDebut,
+.dates #dateFin {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: auto;
+    margin: 10px;
 }
 
 .fixe {
@@ -241,7 +265,8 @@ body {
     align-items: center;
     justify-content: center;
 }
-.retour{
+
+.retour {
     transition-duration: 500ms;
     display: flex;
     color: white;
@@ -252,9 +277,9 @@ body {
     border-radius: 20px;
     margin-left: 20px;
 }
+
 .retour:hover {
     background-color: #134870;
     transition-duration: 500ms;
     transform: scale(1.1);
 }
-
