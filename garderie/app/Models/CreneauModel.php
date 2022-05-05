@@ -50,8 +50,9 @@ class CreneauModel extends Model
     public function show_sessions()
     {
         return $this->select("*")
-            ->join('session', 'creneau.session_id = creneau.id')
-            ->where(['session.id' => session('id')])
+            ->join('session', 'creneau.session_id = session.id')
+            ->where(['creneau.creche_id' => session('id')])
+            ->groupBy('session.id')
             ->findAll();
     }
 

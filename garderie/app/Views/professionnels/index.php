@@ -5,6 +5,7 @@
 <link href="<?= base_url(); ?>/css/accueilPro.css" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -18,13 +19,7 @@
                 <text x="50%" y="20%" dy=".2em" text-anchor="middle">
                     Baby Garde Pro
                  </text>
-
-
-
-
-
             </svg>
-
         </div>
     </div>
 </section>

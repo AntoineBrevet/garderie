@@ -8,9 +8,8 @@
 
 <?php
 
-
 foreach ($infos as $info) {
-    echo $info['jour'];
+    echo $info['date_debut'] ." ". $info['debutSession']."h à " . $info['date_debut'] ." " .$info['finSession']."h /// ";
 }
 ?>
 

@@ -95,28 +95,20 @@ class Professionnels extends BaseController
 
     public function showAnnonces(){
         $recupArray = [];
-        $recup = [];
-        $i = 0;
 
-        $myKidsArray =
-            $this->creneau->show_sessions()
-        ;
 
-        foreach($myKidsArray as $myKid){
-            $recup = $this->recupere->call_recup_by_enfants($myKid['id']);
-            foreach($recup as $rec){
-                array_push($recupArray, $rec);
-            }
-        }
+        $myKidsArray = $this->creneau->show_sessions();
 
         $data = [
             'infos' => $myKidsArray,
-            'recup' => $recupArray
         ];
 
         echo view("professionnels/showAnnonces",$data);
 
+
+
     }
+
     public function inscriptionPros()
     {
 
@@ -307,13 +299,23 @@ class Professionnels extends BaseController
             echo view("professionnels/create");
         }
     }
+
     function profilPros()
     {
         $this->professionnels->find(session("id"));
+        $recupArray = [];
+
+
+
+        $myKidsArray = $this->creneau->show_sessions();
+
+
         $data = [
-            "data" => $this->professionnels->find(session("id"))
+            "data" => $this->professionnels->find(session("id")),
+            'infos' => $myKidsArray,
 
         ];
+
         return view('professionnels/profilPros', $data);
     }
 

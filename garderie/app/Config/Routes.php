@@ -63,7 +63,8 @@ $routes->get('singlePro/(:any)', 'Professionnels::singlePro/$1');
 $routes->get('singleUser/(:any)', 'Utilisateurs::singleUser/$1');
 $routes->match(['get', 'post'],'singleSession/(:any)', 'Utilisateurs::singleSession/$1');
 $routes->get('contactPros', 'Professionnels::contactPros');
-$routes->get('showAnnonces', 'Professionnels::showAnnonces');
+$routes->match(['get', 'post'],'showAnnonces', 'Professionnels::showAnnonces');
+
 
 
 
