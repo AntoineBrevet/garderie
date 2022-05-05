@@ -62,12 +62,7 @@
                                                         ?>">
 
         </div>
-        <div> <label for="prenom">Mot de Passe</label>
-            <input type="text" name="mdpParents" value="<?php
-                                                        echo ($data['mdpParents']);
-                                                        ?>">
 
-        </div>
         <input type="submit" class="btnModif" value="Modifier le profil"><br>
 
     </form>

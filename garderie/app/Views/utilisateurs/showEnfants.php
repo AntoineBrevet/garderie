@@ -51,14 +51,14 @@
                     </div>
                     <div>
                         <h4>Recuperateurs :</h4>
-                        <p></p>
+                        <p>
                         <?php
                         foreach ($recup as $rec) {
                             if ($rec['id_enfant'] == $datas['id']) {
-                                echo $rec['prenomRecup'] . ' ';
+                                echo $rec['nomRecup']. ' ' .$rec['prenomRecup'] . '- 0' . $rec['telRecup'] . ' <br>';
                             }
                         }
-                        ?>
+                        ?></p>
                     </div>
                     <div class="options-btn">
                         <a href="<?= base_url() ?>/updateEnfants/<?= $datas["id"] ?>">Modifier l'enfant</a><br>
