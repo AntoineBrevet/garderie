@@ -59,6 +59,7 @@ body {
     box-shadow: 0 2px 3px 0 rgb(0 0 0 / 20%);
     display: flex;
     align-items: center;
+    height: 15%;
 }
 
 
@@ -104,4 +105,40 @@ p{
     width: 100%;
     height: 1px;
     background: silver;
+}
+
+
+
+/* CSS Message */
+
+.proP{
+    color:#2F4F4F;
+    text-align: left;
+
+}
+.parentP{
+    color:black;
+    text-align: right;
+}
+.container{
+    background: white;
+    width: 50%;
+    height: 500px;
+    border-radius: 3px;
+}
+
+.containerAllContact{
+    height: 85%;
+}
+
+.contactList, .retourButton{
+    cursor: pointer;
+}
+
+.envoyer{
+    color: black;
+}
+
+.containerAllContact{
+    overflow-y: scroll;
 }

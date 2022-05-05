@@ -31,7 +31,6 @@ class Professionnels extends BaseController
         $this->recupere = model(RecupereModel::class);
         $this->session = model(SessionModel::class);
         $this->messages = model(MessagesModel::class);
-
     }
 
     public function index()
@@ -108,62 +107,56 @@ class Professionnels extends BaseController
             'telPros' => 'required',
             'siret' => 'required',
         ])) {
-            $apiUrl = "https://entreprise.data.gouv.fr/api/sirene/v3/etablissements/".$this->request->getPost("siret");
+            $apiUrl = "https://entreprise.data.gouv.fr/api/sirene/v3/etablissements/" . $this->request->getPost("siret");
             $response = file_get_contents($apiUrl, False);
             $result = json_decode($response, true);
             $data_arr = $this->geocode($this->request->getPost("adresse"));
 
             // if able to geocode the address
 
-if ($result['etablissement']['siret'] === $this->request->getPost("siret")){
+            if ($result['etablissement']['siret'] === $this->request->getPost("siret")) {
 
-    if ($data_arr) {
+                if ($data_arr) {
 
-        $latitude = $data_arr[0];
-        $longitude = $data_arr[1];
-        var_dump($data_arr);
+                    $latitude = $data_arr[0];
+                    $longitude = $data_arr[1];
+                    var_dump($data_arr);
 
-        $professionnels = [
-            "nomPros" => $this->request->getPost("nomPros"),
-            "prenomPros" => $this->request->getPost("prenomPros"),
-            "mailPros" => $this->request->getPost("mailPros"),
-            "dateNaissancePros" => $this->request->getPost("dateNaissancePros"),
-            "mdpPros" => password_hash($this->request->getPost("mdpPros"), PASSWORD_DEFAULT),
-            "adressePros" => $this->request->getPost("adresse"),
-            "telPros" => $this->request->getPost("telPros"),
-            "siret" => $this->request->getPost("siret"),
-            "latitudePros" => $latitude,
-            "longitudePros" => $longitude
-        ];
+                    $professionnels = [
+                        "nomPros" => $this->request->getPost("nomPros"),
+                        "prenomPros" => $this->request->getPost("prenomPros"),
+                        "mailPros" => $this->request->getPost("mailPros"),
+                        "dateNaissancePros" => $this->request->getPost("dateNaissancePros"),
+                        "mdpPros" => password_hash($this->request->getPost("mdpPros"), PASSWORD_DEFAULT),
+                        "adressePros" => $this->request->getPost("adresse"),
+                        "telPros" => $this->request->getPost("telPros"),
+                        "siret" => $this->request->getPost("siret"),
+                        "latitudePros" => $latitude,
+                        "longitudePros" => $longitude
+                    ];
 
-        $this->professionnels->insert($professionnels);
-        var_dump($data_arr);
-        return redirect()->to(base_url() . '/professionnels');
-        
-    }
-}
-            else if ($result['etablissement']['siret'] != $this->request->getPost("siret"))
-            {
+                    $this->professionnels->insert($professionnels);
+                    var_dump($data_arr);
+                    return redirect()->to(base_url() . '/professionnels');
+                }
+            } else if ($result['etablissement']['siret'] != $this->request->getPost("siret")) {
                 echo view("professionnels/inscriptionPros");
                 echo "numéro de siret invalide";
-
             }
-        }
-
-        else {
+        } else {
             echo view("professionnels/inscriptionPros", [
                 'validation' => $this->validator
             ]);
         }
     }
 
-    public function contactPros(){
+    public function contactPros()
+    {
         $data = [
-            'contact'=>$this->messages->displayContact()
+            'contact' => $this->messages->displayContact()
         ];
 
         echo view("professionnels/contactPros", $data);
-
     }
 
     public function deconnexionPros()
@@ -192,16 +185,19 @@ if ($result['etablissement']['siret'] === $this->request->getPost("siret")){
             $fin = strtotime($this->request->getPost("date_fin"));
             $dif = ceil(abs($fin - $debut) / 86400);
 
+            $session_creneaux = [
+                "creche_id" => session("id"),
+                "debutSession" => $this->request->getPost("debut_session"),
+                "finSession" => $this->request->getPost("fin_session"),
+                "date_debut" => $this->request->getPost("date_debut"),
+                "date_fin" => $this->request->getPost("date_fin"),
+            ];
+            $this->session->insert($session_creneaux);
+
+            $last_id = $this->session->getInsertID();
+
             if ($dif == 0) {
-                $session_creneaux = [
-                    "creche_id" => session("id"),
-                    "debutSession" => $this->request->getPost("debut_session"),
-                    "finSession" => $this->request->getPost("fin_session"),
-                    "date_debut" => $this->request->getPost("date_debut"),
-                    "date_fin" => $this->request->getPost("date_fin"),
-                ];
-                $this->session->insert($session_creneaux);
-                $last_id = $this->session->getInsertID();
+
                 for ($i = $debut2; $i < $fin2; $i++) {
                     $data['debut'] = $i;
                     $data['fin'] = $i + 1;
@@ -217,23 +213,13 @@ if ($result['etablissement']['siret'] === $this->request->getPost("siret")){
 
                     ];
                     $this->creneau->insert($creneau);
-
                 }
                 return redirect()->to(base_url() . '/prosIndex');
             } elseif ($dif > 0) {
-                $session_creneaux = [
-                    "creche_id" => session("id"),
-                    "debut_session" => $this->request->getPost("debut_session"),
-                    "fin_session" => $this->request->getPost("fin_session"),
-                    "date_debut" => $this->request->getPost("date_debut"),
-                    "date_fin" => $this->request->getPost("date_fin"),
-                ];
-                $this->session->insert($session_creneaux);
-                $last_id = $this->session->getInsertID();
                 for ($i = $debut2; $i < 24; $i++) {
                     $data['debut'] = $i;
                     $data['fin'] = $i + 1;
-              
+
                     $creneau = [
                         "jour" => 1,
                         "debut" => $data['debut'],
@@ -247,15 +233,7 @@ if ($result['etablissement']['siret'] === $this->request->getPost("siret")){
 
                     $this->creneau->insert($creneau);
                 }
-    $session_creneaux = [
-                "creche_id" => session("id"),
-                "debut_session" => $this->request->getPost("debut_session"),
-                "fin_session" => $this->request->getPost("fin_session"),
-                "date_debut" => $this->request->getPost("date_debut"),
-                "date_fin" => $this->request->getPost("date_fin"),
-            ];
-                    $this->session->insert($session_creneaux);
-                    $last_id = $this->session->getInsertID();
+
                 for ($i = 0; $i < ($dif - 1); $i++) {
                     for ($j = 0; $j < 24; $j++) {
                         $data['debut'] = $j;
@@ -281,23 +259,15 @@ if ($result['etablissement']['siret'] === $this->request->getPost("siret")){
                     }
                     $data['debut'] = $i;
                     $data['fin'] = $i + 1;
-                    $session_creneaux = [
-                        "creche_id" => session("id"),
-                        "debut_session" => $this->request->getPost("debut_session"),
-                        "fin_session" => $this->request->getPost("fin_session"),
-                        "date_debut" => $this->request->getPost("date_debut"),
-                        "date_fin" => $this->request->getPost("date_fin"),
-                    ];
 
-                    $this->session->insert($session_creneaux);
-                    $last_id = $this->session->getInsertID();
                     $creneau = [
                         "jour" => $increment + 1,
                         "debut" => $data['debut'],
                         "fin" => $data['fin'],
                         "nbr_place" => $this->request->getPost("nbr_place"),
                         "nbr_place_restant" => $this->request->getPost("nbr_place"),
-                        "creche_id" => session("id")
+                        "creche_id" => session("id"),
+                        "session_id" => $last_id
                     ];
                     $this->creneau->insert($creneau);
                 }
@@ -317,37 +287,35 @@ if ($result['etablissement']['siret'] === $this->request->getPost("siret")){
         return view('professionnels/profilPros', $data);
     }
 
-    function messagesPros($id){
+    function messagesPros($id)
+    {
         if ($this->request->getMethod() === 'post' && $this->validate([
-                'message'=>'required'
+            'message' => 'required'
 
-            ])) {
+        ])) {
 
 
             $message = [
-                'id_auteur'=>session('id'),
-                'id_destinataire'=>$id,
+                'id_auteur' => session('id'),
+                'id_destinataire' => $id,
                 "contenu" => $this->request->getPost("message"),
-                "statut"=>"pro",
+                "statut" => "pro",
 
             ];
 
             $this->messages->insert($message);
-            return redirect()->to(base_url() . '/messagesPros/'.$id);
-
+            return redirect()->to(base_url() . '/messagesPros/' . $id);
         } else {
             $data = [
-                'message'=>$this->messages->displayMessages($id)
+                'message' => $this->messages->displayMessages($id)
             ];
 
             echo view("professionnels/messagesPros", $data);
         }
-
-
     }
 
     public function geocode($address)
-    {   
+    {
 
         // url encode the address
         $address = urlencode($address);

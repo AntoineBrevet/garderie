@@ -29,9 +29,6 @@ foreach ($message as $messages){
     <textarea name="message"></textarea>
     <br>
     <input type="submit" name="envoyer">
-
-    <section id="messages">
-    </section>
 </form>
 </div>
 
