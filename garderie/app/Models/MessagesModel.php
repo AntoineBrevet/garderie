@@ -14,7 +14,7 @@ class MessagesModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_auteur', 'id_destinataire', 'contenu','statut'];
+    protected $allowedFields    = ['id_auteur', 'id_destinataire', 'contenu', 'statut'];
 
     // Dates
     protected $useTimestamps = false;
@@ -42,7 +42,7 @@ class MessagesModel extends Model
 
     public function displayMessages($id)
     {
-        $where = "(messages.id_auteur=" .session('id'). " AND messages.id_destinataire=" . $id . " AND messages.statut ='parent') OR ( messages.id_destinataire=" .session('id') . " AND messages.id_auteur =" . $id . " AND messages.statut = 'pro')";
+        $where = "(messages.id_auteur=" . session('id') . " AND messages.id_destinataire=" . $id . " AND messages.statut ='parent') OR ( messages.id_destinataire=" . session('id') . " AND messages.id_auteur =" . $id . " AND messages.statut = 'pro')";
 
         return $this->select("*")
             ->where($where)
@@ -51,8 +51,8 @@ class MessagesModel extends Model
 
     public function displayAllMessages()
     {
-        
-        $where = "(messages.id_auteur=" .session('id'). " AND messages.statut ='parent') OR ( messages.id_destinataire=" .session('id') ." AND messages.statut = 'pro')";
+
+        $where = "(messages.id_auteur=" . session('id') . " AND messages.statut ='parent') OR ( messages.id_destinataire=" . session('id') . " AND messages.statut = 'pro')";
 
         return $this->select("*")
             ->where($where)
@@ -63,7 +63,7 @@ class MessagesModel extends Model
     {
         $this->query("SET sql_mode=(SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));");
 
-        $where = "messages.id_destinataire=" .session('id')." AND messages.statut ='parent'";
+        $where = "messages.id_destinataire=" . session('id') . " AND messages.statut ='parent'";
 
         return $this->select("*")
             ->join('parents', 'parents.id = messages.id_auteur')
@@ -76,7 +76,7 @@ class MessagesModel extends Model
     {
         $this->query("SET sql_mode=(SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));");
 
-        $where = "messages.id_auteur=" .session('id')." AND messages.statut ='parent'";
+        $where = "messages.id_auteur=" . session('id') . " AND messages.statut ='parent'";
         return $this->select("*")
             ->join('professionnels', 'professionnels.id = messages.id_destinataire')
             ->where($where)
