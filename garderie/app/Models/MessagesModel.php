@@ -40,6 +40,15 @@ class MessagesModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
+    public function displayMessagesPros($id)
+    {
+        $where = "(messages.id_auteur=" . $id . " AND messages.id_destinataire=" . session('id') . " AND messages.statut ='parent') OR ( messages.id_destinataire=" . $id . " AND messages.id_auteur =" . session('id') . " AND messages.statut = 'pro')";
+
+        return $this->select("*")
+            ->where($where)
+            ->findAll();
+    }
+
     public function displayMessages($id)
     {
         $where = "(messages.id_auteur=" . session('id') . " AND messages.id_destinataire=" . $id . " AND messages.statut ='parent') OR ( messages.id_destinataire=" . session('id') . " AND messages.id_auteur =" . $id . " AND messages.statut = 'pro')";

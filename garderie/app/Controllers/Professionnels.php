@@ -337,7 +337,7 @@ class Professionnels extends BaseController
             return redirect()->to(base_url() . '/messagesPros/' . $id);
         } else {
             $data = [
-                'message' => $this->messages->displayMessages($id)
+                'message' => $this->messages->displayMessagesPros($id)
             ];
 
             echo view("professionnels/messagesPros", $data);
