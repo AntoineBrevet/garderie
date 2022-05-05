@@ -65,7 +65,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="<?= base_url(); ?>/showAnnonces">
                             <i class="bi bi-people"></i> Voir mes annonces
                         </a>
                     </li>

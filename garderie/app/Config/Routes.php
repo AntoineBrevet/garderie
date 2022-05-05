@@ -61,6 +61,7 @@ $routes->get('deconnexionPros', 'Professionnels::deconnexionPros');
 $routes->get('singlePro/(:any)', 'Professionnels::singlePro/$1');
 $routes->get('singleUser/(:any)', 'Utilisateurs::singleUser/$1');
 $routes->get('contactPros', 'Professionnels::contactPros');
+$routes->get('showAnnonces', 'Professionnels::showAnnonces');
 
 
 
@@ -70,6 +71,7 @@ $routes->match(['get', 'post'], 'createEnfants', 'Utilisateurs::createEnfants');
 $routes->match(['get', 'post'], 'updateEnfants/(:any)', 'Utilisateurs::updateEnfants/$1');
 $routes->get('deleteEnfants/(:any)', 'Utilisateurs::deleteEnfants/$1');
 $routes->match(['get', 'post'], 'profil', 'Utilisateurs::modifProfil');
+
 
 
 

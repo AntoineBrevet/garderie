@@ -80,7 +80,7 @@ class Professionnels extends BaseController
                         "professionnels" => true,
                         "id" => $professionnels["id"]
                     ]);
-                    return redirect()->to(base_url() . '/prosIndex');
+                    return redirect()->to(base_url() . '/profilPros');
                 } else {
                     echo 'Le mot de passe est invalide.';
                 }
@@ -91,6 +91,31 @@ class Professionnels extends BaseController
         echo view("professionnels/connexionPros", [
             'validation' => $this->validator
         ]);
+    }
+
+    public function showAnnonces(){
+        $recupArray = [];
+        $recup = [];
+        $i = 0;
+
+        $myKidsArray =
+            $this->creneau->show_sessions()
+        ;
+
+        foreach($myKidsArray as $myKid){
+            $recup = $this->recupere->call_recup_by_enfants($myKid['id']);
+            foreach($recup as $rec){
+                array_push($recupArray, $rec);
+            }
+        }
+
+        $data = [
+            'infos' => $myKidsArray,
+            'recup' => $recupArray
+        ];
+
+        echo view("professionnels/showAnnonces",$data);
+
     }
     public function inscriptionPros()
     {
