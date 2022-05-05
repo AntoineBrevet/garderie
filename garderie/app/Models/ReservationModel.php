@@ -14,7 +14,7 @@ class ReservationModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_enfants', 'id_creneau'];
+    protected $allowedFields    = ['id_enfant', 'id_creneau','id_reservation'];
 
     // Dates
     protected $useTimestamps = false;

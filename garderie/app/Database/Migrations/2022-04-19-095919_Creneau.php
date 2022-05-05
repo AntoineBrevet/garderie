@@ -47,6 +47,9 @@ class Creneau extends Migration
                 'constraint' => 11,
                 'unsigned'       => true,
             ],
+            'date'=> [
+                'type'           => 'DATE'
+            ],
             'deleted_at'=> [
                 
                 'type'=> 'DATETIME',

@@ -14,7 +14,7 @@ class CreneauModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['debut', 'fin', 'creche_id', 'nbr_place', 'nbr_place_restant','jour','session_id'];
+    protected $allowedFields    = ['debut', 'fin', 'creche_id', 'nbr_place', 'nbr_place_restant','jour','session_id','date'];
 
     // Dates
     protected $useTimestamps = false;
@@ -64,4 +64,11 @@ class CreneauModel extends Model
             ->where(['id' => $id])
             ->findAll();
     }
+
+    public function call_creneau_infos_by_idSession($idSession){
+        return $this->select("*")
+            ->where(['session_id' => $idSession])
+            ->findAll();
+    }
+
 }

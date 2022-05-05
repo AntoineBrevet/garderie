@@ -65,6 +65,7 @@ include 'messagesPvPros.php';
 
     <?php
     foreach ($sessions as $session) {
+        var_dump($session);
         $dateDebut = $session["date_debut"];
         $newDateDebut = date("d-m-Y", strtotime($dateDebut));
         $dateFin = $session["date_fin"];
@@ -101,6 +102,10 @@ include 'messagesPvPros.php';
             <br>
             <div>
                 <a href="<?= base_url(); ?>/singleUser/<?= $session["creche_id"]; ?>" class="profil_candidat">voir le profil</a>
+            </div>
+            <br>
+            <div>
+                <a href="<?= base_url(); ?>/singleSession/<?= $session["id"]; ?>" class="profil_candidat">Réserver sur ce créneau</a>
             </div>
         </div>
         <br>

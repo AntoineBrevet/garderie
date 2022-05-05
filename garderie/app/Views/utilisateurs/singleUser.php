@@ -21,14 +21,6 @@
     </div>
     <br>
     <div class="row-contents">
-        <div> <img src="<?= base_url() ?>/img/ddn.png" alt="">
-            <label for="ddn">date de naissance</label>
-            <div class="ddn">
-                <?php
-                echo ($data['dateNaissancePros']);
-                ?>
-            </div>
-        </div>
 
         <div> <img src="<?= base_url() ?>/img/adresse1.png" alt="">
             <label for="adresse">Adresse</label>
@@ -71,15 +63,6 @@
             </div>
         </div>
         <br>
-        <div>
-            <div><img src="<?= base_url() ?>/img/heure.png" alt="">
-            </div>
-            <div>
-                <?php echo $session_creneaux['date_debut'] . " - " . $session_creneaux['debutSession'] . " heures " . " " ?>
-                <br>
-                <?php echo $session_creneaux['date_fin'] . " - " . $session_creneaux['finSession'] . " heures " ?>
-            </div>
-        </div>
     </div>
     <br>
     <div class="message">

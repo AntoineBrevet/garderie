@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SessionModel extends Model
+class ReservationSplitModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'session';
+    protected $table            = 'reservationsplit';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id','debutSession','finSession','creche_id','date_debut','date_fin'];
+    protected $allowedFields    = ['nom_reservation','debut_reservation','fin_reservation','debut_date_reservation','fin_date_reservation'];
 
     // Dates
     protected $useTimestamps = false;
@@ -40,9 +40,17 @@ class SessionModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function call_all_session(){
-        return $this->select('session.*, professionnels.id as idPro, professionnels.nomPros as nomPros, professionnels.prenomPros as prenomPros, professionnels.mailPros as mailPros, professionnels.telPros as telPros, professionnels.adressePros as adressePros')
-            ->join('professionnels','creche_id = professionnels.id')
+    public function test()
+    {
+        $this->query("SET sql_mode=(SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));");
+
+        return $this->select("*")
+            ->join('reservation', 'reservationsplit.nom_reservation = reservation.id_reservation')
+            ->join('enfants', 'reservation.id_enfant = enfants.id')
+            ->join('creneau', 'reservation.id_creneau = creneau.id')
+            ->join('professionnels', 'creneau.creche_id = professionnels.id')
+            ->groupBy("reservation.id_reservation")
             ->findAll();
     }
+
 }

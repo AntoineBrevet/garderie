@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Reservation extends Migration
+class Reservationsplit extends Migration
 {
     public function up()
     {
@@ -15,20 +15,27 @@ class Reservation extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_enfant'          => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
+            'nom_reservation'          => [
+                'type'           => 'VARCHAR',
+                'constraint'     => "255",
             ],
-            'id_creneau'          => [
+            'debut_reservation'          => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
 
             ],
-            'id_reservation'          => [
-                'type'           => 'VARCHAR',
-                'constraint'     => "255"
+            'fin_reservation'          => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+
+            ],
+            'debut_date_reservation' => [
+                'type' => 'DATE',
+            ],
+            'fin_date_reservation' => [
+                'type' => 'DATE',
             ],
             'deleted_at' => [
                 'type' => 'DATETIME',
@@ -38,12 +45,11 @@ class Reservation extends Migration
             'updated_at datetime default null on update current_timestamp'
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('id_enfant', 'enfants', 'id');
-        $this->forge->addForeignKey('id_creneau', 'creneau', 'id');
-        $this->forge->createTable('reservation');
+        $this->forge->createTable('reservationsplit');
     }
+
     public function down()
     {
-        $this->forge->dropTable('reservation');
+        $this->forge->dropTable('reservationsplit');
     }
 }

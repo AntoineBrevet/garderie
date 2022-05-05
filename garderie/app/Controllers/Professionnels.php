@@ -80,7 +80,7 @@ class Professionnels extends BaseController
                         "professionnels" => true,
                         "id" => $professionnels["id"]
                     ]);
-                    return redirect()->to(base_url() . '/prosIndex');
+                    return redirect()->to(base_url() . '/profilPros');
                 } else {
                     echo 'Le mot de passe est invalide.';
                 }
@@ -204,6 +204,7 @@ class Professionnels extends BaseController
 
                     $creneau = [
                         "jour" => 1,
+                        "date" => $this->request->getPost("date_debut"),
                         "debut" => $data['debut'],
                         "fin" => $data['fin'],
                         "nbr_place" => $this->request->getPost("nbr_place"),
@@ -222,6 +223,7 @@ class Professionnels extends BaseController
 
                     $creneau = [
                         "jour" => 1,
+                        "date" => $this->request->getPost("date_debut"),
                         "debut" => $data['debut'],
                         "fin" => $data['fin'],
                         "nbr_place" => $this->request->getPost("nbr_place"),
@@ -233,14 +235,16 @@ class Professionnels extends BaseController
 
                     $this->creneau->insert($creneau);
                 }
-
                 for ($i = 0; $i < ($dif - 1); $i++) {
+                    $nombrejour = $i + 1;
+                    $date = date('Y-m-d', strtotime($this->request->getPost("date_debut") . " +" . $nombrejour . " days"));
                     for ($j = 0; $j < 24; $j++) {
                         $data['debut'] = $j;
                         $data['fin'] = $j + 1;
 
                         $creneau = [
                             "jour" => $i + 2,
+                            "date" => $date,
                             "debut" => $data['debut'],
                             "fin" => $data['fin'],
                             "nbr_place" => $this->request->getPost("nbr_place"),
@@ -253,7 +257,7 @@ class Professionnels extends BaseController
                         $this->creneau->insert($creneau);
                     }
                 }
-                for ($i = 1; $i < $fin2; $i++) {
+                for ($i = 0; $i < $fin2; $i++) {
                     if ($dif == 1) {
                         $increment = 1;
                     }
@@ -262,6 +266,7 @@ class Professionnels extends BaseController
 
                     $creneau = [
                         "jour" => $increment + 1,
+                        "date" => $this->request->getPost("date_fin"),
                         "debut" => $data['debut'],
                         "fin" => $data['fin'],
                         "nbr_place" => $this->request->getPost("nbr_place"),
@@ -272,7 +277,7 @@ class Professionnels extends BaseController
                     $this->creneau->insert($creneau);
                 }
             }
-            return redirect()->to(base_url() . '/prosIndex');
+            return redirect()->to(base_url() . '/profilPros');
         } else {
             echo view("professionnels/create");
         }

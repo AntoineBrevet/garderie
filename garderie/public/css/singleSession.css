@@ -1,0 +1,7 @@
+.containerSession{
+    background-color: white;
+}
+
+.sessionInputDateDebut, .sessionInputDateFin, .sessionInputSessionDebut, .sessionInputSessionFin{
+    color: black;
+}

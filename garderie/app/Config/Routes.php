@@ -38,6 +38,7 @@ $routes->get('payment-stripe', 'StripeController::index');
 $routes->get('prosIndex', 'Professionnels::prosIndex');
 $routes->match(['get', 'post'], 'utilisateursIndex', 'Utilisateurs::utilisateursIndex');
 $routes->get('showEnfants', 'Utilisateurs::showEnfants');
+$routes->get('showReservations', 'Utilisateurs::showReservations');
 $routes->get('query', 'Utilisateurs::showQuery');
 $routes->match(['get', 'post'],'utilisateursIndex', 'Utilisateurs::showSearchStart');
 $routes->match(['get', 'post'],'utilisateursIndex', 'Utilisateurs::showSearchEnd');
@@ -60,6 +61,7 @@ $routes->get('deconnexion', 'Utilisateurs::deconnexion');
 $routes->get('deconnexionPros', 'Professionnels::deconnexionPros');
 $routes->get('singlePro/(:any)', 'Professionnels::singlePro/$1');
 $routes->get('singleUser/(:any)', 'Utilisateurs::singleUser/$1');
+$routes->match(['get', 'post'],'singleSession/(:any)', 'Utilisateurs::singleSession/$1');
 $routes->get('contactPros', 'Professionnels::contactPros');
 
 

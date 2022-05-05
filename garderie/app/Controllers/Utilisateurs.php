@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ReservationSplit;
 
 class Utilisateurs extends BaseController
 {
@@ -13,7 +14,7 @@ class Utilisateurs extends BaseController
     private $reservation;
     private $session;
     private $messages;
-
+    private $reservationSplit;
     private $recupere;
 
     function __construct()
@@ -25,7 +26,7 @@ class Utilisateurs extends BaseController
         $this->reservation = model(ReservationModel::class);
         $this->session = model(SessionModel::class);
         $this->messages = model(MessagesModel::class);
-
+        $this->reservationSplit = model(ReservationSplitModel::class);
         $this->recupere = model(RecupereModel::class);
     }
 
@@ -40,10 +41,10 @@ class Utilisateurs extends BaseController
     {
         if ($this->request->isAJAX()) {
             $message = [
-                'id_auteur'=> $this->request->getPost('id_auteur'),
-                'id_destinataire'=> $this->request->getPost('id_destinataire'),
+                'id_auteur' => $this->request->getPost('id_auteur'),
+                'id_destinataire' => $this->request->getPost('id_destinataire'),
                 "contenu" => $this->request->getPost('contenu'),
-                "statut"=> $this->request->getPost('statut')
+                "statut" => $this->request->getPost('statut')
             ];
             $this->messages->insert($message);
         }
@@ -65,8 +66,8 @@ class Utilisateurs extends BaseController
                 "proByName" => $this->professionnels->call_pro_by_name('laguarderie'),
                 "proInfosById" => $this->professionnels->call_pro_infos_by_id(1),
                 "sessions" => $this->session->call_all_session(),
-                'contact'=>$this->messages->displayContactUser(),
-                'allmessages'=>$this->messages->displayAllMessages()
+                'contact' => $this->messages->displayContactUser(),
+                'allmessages' => $this->messages->displayAllMessages()
             ];
 
             return view('utilisateurs/utilisateursIndex', $data);
@@ -107,25 +108,24 @@ class Utilisateurs extends BaseController
     public function messages($id)
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
-                'message'=>'required'
+            'message' => 'required'
 
-            ])) {
+        ])) {
 
 
-                $message = [
-                    'id_auteur'=>session('id'),
-                    'id_destinataire'=>$id,
-                    "contenu" => $this->request->getPost("message"),
-                    "statut"=>"parent",
+            $message = [
+                'id_auteur' => session('id'),
+                'id_destinataire' => $id,
+                "contenu" => $this->request->getPost("message"),
+                "statut" => "parent",
 
-                ];
+            ];
 
-                $this->messages->insert($message);
-                return redirect()->to(base_url() . '/messages/'.$id);
-
+            $this->messages->insert($message);
+            return redirect()->to(base_url() . '/messages/' . $id);
         } else {
             $data = [
-                'message'=>$this->messages->displayMessages($id)
+                'message' => $this->messages->displayMessages($id)
             ];
 
             echo view("utilisateurs/messages", $data);
@@ -200,25 +200,33 @@ class Utilisateurs extends BaseController
         $recupArray = [];
         $recup = [];
         $i = 0;
-        $myKidsArray =  
-        $this->enfants->getEnfantsBySessionId()
-        ;
+        $myKidsArray =
+            $this->enfants->getEnfantsBySessionId();
 
-        foreach($myKidsArray as $myKid){
+        foreach ($myKidsArray as $myKid) {
             $recup = $this->recupere->call_recup_by_enfants($myKid['id']);
-            foreach($recup as $rec){
-            array_push($recupArray, $rec);
-        }
+            foreach ($recup as $rec) {
+                array_push($recupArray, $rec);
+            }
         }
 
 
 
         $data = [
             'infos' => $myKidsArray,
-            'recup' => $recupArray     
+            'recup' => $recupArray
         ];
-        
+
         echo view("utilisateurs/showEnfants", $data);
+    }
+
+    public function showReservations()
+    {
+        $data = [
+            "reservation" => $this->reservationSplit->test()
+
+        ];
+        echo view("utilisateurs/showReservations", $data);
     }
 
     public function createEnfants()
@@ -375,13 +383,149 @@ class Utilisateurs extends BaseController
     {
 
         $data = [
-            "data" => $this->professionnels->find($id),
-            "session_creneaux" => $this->session->find($id)
-
+            "data" => $this->professionnels->find($id)
         ];
-     
+
         echo view("utilisateurs/singleUser", $data);
     }
 
+    function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
 
+    public function singleSession($id)
+    {
+        if ($this->request->getMethod() === 'post' && $this->validate([
+            'list' => 'required',
+            'date_debut' => 'required',
+            'date_fin' => 'required',
+            'debut_session' => 'required',
+            'fin_session' => 'required'
+        ])) {
+
+            $randomName = $this->generateRandomString();
+
+            $allCreneau = $this->creneau->call_creneau_infos_by_idSession($id);
+            $debutDate = $this->request->getPost("date_debut");
+            $finDate = $this->request->getPost("date_fin");
+
+            $debutSession = $this->request->getPost("debut_session");
+            $finSession = $this->request->getPost("fin_session");
+
+            $debut = strtotime($this->request->getPost("date_debut"));
+            $fin = strtotime($this->request->getPost("date_fin"));
+            $dif = ceil(abs($fin - $debut) / 86400);
+
+            
+            if ($dif == 0) {
+                for ($i = $debutSession; $i < $finSession; $i++) {
+                    $boucleDebut = $i;
+                    $boucleFin = $i + 1;
+                    foreach ($allCreneau as $allCreneaux) {
+                        if ($allCreneaux['debut'] == $boucleDebut && $allCreneaux['fin'] == $boucleFin && $allCreneaux['date'] == $debutDate) {
+                            echo ('oui');
+                            $data = [
+                                "nbr_place_restant" => $allCreneaux['nbr_place_restant'] - 1
+                            ];
+                            $this->creneau->update(["id" => $allCreneaux['id']], $data);
+
+                            $data = [
+                                "id_enfant" => $this->request->getPost('list'),
+                                "id_creneau" => $allCreneaux['id'],
+                                "id_reservation" => $randomName
+                            ];
+                            $this->reservation->insert($data);
+                        }
+                    }
+                }
+            } elseif ($dif > 0) {
+                for ($i = $debutSession; $i < 24; $i++) {
+                    $boucleDebut = $i;
+                    $boucleFin = $i + 1;
+                    foreach ($allCreneau as $allCreneaux) {
+                        if ($allCreneaux['debut'] == $boucleDebut && $allCreneaux['fin'] == $boucleFin && $allCreneaux['date'] == $debutDate) {
+                            echo ('oui');
+                            $data = [
+                                "nbr_place_restant" => $allCreneaux['nbr_place_restant'] - 1
+                            ];
+                            $this->creneau->update(["id" => $allCreneaux['id']], $data);
+
+                            $data = [
+                                "id_enfant" => $this->request->getPost('list'),
+                                "id_creneau" => $allCreneaux['id'],
+                                "id_reservation" => $randomName
+                            ];
+                            $this->reservation->insert($data);
+                        }
+                    }
+                }
+                for ($i = 0; $i < ($dif - 1); $i++) {
+                    $nombrejour = $i + 1;
+                    $date = date('Y-m-d', strtotime($this->request->getPost("date_debut") . " +" . $nombrejour . " days"));
+                    for ($j = 0; $j < 24; $j++) {
+                        $boucleDebut = $j;
+                        $boucleFin = $j + 1;
+                        foreach ($allCreneau as $allCreneaux) {
+                            if ($allCreneaux['debut'] == $boucleDebut && $allCreneaux['fin'] == $boucleFin && $allCreneaux['date'] == $date) {
+                                echo ('test');
+                                $data = [
+                                    "nbr_place_restant" => $allCreneaux['nbr_place_restant'] - 1
+                                ];
+                                $this->creneau->update(["id" => $allCreneaux['id']], $data);
+
+                                $data = [
+                                    "id_enfant" => $this->request->getPost('list'),
+                                    "id_creneau" => $allCreneaux['id'],
+                                    "id_reservation" => $randomName
+                                ];
+                                $this->reservation->insert($data);
+                            }
+                        }
+                    }
+                }
+                for ($i = 0; $i < $finSession; $i++) {
+                    $boucleDebut = $i;
+                    $boucleFin = $i + 1;
+                    foreach ($allCreneau as $allCreneaux) {
+                        if ($allCreneaux['debut'] == $boucleDebut && $allCreneaux['fin'] == $boucleFin && $allCreneaux['date'] == $finDate) {
+                            echo ('oui');
+                            $data = [
+                                "nbr_place_restant" => $allCreneaux['nbr_place_restant'] - 1
+                            ];
+                            $this->creneau->update(["id" => $allCreneaux['id']], $data);
+
+                            $data = [
+                                "id_enfant" => $this->request->getPost('list'),
+                                "id_creneau" => $allCreneaux['id'],
+                                "id_reservation" => $randomName
+                            ];
+                            $this->reservation->insert($data);
+                        }
+                    }
+                }
+            }
+            $data = [
+                "nom_reservation"=>$randomName,
+                "debut_reservation"=> $debutSession,
+                "fin_reservation"=>$finSession,
+                "debut_date_reservation"=> $debutDate,
+                "fin_date_reservation"=>$finDate
+            ];
+            $this->reservationSplit->insert($data);
+
+            return redirect()->to(base_url() . '/showReservations');
+        } else {
+            $data = [
+                "enfants" => $this->enfants->getEnfantsBySessionId(),
+                "creneau" => $this->creneau->call_creneau_infos_by_idSession($id)
+            ];
+            echo view("utilisateurs/singleSession", $data);
+        }
+    }
 }
