@@ -47,6 +47,13 @@ class CreneauModel extends Model
             ->where(['professionnels.id' => $idpro])
             ->findAll();
     }
+    public function show_sessions()
+    {
+        return $this->select("*")
+            ->join('session', 'creneau.session_id = creneau.id')
+            ->where(['session.id' => session('id')])
+            ->findAll();
+    }
 
     public function call_creneau_by_places($nbr){
         return $this->select("*")

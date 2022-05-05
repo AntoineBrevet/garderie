@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="<?= base_url(); ?>/css/style.css" rel="stylesheet">
   <script type="text/javascript" src="<?= base_url(); ?>/js/main.js"></script>
-    <script type="text/javascript" src="<?= base_url(); ?>/js/mapInscription.js"></script>
+  <script type="text/javascript" src="<?= base_url(); ?>/js/mapInscription.js"></script>
 
 </head>
 
@@ -39,32 +39,36 @@
 
           <div class="input-field col s6">
             <label for="tel" class="active" style="color: black;">numéro de telephone</label>
-            <input class="validate" type="text" value="" name="telParents" id="tel" placeholder="ex: 06.18.99.65.32" required="">
+            <input class="validate" type="text" value="" name="telParents" id="telParents" placeholder="ex: 06.18.99.65.32" required="">
           </div>
 
-              <div class="input-field col s6">
-                  <label for="naissance" class="active" style="color: black;">Date de naissance</label>
-                  <input type="date" class="datepicker" name="dateNaissanceParents" placeholder="10/02/1980" required="">
-              </div>
+          <div class="input-field col s6">
+            <label for="naissance" class="active" style="color: black;">Date de naissance</label>
+            <input type="date" min="1900-01-01" max="<?= date('Y-m-d', strtotime('-16 year')); ?>" id="datepicker" class="datepicker" name="dateNaissanceParents" placeholder="10/02/1980" required>
+          </div>
 
+          <div class="input-field col s12">
+            <label for="adresse" class="active" style="color: black;">Adresse</label>
+            <input type="text" class="text" placeholder="1 rue de Paris 75000" name='address' id="location">
+          </div>
 
-                      <input type="text" class="datepicker" placeholder="Address" name='address' id="location"/>
-                      <div class="half-input-container">
-                      </div>
-
-                  <div class="map" id="map" style="display:none;"></div>
-
+          <div class="map" id="map" style="display:none;">
           </div>
 
           <div class="input-field col s12">
             <label for="email" class="active" style="color: black;">Email</label>
-            <input class="validate" type="email" value="" name="mailParents" placeholder="ex: Dupond1990@gmail.com" required="">
+            <input class="validate" type="email" value="" name="mailParents" placeholder="ex: Dupond1990@gmail.com" required>
+
           </div>
 
           <div class="input-field col s12">
-            <label for="Password" class="active" style="color: black;">Password</label>
-            <input class="validate" type="Password" value="" name="mdpParents" id="p1" placeholder="Mot de Passe" required="">
-            <input class="validate" type="Password" placeholder="Mot de Passe" onfocus="validatePassword(document.getElementById('p1'), this);" oninput="validatePassword(document.getElementById('p1'), this);" required="">
+            <label for="Password" class="active" id="labelPassword" style="color: black;">Password</label>
+            <p id='message' style="color: black;"></p>
+            <input class="validate" type="Password" name="mdpParents" id="p1" placeholder="Mot de Passe" required="">
+
+          </div>
+          <div class="input-field col s12">
+            <input class="validate" type="Password" value="" placeholder="Mot de Passe" onfocus="validatePassword(document.getElementById('p1'), this);" oninput="validatePassword(document.getElementById('p1'), this);" required="">
           </div>
 
           <div class="input-field col s12">
@@ -73,13 +77,88 @@
             </button>
           </div>
         </form>
-    </div>
+      </div>
     </div>
   </div>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHIY60MQ8Vyb5e7bM4P4_i5HsIcTr-kHw&libraries=places&callback=initMap&solution_channel=GMP_QB_addressselection_v1_cABC" async defer></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
   </script>
 </body>
 
 </html>
+
+<script type="text/javascript">
+  var telephone = document.getElementById('telParents')
+  var mdp = document.getElementById('p1')
+  mdp.addEventListener('click', verifyPassword)
+
+  mdp.addEventListener('input', verifyPassword)
+  telephone.addEventListener('focusout', checknum)
+
+  function checknum() {
+    var num = telephone.value;
+    var valide = /^0[1-7]\d{8}$/;
+
+    if (valide.test(num)) {
+      telephone.classList.add('valid');
+      telephone.classList.remove('invalid');
+
+    } else {
+      telephone.classList.add('invalid');
+      telephone.classList.remove('valid');
+    }
+  }
+
+  const msg = document.getElementById("message")
+
+  function verifyPassword() {
+    // var Nbr = 0
+    // var Upper = 0
+    // var Lower = 0
+    // var i = 0
+    var pw = mdp.value;
+    console.log(pw.length)
+
+    //check empty password field  
+    if (pw == "") {
+      msg.innerHTML = "**Fill the password please!";
+      return false
+    }
+
+    // //minimum password length validation  
+    // if (pw.length <= 8) {
+
+    //   msg.innerHTML = "**Password length must be atleast 8 characters";
+    // }
+
+    // if(pw.length > 15){
+    //   msg.innerHTML = "**Password length must not exceed 15 characters";
+    // }
+
+    // // Check for Upper, Lower, Number
+    // while (i < pw.length) {
+    //   msg.innerHTML = "";
+    //   character = pw.charAt(i);
+    //   console.log('lettre:' + i + ':'+character)
+    //   if (isNaN(character * 1)) {
+    //     Nbr++
+    //     // console.log('nbr :' + Nbr)
+    //   }
+
+
+    //   if (character === character.toUpperCase()) {
+    //     Upper++
+    //     // console.log('Upper :' + Upper)
+    //   }
+
+    //   if (character === character.toLowerCase()) {
+    //     Lower++
+    //     // console.log('Lower :' + Lower)
+    //   }
+    //   i++;
+    // }
+    //maximum length of password validation  
+
+  }
+</script>

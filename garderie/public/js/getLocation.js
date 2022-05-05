@@ -2,7 +2,6 @@ const button = document.querySelector('#buttonHidden')
 const p = document.querySelector('#buttonHidden')
 const v = document.querySelector('#submitLocalisation')
 button.addEventListener('click', () => {
-        p.style.display = 'none'
         v.style.display = 'block'
 })
 

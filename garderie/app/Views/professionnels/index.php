@@ -3,7 +3,6 @@
 <?= $this->section('css') ?>
 <!-- Mettre le CSS avec une balise link -->
 <link href="<?= base_url(); ?>/css/accueilPro.css" rel="stylesheet">
-<link href="<?= base_url(); ?>/css/sec1ProimgAnim.css" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <?= $this->endSection() ?>
@@ -13,23 +12,20 @@
 <section class="sec1">
     <div class="sec1-container">
 
-        <div class="sec1-p">
-            <h1 class="word"></h1>
-            <p>Vous êtes passionnés et vous avez les compétences nécessaires pour le métier de garde d'enfants? Vous êtes tombés sur la bonne place !</p>
-
-        </div>
-
+        <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
         <div>
+            <svg id="svgpro">
+                <text x="50%" y="20%" dy=".2em" text-anchor="middle">
+                    Baby Garde Pro
+                 </text>
 
-            <ul class="slideshow">
-                <li> <span></span> </li>
-                <li> <span></span></li>
-                <li> <span></span></li>
-                <li> <span></span></li>
 
-            </ul>
+
+
+
+            </svg>
+
         </div>
-    </div>
     </div>
 </section>
 

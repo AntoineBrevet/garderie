@@ -133,3 +133,11 @@ input:focus::placeholder {
 .submitLocalisation {
     display: none;
 }
+
+#message{
+    font-size: xx-small;
+}
+
+#labelPassword{
+    display: flex;
+}

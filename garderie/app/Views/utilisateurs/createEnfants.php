@@ -7,9 +7,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<?php
-var_dump(session("id"));
-?>
+
 <section class="sec1">
     <h1>AJOUTER D'ENFANTS</h1>
 
@@ -31,7 +29,7 @@ var_dump(session("id"));
         </div>
         <div>
             <label for="dateNaissanceEnfants">Date de naissance</label>
-            <input type="date" name="dateNaissanceEnfants" id="dateNaissanceEnfants">
+            <input type="date" min="<?=date('Y-m-d', strtotime('-18 year'));?>" max="<?=date('Y-m-d');?>" name="dateNaissanceEnfants" id="dateNaissanceEnfants">
         </div>
         <div>
             <label for="allergies">Allergies</label>
