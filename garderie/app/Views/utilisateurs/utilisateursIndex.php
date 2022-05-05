@@ -3,8 +3,6 @@
 <?= $this->section('css') ?>
 <link href="<?= base_url(); ?>/css/indexUser.css" rel="stylesheet">
 <link href="<?= base_url(); ?>/css/messagesPv.css" rel="stylesheet">
-
-
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
