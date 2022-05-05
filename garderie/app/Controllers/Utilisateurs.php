@@ -38,6 +38,15 @@ class Utilisateurs extends BaseController
 
     public function utilisateursIndex()
     {
+        if ($this->request->isAJAX()) {
+            $message = [
+                'id_auteur'=> $this->request->getPost('id_auteur'),
+                'id_destinataire'=> $this->request->getPost('id_destinataire'),
+                "contenu" => $this->request->getPost('contenu'),
+                "statut"=> $this->request->getPost('statut')
+            ];
+            $this->messages->insert($message);
+        }
         if ($this->request->getMethod() === 'post' && $this->validate([
             'latitudeHidden' => 'required',
             'longitudeHidden' => 'required',

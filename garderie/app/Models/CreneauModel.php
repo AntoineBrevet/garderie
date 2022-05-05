@@ -14,7 +14,7 @@ class CreneauModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['date_debut', 'date_fin', 'debut', 'fin', 'creche_id', 'nbr_place', 'nbr_place_restant','jour','session_id'];
+    protected $allowedFields    = ['debut', 'fin', 'creche_id', 'nbr_place', 'nbr_place_restant','jour','session_id'];
 
     // Dates
     protected $useTimestamps = false;

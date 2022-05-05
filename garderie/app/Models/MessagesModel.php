@@ -51,6 +51,7 @@ class MessagesModel extends Model
 
     public function displayAllMessages()
     {
+        
         $where = "(messages.id_auteur=" .session('id'). " AND messages.statut ='parent') OR ( messages.id_destinataire=" .session('id') ." AND messages.statut = 'pro')";
 
         return $this->select("*")
@@ -60,6 +61,8 @@ class MessagesModel extends Model
 
     public function displayContact()
     {
+        $this->query("SET sql_mode=(SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));");
+
         $where = "messages.id_destinataire=" .session('id')." AND messages.statut ='parent'";
 
         return $this->select("*")
@@ -71,8 +74,9 @@ class MessagesModel extends Model
 
     public function displayContactUser()
     {
-        $where = "messages.id_auteur=" .session('id')." AND messages.statut ='parent'";
+        $this->query("SET sql_mode=(SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));");
 
+        $where = "messages.id_auteur=" .session('id')." AND messages.statut ='parent'";
         return $this->select("*")
             ->join('professionnels', 'professionnels.id = messages.id_destinataire')
             ->where($where)
