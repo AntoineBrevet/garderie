@@ -25,11 +25,11 @@
                 <form method="post">
                     <div class="input-field col s6">
                         <label for="date" class="active" style="color: black;">Date de début</label>
-                        <input type="date" value="" name="date_debut" placeholder="ex: choisissez une date" required="">
+                        <input type="date"  id="start" value="" min="<?= date('Y-m-d') ?>" name="date_debut" placeholder="ex: choisissez une date" required="">
                     </div>
                     <div class="input-field col s6">
                         <label for="date" class="active" style="color: black;">Date de fin</label>
-                        <input type="date" value="" name="date_fin" placeholder="ex: choisissez une date" required="">
+                        <input type="date" id="stop" min="<?= date('Y-m-d') ?>" value="" name="date_fin" placeholder="ex: choisissez une date" required="">
                     </div>
                     <div class="input-field col s6">
                         <label for="debut_session" class="active" style="color: black;">horaire de debut</label>
@@ -56,3 +56,21 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+
+var start =document.getElementById("start")
+var stop =document.getElementById("stop")
+
+document.addEventListener('click', blockDate)
+
+function blockDate(){
+
+    console.log(start.min)  
+    console.log(start.value)
+
+    stop.min = start.value 
+    start.max = stop.value
+}
+
+</script>

@@ -44,7 +44,7 @@
 
           <div class="input-field col s6">
             <label for="naissance" class="active" style="color: black;">Date de naissance</label>
-            <input type="date" min="1900-01-01" max="<?= $futureDate = date('Y-m-d', strtotime('-16 year')); ?>" id="datepicker" class="datepicker" name="dateNaissanceParents" placeholder="10/02/1980" required>
+            <input type="date" min="1900-01-01" max="<?= date('Y-m-d', strtotime('-16 year')); ?>" id="datepicker" class="datepicker" name="dateNaissanceParents" placeholder="10/02/1980" required>
           </div>
 
           <div class="input-field col s12">
@@ -113,10 +113,10 @@
   const msg = document.getElementById("message")
 
   function verifyPassword() {
-    var Nbr = 0
-    var Upper = 0
-    var Lower = 0
-    var i = 0
+    // var Nbr = 0
+    // var Upper = 0
+    // var Lower = 0
+    // var i = 0
     var pw = mdp.value;
     console.log(pw.length)
 
