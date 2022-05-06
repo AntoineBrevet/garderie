@@ -47,10 +47,7 @@
                         <label for="prix" class="active" style="color: black;">Prix en € (par heure)</label>
                         <input type="number" value="" name="prix" placeholder="ex: 12" required="">
                     </div>
-                    <div class="input-field col s6">
-                        <label for="prix" class="active" style="color: black;">Prix en € (par heure)</label>
-                        <input type="number" value="" name="prix" placeholder="ex: 12" required="">
-                    </div>
+
                     <div class="input-field col s12">
                         <button class="btn waves-effect waves-light pulse" type="submit" name="action">Valider
                             <i class="material-icons right">send</i>

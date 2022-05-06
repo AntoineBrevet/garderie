@@ -166,3 +166,6 @@ table {
     vertical-align: middle;
     width: 61%;
 }
+.panel-body{
+    color: black;
+}
