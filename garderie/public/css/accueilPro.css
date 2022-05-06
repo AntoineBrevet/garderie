@@ -48,7 +48,7 @@ svg {
     padding-top: 200px;
     height: 100%;
 }
-
+    
 svg text {
     text-transform: uppercase;
     animation: stroke 5s infinite alternate;
@@ -193,6 +193,35 @@ svg text {
 
 
 /*------------------------*/
+
+@media (max-width:1000px) {
+    svg text {
+        font-size: 90px;
+    }
+}
+
+@media (max-width:700px) {
+    svg text {
+        font-size: 70px;
+    }
+    .sec1-p {
+        margin-top: 70px;
+        width: 90%;
+        padding: 20px;
+        text-align: justify;
+    }
+    .sec2 {
+        flex-direction: column;
+        height: auto;
+        padding: 20px 5px;
+    }
+    .carousel-inner>.item>img,
+    .carousel-inner>.item>a>img {
+        width: 70%;
+        margin: auto;
+        height: 400px;
+    }
+}
 
 @media (max-width:1000px) {
     .sec1 {

@@ -15,7 +15,7 @@ include 'messagesPvPros.php';
 
 <!-- Mettre le content de la page -->
 <section class="sec1">
-    <h1>Cherechez des creches autours de vous</h1>
+    <h1>Cherchez des creches autours de vous</h1>
 
     <div class="myForm">
         <form method="post" autocomplete="off">
@@ -58,24 +58,24 @@ include 'messagesPvPros.php';
 <div class="dates">
     <div>
         <label>Debut : </label>
-        <input type="date" name="dateDebut" id="dateDebut" style="color:black">
+        <input type="date" name="dateDebut" min="<?= date('Y-m-d') ?>" value="" id="dateDebut" style="color:black">
     </div>
     <br>
     <div>
         <label>Fin : </label>
-
-        <input type="date" name="dateFin" id="dateFin" style="color:black">
+        <input type="date" name="dateFin" min="<?= date('Y-m-d') ?>" value="" id="dateFin" style="color:black">
     </div>
 </div>
 <div class="feed">
 
     <?php
     foreach ($sessions as $session) {
-        var_dump($session);
         $dateDebut = $session["date_debut"];
         $newDateDebut = date("d-m-Y", strtotime($dateDebut));
         $dateFin = $session["date_fin"];
         $newDateFin = date("d-m-Y", strtotime($dateFin));
+
+        if($dateFin >= date('Y-m-d')){
     ?>
         <div class="annonces">
             <div class="id">
@@ -94,7 +94,7 @@ include 'messagesPvPros.php';
             <hr>
             <div class="column">
                 <div class="tel">
-                    <img src="<?= base_url() ?>/img/telephone.png" alt=""> <?php echo $session['telPros'] ?>
+                    <img src="<?= base_url() ?>/img/telephone.png" alt=""> <?php echo '0'.$session['telPros'] ?>
                 </div>
 
                 <div class="adresse">
@@ -115,7 +115,7 @@ include 'messagesPvPros.php';
             </div>
         </div>
         <br>
-    <?php } ?>
+    <?php } }?>
 
 
 </div>
@@ -128,8 +128,12 @@ include 'messagesPvPros.php';
 <script src="<?php base_url() ?>/js/getLocation.js"></script>
 <script src="<?php base_url() ?>/js/apiSiret.js"></script>
 <script src="<?php base_url() ?>/js/dateRechercheUser.js"></script>
+<script src="<?php base_url() ?>/js/dateBlock.js"></script>
 
 
+
+
+ 
 
 
 <script>

@@ -80,6 +80,6 @@ function initMap() {
     function renderAddress(place) {
         map.setCenter(place.geometry.location);
         marker.setPosition(place.geometry.location);
-        marker.setVisible(true);
+        marker.setVisible(true);    
     }
 }

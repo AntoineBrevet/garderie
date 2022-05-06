@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="<?= base_url(); ?>/css/stylePros.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>/css/inscriptionpro.css" rel="stylesheet">
+
     <script type="text/javascript" src="<?= base_url(); ?>/js/mapInscriptionPros.js"></script>
 
     <script type="text/javascript" src="<?= base_url(); ?>/js/main.js"></script>
@@ -39,12 +41,15 @@
                         <input class="validate invalid" type="text" value="" name="nomPros" id="nomPros" placeholder="Pignon" required="" text-capitalize="">
                     </div>
 
-                    <div class="input-field col s6">
+                    <div class="input-field col s12">
                         <label for="tel" class="active" style="color: black;">numéro de telephone</label>
-                        <input class="validate" type="text" value="" name="telPros" id="telPros" placeholder="ex: 06.18.99.65.32" required="">
+                        <input class="validate" type="number" value="" name="telPros" id="telPros" placeholder="ex: 06.18.99.65.32" required="">
                     </div>
+                    <div class="input-field col s12">
+                    <label for="adresse" class="active" style="color: black;">Adresse</label>
 
-                    <input type="text" class="datepicker" placeholder="Adresse" name='adresse' id="location" />
+                    <input type="text" placeholder="Adresse" name='adresse' id="location" />
+                    </div>
                     <div class="half-input-container">
                     </div>
 
@@ -68,6 +73,7 @@
 
                     <div class="input-field col s12">
                         <label for="Password" class="active" style="color: black;">Password</label>
+                        <p id="message" style="color: black;font-size: xx-small;"></p>  
                         <input class="validate" type="Password" value="" name="mdpPros" id="p1" placeholder="Mot de Passe" required="">
                         <input class="validate" type="Password" placeholder="Mot de Passe" onfocus="validatePassword(document.getElementById('p1'), this);" oninput="validatePassword(document.getElementById('p1'), this);" required="">
                     </div>
@@ -88,3 +94,43 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+  var telephone = document.getElementById('telPros')
+  var mdp = document.getElementById('p1')
+  mdp.addEventListener('click', verifyPassword) 
+
+  mdp.addEventListener('input', verifyPassword)
+  telephone.addEventListener('focusout', checknum)
+
+  // verif du numero de telephone 
+  function checknum() {
+    var num = telephone.value;
+    var valide = /^0[1-7]\d{8}$/;
+
+    if (valide.test(num)) {
+      telephone.classList.add('valid');
+      telephone.classList.remove('invalid');
+
+    } else {
+      telephone.classList.add('invalid');
+      telephone.classList.remove('valid');
+    }
+  }
+
+  const msg = document.getElementById("message")
+
+  function verifyPassword() {
+    var pw = mdp.value;
+    console.log(pw.length)
+
+    //check empty password field  
+    if (pw.length < 6) {
+      msg.innerHTML = "minimum 6 caracteres";           
+    }else   {
+      msg.innerHTML = "";           
+    }
+
+    
+}
+</script>   

@@ -12,7 +12,6 @@ function getLocation(){
     }
 }
 function showPosition(position){
-
     document.getElementById("latitudeHidden").value = position.coords.latitude;
     document.getElementById("longitudeHidden").value = position.coords.longitude;
 

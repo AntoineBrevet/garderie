@@ -17,9 +17,9 @@
         <li><a href="<?= base_url(); ?>/professionnels">Mode Business</a></li>
         <?php
         if (session("utilisateurs")) { ?>
-            <li><a href="<?= base_url(); ?>/showEnfants">Gérer les enfants</a></li>
+            <li><a href="<?= base_url(); ?>/showEnfants">Gérer les enfants</a></li> 
             <li><a href="<?= base_url(); ?>/showReservations">Voir ses réservations</a></li>
-            <li><a href="<?= base_url()  ?>/profil"><img src="<?= base_url()  ?>/img/profile.png" alt="">Profile</a></li>
+            <li><a href="<?= base_url()  ?>/profil"><img src="<?= base_url()  ?>/img/profile.png" alt="">Profil</a></li>
             <li class="deconnexion"><img src="<?= base_url()  ?>/img/logout.png" alt=""><a href="<?= base_url() ?>/deconnexion">Déconnexion</a></li>
         <?php
         } else { ?>

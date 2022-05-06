@@ -96,6 +96,7 @@
   mdp.addEventListener('input', verifyPassword)
   telephone.addEventListener('focusout', checknum)
 
+  // verif du numero de telephone 
   function checknum() {
     var num = telephone.value;
     var valide = /^0[1-7]\d{8}$/;
@@ -113,52 +114,14 @@
   const msg = document.getElementById("message")
 
   function verifyPassword() {
-    // var Nbr = 0
-    // var Upper = 0
-    // var Lower = 0
-    // var i = 0
     var pw = mdp.value;
     console.log(pw.length)
 
     //check empty password field  
-    if (pw == "") {
-      msg.innerHTML = "**Fill the password please!";
-      return false
+    if (pw.length < 6) {
+      msg.innerHTML = "minimum 6 caracteres";           
+    }else   {
+      msg.innerHTML = "";           
     }
-
-    // //minimum password length validation  
-    // if (pw.length <= 8) {
-
-    //   msg.innerHTML = "**Password length must be atleast 8 characters";
-    // }
-
-    // if(pw.length > 15){
-    //   msg.innerHTML = "**Password length must not exceed 15 characters";
-    // }
-
-    // // Check for Upper, Lower, Number
-    // while (i < pw.length) {
-    //   msg.innerHTML = "";
-    //   character = pw.charAt(i);
-    //   console.log('lettre:' + i + ':'+character)
-    //   if (isNaN(character * 1)) {
-    //     Nbr++
-    //     // console.log('nbr :' + Nbr)
-    //   }
-
-
-    //   if (character === character.toUpperCase()) {
-    //     Upper++
-    //     // console.log('Upper :' + Upper)
-    //   }
-
-    //   if (character === character.toLowerCase()) {
-    //     Lower++
-    //     // console.log('Lower :' + Lower)
-    //   }
-    //   i++;
-    // }
-    //maximum length of password validation  
-
   }
-</script>
+</script> 

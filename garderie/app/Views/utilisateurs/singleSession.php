@@ -8,10 +8,6 @@
 
 <!-- Mettre le content de la page -->
 <section class="containerSession">
-    <?php
-    var_dump($creneau);
-    ?>
-
     <div class="container">
         <h1>Réservez une place pour votre enfant</h1>
         <h3 style="color: white;">Prix par heure : <?= $creneau[0]['prix'] ?>€</h3>

@@ -10,7 +10,7 @@
 <?php
 //var_dump($data)
 ?>
-    <a href="<?= base_url() ?>/utilisateursIndex" class="retour"> <img src="<?= base_url()  ?>/img/retour.png" alt=""></a><br>
+<a href="<?= base_url() ?>/utilisateursIndex" class="retour"> <img src="<?= base_url()  ?>/img/retour.png" alt=""></a><br>
 
 <section class="sec1">
 
@@ -31,10 +31,9 @@
                                                                 echo ($data['prenomParents']);
                                                                 ?>">
         </div>
+        <?php $dateN = date("Y-m-d", strtotime($data['dateNaissanceParents'])) ?>
         <div> <label for="prenom">date de naissance</label>
-            <input type="date" name="dateNaissanceParents" value="<?php
-                                                                    echo ($data['dateNaissanceParents']);
-                                                                    ?>">
+            <input type="date" name="dateNaissanceParents" max="<?= date('Y-m-d', strtotime('-16 year')); ?>" value="<?= $dateN; ?>">
 
         </div>
 
@@ -58,7 +57,7 @@
         </div>
         <div> <label for="prenom">numéro de télephone</label>
             <input type="text" name="telParents" value="<?php
-                                                        echo ($data['telParents']);
+                                                        echo '0' . ($data['telParents']);
                                                         ?>">
 
         </div>

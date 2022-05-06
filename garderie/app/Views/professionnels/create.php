@@ -41,7 +41,11 @@
                     </div>
                     <div class="input-field col s6">
                         <label for="email" class="active" style="color: black;">nombres de places</label>
-                        <input type="text" value="" name="nbr_place" placeholder="ex: Dupond1990@gmail.com" required="">
+                        <input type="number" value="" name="nbr_place" placeholder="ex: 50" required="">
+                    </div>
+                    <div class="input-field col s6">
+                        <label for="prix" class="active" style="color: black;">Prix en € (par heure)</label>
+                        <input type="number" value="" name="prix" placeholder="ex: 12" required="">
                     </div>
                     <div class="input-field col s6">
                         <label for="prix" class="active" style="color: black;">Prix en € (par heure)</label>
@@ -61,20 +65,4 @@
 
 </html>
 
-<script type="text/javascript">
-
-var start =document.getElementById("start")
-var stop =document.getElementById("stop")
-
-document.addEventListener('click', blockDate)
-
-function blockDate(){
-
-    console.log(start.min)  
-    console.log(start.value)
-
-    stop.min = start.value 
-    start.max = stop.value
-}
-
-</script>
+<script src="<?php base_url() ?>/js/dateBlock.js"></script>

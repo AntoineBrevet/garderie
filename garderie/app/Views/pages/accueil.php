@@ -18,8 +18,6 @@
                 <text x="50%" y="20%" dy=".35em" text-anchor="middle">
                     Baby Garde
                 </text>
-
-
             </svg>
 
         </div>
