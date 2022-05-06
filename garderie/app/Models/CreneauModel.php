@@ -49,6 +49,8 @@ class CreneauModel extends Model
     }
     public function show_sessions()
     {
+        $this->query("SET sql_mode=(SELECT REPLACE(@@sql_mode, 'ONLY_FULL_GROUP_BY', ''));");
+
         return $this->select("*")
             ->join('session', 'creneau.session_id = session.id')
             ->where(['creneau.creche_id' => session('id')])
