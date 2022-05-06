@@ -77,76 +77,9 @@
 
                 </ul>
                 <!-- Divider -->
-                <hr class="navbar-divider my-5 opacity-20">
                 <!-- Navigation -->
                 <ul class="navbar-nav mb-md-4">
                     <li>
-                        <div class="nav-link text-xs font-semibold text-uppercase text-muted ls-wide" href="#">
-                            Contacts
-                            <span class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-4">13</span>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link d-flex align-items-center">
-                            <div class="me-4">
-                                <div class="position-relative d-inline-block text-white">
-                                    <img alt="Image Placeholder" src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar rounded-circle">
-                                    <span class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-success rounded-circle"></span>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="d-block text-sm font-semibold">
-                                    Marie Claire
-                                </span>
-                                <span class="d-block text-xs text-muted font-regular">
-                                    Paris, FR
-                                </span>
-                            </div>
-                            <div class="ms-auto">
-                                <i class="bi bi-chat"></i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link d-flex align-items-center">
-                            <div class="me-4">
-                                <div class="position-relative d-inline-block text-white">
-                                    <span class="avatar bg-soft-warning text-warning rounded-circle">JW</span>
-                                    <span class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-success rounded-circle"></span>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="d-block text-sm font-semibold">
-                                    Michael Jordan
-                                </span>
-                                <span class="d-block text-xs text-muted font-regular">
-                                    Bucharest, RO
-                                </span>
-                            </div>
-                            <div class="ms-auto">
-                                <i class="bi bi-chat"></i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link d-flex align-items-center">
-                            <div class="me-4">
-                                <div class="position-relative d-inline-block text-white">
-                                    <img alt="..." src="https://images.unsplash.com/photo-1610899922902-c471ae684eff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar rounded-circle">
-                                    <span class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-danger rounded-circle"></span>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="d-block text-sm font-semibold">
-                                    Heather Wright
-                                </span>
-                                <span class="d-block text-xs text-muted font-regular">
-                                    London, UK
-                                </span>
-                            </div>
-                            <div class="ms-auto">
-                                <i class="bi bi-chat"></i>
-                            </div>
                         </a>
                     </li>
                 </ul>
@@ -205,12 +138,16 @@
 
         <main class="py-6 bg-surface-secondary">
             <div class="container-fluid">
+
                 <!-- Card stats -->
                 <div class="row  containerProfil">
+
                     <div class="col-xl-3 col-sm-6 col-12 otherCards">
                         <div class="card shadow border-0">
+
                             <div class="card-body">
                                 <div class="row">
+
                                     <div class="col">
                                         <span class="h6 font-semibold text-muted text-sm d-block mb-2">Budget</span>
                                         <span class="h3 font-bold mb-0">$750.90</span>
@@ -277,10 +214,13 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="otherCards">
+
                     <div class=" calener-card">
 
                         <div>
+                            <h1 class="h2 mb-0 ls-tight">Mes prochaines gardes</h1>
 
 
                             <script>
