@@ -282,99 +282,65 @@
 
                         <div>
 
+
                             <script>
+
                                 document.addEventListener('DOMContentLoaded', function() {
                                     var calendarEl = document.getElementById('calendar');
                                     var calendar;
+                                        initThemeChooser({
 
-                                    initThemeChooser({
+                                            init: function (themeSystem) {
 
-                                        init: function(themeSystem) {
+                                                calendar = new FullCalendar.Calendar(calendarEl, {
 
-                                            calendar = new FullCalendar.Calendar(calendarEl, {
+                                                    themeSystem: themeSystem,
+                                                    headerToolbar: {
+                                                        left: 'prev,next today',
+                                                        center: 'title',
+                                                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                                                    },
 
-                                                themeSystem: themeSystem,
-                                                headerToolbar: {
-                                                    left: 'prev,next today',
-                                                    center: 'title',
-                                                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-                                                },
+                                                    initialDate: '2022-05-12',
+                                                    weekNumbers: true,
+                                                    navLinks: true, // can click day/week names to navigate views
+                                                    editable: true,
+                                                    selectable: true,
+                                                    nowIndicator: true,
+                                                    dayMaxEvents: true, // allow "more" link when too many events
+                                                    // showNonCurrentDates: false,
 
-                                                initialDate: '2022-05-12',
-                                                weekNumbers: true,
-                                                navLinks: true, // can click day/week names to navigate views
-                                                editable: true,
-                                                selectable: true,
-                                                nowIndicator: true,
-                                                dayMaxEvents: true, // allow "more" link when too many events
-                                                // showNonCurrentDates: false,
 
-                                                events: [{
-                                                        title: 'All Day Event',
-                                                        start: '2020-09-01'
-                                                    },
-                                                    {
-                                                        title: 'Long Event',
-                                                        start: '2020-09-07',
-                                                        end: '2020-09-10'
-                                                    },
-                                                    {
-                                                        groupId: 999,
-                                                        title: 'Repeating Event',
-                                                        start: '2020-09-09T16:00:00'
-                                                    },
-                                                    {
-                                                        groupId: 999,
-                                                        title: 'Repeating Event',
-                                                        start: '2020-09-16T16:00:00'
-                                                    },
-                                                    {
-                                                        title: 'Conference',
-                                                        start: '2020-09-11',
-                                                        end: '2020-09-13'
-                                                    },
-                                                    {
-                                                        title: 'Meeting',
-                                                        start: '2020-09-12T10:30:00',
-                                                        end: '2020-09-12T12:30:00'
-                                                    },
-                                                    {
-                                                        title: 'Lunch',
-                                                        start: '2020-09-12T12:00:00'
-                                                    },
-                                                    {
-                                                        title: 'Meeting',
-                                                        start: '2020-09-12T14:30:00'
-                                                    },
-                                                    {
-                                                        title: 'Happy Hour',
-                                                        start: '2020-09-12T17:30:00'
-                                                    },
-                                                    {
-                                                        title: 'Dinner',
-                                                        start: '2020-09-12T20:00:00'
-                                                    },
-                                                    {
-                                                        title: 'Birthday Party',
-                                                        start: '2020-09-13T07:00:00'
-                                                    },
-                                                    {
-                                                        title: 'Click for Google',
-                                                        url: 'http://google.com/',
-                                                        start: '2020-09-28'
-                                                    }
-                                                ]
-                                            });
-                                            calendar.render();
-                                        },
+                                                    events: [
+                                                        <?php
+                                                        for ($i = 0; $i < count($infos); $i++) {
 
-                                        change: function(themeSystem) {
-                                            calendar.setOption('themeSystem', themeSystem);
+                                                        ?>
 
-                                        }
-                                    });
+                                                        {
+                                                            title: "<?= "Créneau ".($i+1)?>",
+                                                            start: "<?= $infos[$i]['date_debut'] ?>",
+                                                            end: "<?= $infos[$i]['date_fin'] ?>",
+                                                            textColor:"white"
+                                                        },
+                                                        <?php
+
+                                                }
+                        ?>
+                                                    ]
+                                                });
+                                                calendar.render();
+                                            },
+
+                                            change: function (themeSystem) {
+                                                calendar.setOption('themeSystem', themeSystem);
+
+                                            }
+
+                                        });
 
                                 });
+
                             </script>
 
                             <body>

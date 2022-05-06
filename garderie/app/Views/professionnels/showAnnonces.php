@@ -9,14 +9,13 @@
 <section class="sec1">
     <?php
 
-
     foreach ($infos as $info) {
-        echo "Vous avez : " . $info['jour'] . " Annonces ";
+        echo $info['date_debut'] . " " . $info['debutSession'] . "h à " . $info['date_debut'] . " " . $info['finSession'] . "h /// ";
     }
     ?>
-</section>
-<?= $this->endSection() ?>
 
-<?= $this->section('js') ?>
-<!-- Mettre le JS avec une balise script -->
-<?= $this->endSection() ?>
+    <?= $this->endSection() ?>
+
+    <?= $this->section('js') ?>
+    <!-- Mettre le JS avec une balise script -->
+    <?= $this->endSection() ?>
