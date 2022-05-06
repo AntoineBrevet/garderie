@@ -7,15 +7,20 @@
 
 <?= $this->section('content') ?>
 <section class="sec1">
-    <?php
+    <div class="annonces">
+        <h1><img src="<?= base_url() ?>/img/annonce.png" width="250px" alt="">Mes Annonces</h1>
+        <div class="annonce">
+            <?php
 
-    foreach ($infos as $info) {
-        echo $info['date_debut'] . " " . $info['debutSession'] . "h à " . $info['date_debut'] . " " . $info['finSession'] . "h /// ";
-    }
-    ?>
+            foreach ($infos as $info) {
+                echo $info['date_debut'] . " " . $info['debutSession'] . "h à " . $info['date_debut'] . " " . $info['finSession'] . "h /// ";
+            }
+            ?>
+        </div>
+    </div>
+</section>
+<?= $this->endSection() ?>
 
-    <?= $this->endSection() ?>
-
-    <?= $this->section('js') ?>
-    <!-- Mettre le JS avec une balise script -->
-    <?= $this->endSection() ?>
+<?= $this->section('js') ?>
+<!-- Mettre le JS avec une balise script -->
+<?= $this->endSection() ?>
