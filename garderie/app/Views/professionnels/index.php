@@ -4,6 +4,8 @@
 <!-- Mettre le CSS avec une balise link -->
 <link href="<?= base_url(); ?>/css/accueilPro.css" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 
 <?= $this->endSection() ?>
 
@@ -17,7 +19,7 @@
             <svg id="svgpro">
                 <text x="50%" y="20%" dy=".2em" text-anchor="middle">
                     Baby Garde Pro
-                 </text>
+                </text>
 
 
 
@@ -139,7 +141,8 @@
 
 
 <!-------------JS-------------->
-<?= $this->section('js') ?>
+<?= $this->section('js') ?><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="<?= base_url()  ?>/js/canvaAnim.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>

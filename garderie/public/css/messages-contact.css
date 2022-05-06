@@ -1,0 +1,35 @@
+.sec1 {
+    width: 100%;
+    height: 70vh;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-conatcts {
+    width: 90%;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #7bd97d;
+    text-align: center;
+    margin: 50px auto;
+}
+
+.names {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.my-conatcts a {
+    text-decoration: none;
+}

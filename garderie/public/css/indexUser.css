@@ -22,7 +22,8 @@ body {
     border-radius: 10px;
 }
 
-.myForm, form {
+.myForm,
+form {
     height: auto;
     text-align: center;
     display: flex;
@@ -39,6 +40,16 @@ body {
 
 .sec1 label {
     color: #fff;
+}
+
+#submitLocalisation {
+    color: #fff;
+    background-color: goldenrod;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: auto;
+    margin-left: 25px;
 }
 
 #buttonHidden,
@@ -282,4 +293,22 @@ body {
     background-color: #134870;
     transition-duration: 500ms;
     transform: scale(1.1);
+}
+
+.message {
+    text-align: center;
+    width: 200px;
+    padding: 15px;
+    background-color: #57c5cd;
+    border-radius: 10px;
+    margin: 5px auto;
+}
+
+.message:hover {
+    background-color: #1f73b4;
+}
+
+.message a {
+    color: #fff;
+    text-decoration: none;
 }

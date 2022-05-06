@@ -31,20 +31,21 @@
             </div>
 
         </div>
-    </div>
-    <br>
-    <div class="row-contents">
-        <div> <img src="<?= base_url() ?>/img/email1.png" alt="">
-            <label for="email">Adresse E-mail</label>
-            <div class="email">
-                <?php
-                echo ($data['mailPros']);
-                ?>
+
+        <br>
+        <div class="row-contents">
+            <div> <img src="<?= base_url() ?>/img/email1.png" alt="">
+                <label for="email">Adresse E-mail</label>
+                <div class="email">
+                    <?php
+                    echo ($data['mailPros']);
+                    ?>
+                </div>
             </div>
         </div>
         <br>
         <div> <img src="<?= base_url() ?>/img/tel1.png" alt="">
-            <label for="tel">numéro de télephone</label>
+            <label for="tel">Télephone</label>
             <div class="tel"> +33
                 <?php
                 echo ($data['telPros']);

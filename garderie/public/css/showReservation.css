@@ -1,0 +1,20 @@
+.sec1 {
+    background-color: #ebebeb;
+    width: 70%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px black;
+    margin: 100px auto;
+    padding: 30px;
+}
+
+.sec1 h1 {
+    text-align: center;
+    padding: 20px;
+}
+
+.sec1 h3 {
+    background-color: #fff;
+    padding: 10px;
+    text-align: center;
+}

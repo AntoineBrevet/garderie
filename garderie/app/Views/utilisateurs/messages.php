@@ -7,35 +7,39 @@
 
 <?= $this->section('content') ?>
 <div class="container">
-<?php
-
-
-foreach ($message as $messages){
-    if($messages['statut'] == "parent"){
-        ?>
-        <p class="parentP"><?= $messages['contenu'];?></p>
+    <header class="msg-header">Vos Messages</header>
+    <div class="msg-content">
         <?php
 
-    } else if ($messages['statut'] == "pro"){
+
+        foreach ($message as $messages) {
+            if ($messages['statut'] == "parent") {
         ?>
-        <p class="proP"><?= $messages['contenu'];?></p>
+                <p class="parentP"><?= $messages['contenu']; ?></p>
+            <?php
+
+            } else if ($messages['statut'] == "pro") {
+            ?>
+                <p class="proP"><?= $messages['contenu']; ?></p>
         <?php
 
-}
-}
+            }
+        }
 
-?>
-<form method="POST" action="">
-    <textarea name="message"></textarea>
-    <br>
-    <input type="submit" name="envoyer">
-</form>
+        ?>
+    </div>
+    <div>
+        <form method="POST" action="">
+            <section id="messages">
+                <textarea name="message"></textarea>
+
+                <input type="submit" name="envoyer">
+            </section>
+        </form>
+    </div>
 </div>
-
 <?= $this->endSection() ?>
 
 <?= $this->section('js') ?>
 <!-- Mettre le JS avec une balise script -->
 <?= $this->endSection() ?>
-
-

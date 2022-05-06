@@ -43,6 +43,12 @@
     border-radius: 20px;
 }
 
+.sec1 a:hover {
+    background-color: #134870;
+    transition-duration: 500ms;
+    transform: scale(1.1);
+}
+
 .retour:hover {
     background-color: #134870;
     transition-duration: 500ms;
@@ -114,11 +120,11 @@
     background-color: #57c5cd;
     font-size: 15px;
 }
-.retour{
+
+.retour {
     color: #f1eded;
     float: left;
 }
-
 
 
 /*---------------------responsive---------------------------*/

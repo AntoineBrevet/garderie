@@ -4,7 +4,7 @@
     <div class="logo">
         <?php
         if (session("professionnels")) { ?>
-            <a href="<?= base_url()  ?>/prosIndex"><img src="<?= base_url()  ?>/img/garderie.png" alt="logo"></a>
+            <a href="<?= base_url()  ?>/professionnels"><img src="<?= base_url()  ?>/img/garderie.png" alt="logo"></a>
         <?php
         } else { ?>
             <a href="<?= base_url()  ?>/professionnels"><img src="<?= base_url()  ?>/img/garderie.png" alt="logo"></a>
