@@ -37,6 +37,11 @@ class Session extends Migration
         'date_fin'=> [
             'type'=> 'DATE',
         ],
+        'prix' => [
+            'type'           => 'INT',
+            'constraint'     => 11,
+            'unsigned'       => true,
+        ],
         'deleted_at'=> [
             'type'=> 'DATETIME',
             'null' => true,

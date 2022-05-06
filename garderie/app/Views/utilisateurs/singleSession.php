@@ -8,10 +8,16 @@
 
 <!-- Mettre le content de la page -->
 <section class="containerSession">
+    <?php
+    var_dump($creneau);
+    ?>
 
     <div class="container">
         <h1>Réservez une place pour votre enfant</h1>
-        <form method="post">
+        <h3 style="color: white;">Prix par heure : <?= $creneau[0]['prix'] ?>€</h3>
+        <form method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="<?= STRIPE_KEY ?>" id="payment-form">
+            <input type="text" name="prix" value="<?= $creneau[0]['prix'] ?>" hidden>
+
             <div class="select-enfant">
                 <label for="list">Sélectionnez un enfant : </label>
                 <select name="list" id="list">
@@ -36,9 +42,65 @@
                 <label for="fin_session">Horaire de fin : </label>
                 <input type="text" value="" name="fin_session" placeholder="ex: 19h" required="" class="sessionInputSessionFin">
             </div>
-            <div class="reserver">
-                <button type="submit" name="action">Réserver
-                </button>
+
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="myBtn">Réserver ce créneau</button>
+
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="panel panel-default credit-card-box">
+                                <div class="panel-body">
+
+
+                                    <div class='form-row row'>
+                                        <div class='col-xs-12 form-group required'>
+                                            <label class='control-label'>Name on Card</label>
+                                            <input class='form-control' size='4' type='text'>
+                                        </div>
+                                    </div>
+
+                                    <div class='form-row row'>
+                                        <div class='col-xs-12 form-group card required'>
+                                            <label class='control-label'>Card Number</label>
+                                            <input autocomplete='off' class='form-control card-number' size='20' type='text'>
+                                        </div>
+                                    </div>
+
+                                    <div class='form-row row'>
+                                        <div class='col-xs-12 col-md-4 form-group cvc required'>
+                                            <label class='control-label'>CVC</label>
+                                            <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
+                                        </div>
+                                        <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                            <label class='control-label'>Expiration Month</label>
+                                            <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
+                                        </div>
+                                        <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                            <label class='control-label'>Expiration Year</label>
+                                            <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
+                                        </div>
+                                    </div>
+
+                                    <div class='form-row row'>
+                                        <div class='col-md-12 error form-group hide'>
+                                            <div class='alert-danger alert'>Please correct the errors and try
+                                                again.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <button class="btn btn-primary btn-lg btn-block" type="submit" name="action">Payer maintenant</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
         <div class="scroll-table">
@@ -82,4 +144,7 @@
 
 <?= $this->section('js') ?>
 <script src="<?php base_url() ?>/js/singleSession.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
 <?= $this->endSection() ?>

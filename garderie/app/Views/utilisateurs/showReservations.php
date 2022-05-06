@@ -12,8 +12,7 @@
 
     <?php
     foreach ($reservation as $reservations) { ?>
-        <h3>Du <?= $reservations['debut_date_reservation']; ?> à <?= $reservations['debut_reservation']; ?>h au <?= $reservations['fin_date_reservation']; ?> à <?= $reservations['fin_reservation']; ?>h pour <?= $reservations['prenomEnfants']; ?> <?= $reservations['nomEnfants']; ?> avec <?= $reservations['prenomPros']; ?> <?= $reservations['nomPros']; ?></h3>
-
+        <h3>Du <?= $reservations['debut_date_reservation']; ?> à <?= $reservations['debut_reservation']; ?>h au <?= $reservations['fin_date_reservation']; ?> à <?= $reservations['fin_reservation']; ?>h pour <?= $reservations['prenomEnfants']; ?> <?= $reservations['nomEnfants']; ?> avec <?= $reservations['prenomPros']; ?> <?= $reservations['nomPros']; ?> pour <?= $reservations['prixReservation']; ?>€</h3>
     <?php
     }
     ?>

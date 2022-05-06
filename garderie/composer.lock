@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce046deeb1fc7312b6e2ed37b577d133",
+    "content-hash": "942f44d62b88e9d96971c0e3351789a8",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -243,16 +243,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v7.124.0",
+            "version": "v7.128.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "548e8ef08a86c6c621446082393dc6a1af51076c"
+                "reference": "c704949c49b72985c76cc61063aa26fefbd2724e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/548e8ef08a86c6c621446082393dc6a1af51076c",
-                "reference": "548e8ef08a86c6c621446082393dc6a1af51076c",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/c704949c49b72985c76cc61063aa26fefbd2724e",
+                "reference": "c704949c49b72985c76cc61063aa26fefbd2724e",
                 "shasum": ""
             },
             "require": {
@@ -297,9 +297,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v7.124.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v7.128.0"
             },
-            "time": "2022-04-18T23:07:08+00:00"
+            "time": "2022-05-05T17:18:02+00:00"
         }
     ],
     "packages-dev": [

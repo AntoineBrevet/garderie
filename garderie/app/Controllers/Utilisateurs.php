@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ReservationSplit;
+use Stripe;
 
 class Utilisateurs extends BaseController
 {
@@ -405,7 +406,8 @@ class Utilisateurs extends BaseController
         echo view("utilisateurs/singleUser", $data);
     }
 
-    function generateRandomString($length = 10) {
+    function generateRandomString($length = 10)
+    {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -438,9 +440,12 @@ class Utilisateurs extends BaseController
             $fin = strtotime($this->request->getPost("date_fin"));
             $dif = ceil(abs($fin - $debut) / 86400);
 
-            
+
             if ($dif == 0) {
                 for ($i = $debutSession; $i < $finSession; $i++) {
+                    if ($i == $debutSession + 1){
+                        $first = $this->reservation->getInsertID();
+                    }
                     $boucleDebut = $i;
                     $boucleFin = $i + 1;
                     foreach ($allCreneau as $allCreneaux) {
@@ -462,6 +467,9 @@ class Utilisateurs extends BaseController
                 }
             } elseif ($dif > 0) {
                 for ($i = $debutSession; $i < 24; $i++) {
+                    if ($i == $debutSession + 1){
+                        $first = $this->reservation->getInsertID();
+                    }
                     $boucleDebut = $i;
                     $boucleFin = $i + 1;
                     foreach ($allCreneau as $allCreneaux) {
@@ -526,20 +534,40 @@ class Utilisateurs extends BaseController
                     }
                 }
             }
+            $last = $this->reservation->getInsertID();
+            $heure = $this->request->getPost('prix');
+            $prix = $heure * ($last - $first + 1);
+            
             $data = [
-                "nom_reservation"=>$randomName,
-                "debut_reservation"=> $debutSession,
-                "fin_reservation"=>$finSession,
-                "debut_date_reservation"=> $debutDate,
-                "fin_date_reservation"=>$finDate
+                "nom_reservation" => $randomName,
+                "debut_reservation" => $debutSession,
+                "fin_reservation" => $finSession,
+                "debut_date_reservation" => $debutDate,
+                "fin_date_reservation" => $finDate,
+                'prixReservation' => $prix
             ];
             $this->reservationSplit->insert($data);
+
+            Stripe\Stripe::setApiKey(STRIPE_SECRET);
+
+            
+
+            $stripe = Stripe\Charge::create([
+                "amount" => $prix * 100,
+                "currency" => "eur",
+                "source" => $_REQUEST["stripeToken"],
+                "description" => "Test payment via Stripe From onlinewebtutorblog.com",
+            ]);
+
+
+
+            session()->setFlashdata("message", "Payment done successfully");
 
             return redirect()->to(base_url() . '/showReservations');
         } else {
             $data = [
                 "enfants" => $this->enfants->getEnfantsBySessionId(),
-                "creneau" => $this->creneau->call_creneau_infos_by_idSession($id)
+                "creneau" => $this->creneau->call_creneau_infos_by_idSession2($id)
             ];
             echo view("utilisateurs/singleSession", $data);
         }

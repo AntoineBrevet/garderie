@@ -37,6 +37,11 @@ class Reservationsplit extends Migration
             'fin_date_reservation' => [
                 'type' => 'DATE',
             ],
+            'prixReservation' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+            ],
             'deleted_at' => [
                 'type' => 'DATETIME',
                 'null' => true,

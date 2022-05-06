@@ -14,7 +14,7 @@ class SessionModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id','debutSession','finSession','creche_id','date_debut','date_fin'];
+    protected $allowedFields    = ['id','debutSession','finSession','creche_id','date_debut','date_fin','prix'];
 
     // Dates
     protected $useTimestamps = false;

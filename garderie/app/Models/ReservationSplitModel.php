@@ -14,7 +14,7 @@ class ReservationSplitModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom_reservation','debut_reservation','fin_reservation','debut_date_reservation','fin_date_reservation'];
+    protected $allowedFields    = ['nom_reservation','debut_reservation','fin_reservation','debut_date_reservation','fin_date_reservation','prixReservation'];
 
     // Dates
     protected $useTimestamps = false;

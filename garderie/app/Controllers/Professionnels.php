@@ -189,7 +189,8 @@ class Professionnels extends BaseController
             'date_fin' => 'required',
             'nbr_place' => 'required',
             'debut_session' => 'required',
-            'fin_session' => 'required'
+            'fin_session' => 'required',
+            'prix' => 'required'
         ])) {
             $data = [
                 "debut_session" => $this->request->getPost("debut_session"),
@@ -208,6 +209,7 @@ class Professionnels extends BaseController
                 "finSession" => $this->request->getPost("fin_session"),
                 "date_debut" => $this->request->getPost("date_debut"),
                 "date_fin" => $this->request->getPost("date_fin"),
+                "prix" => $this->request->getPost("prix")
             ];
             $this->session->insert($session_creneaux);
 

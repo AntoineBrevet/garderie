@@ -77,3 +77,7 @@ defined('EXIT_USER_INPUT')     || define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       || define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      || define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+defined("STRIPE_KEY") || define('STRIPE_KEY', "pk_test_51KqedTGFqnMK1isz6q448oTpoHKvWhFvKkGvSiTNow8iS3Awe8n0EJN5w0E47gkz6GeatHpZhWDuHNBy3l8BDPer00hxwyn4Se");
+defined("STRIPE_SECRET") || define('STRIPE_SECRET', "sk_test_51KqedTGFqnMK1iszIFr79OxZ1CH2hUAFrL2t0yBcoLCJczQ34hu5Zr5wLltWLpOlvjIi7ebMiDH5WD2j0l9ejSc300Q95hDGvu");
